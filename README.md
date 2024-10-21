@@ -1,33 +1,50 @@
-# About this app
-This app is ready to start. It's powered by [Vike](https://vike.dev), [React](https://react.dev/learn) and [Effector](https://effector.dev/).
+# Cognitive Lab
 
-### `/pages/+config.ts`
+## Deploy
 
-Such `+` files are [the interface](https://vike.dev/config) between Vike and your code. It defines:
-- A default [`<Layout>` component](https://vike.dev/Layout) (that wraps your [`<Page>` components](https://vike.dev/Page)).
-- A default [`title`](https://vike.dev/title).
-- Global [`<head>` tags](https://vike.dev/head-tags).
+- Приложенька содержит SSR, а значит нам нужен сервачок на NodeJS ->
+- ENV: 
+  - PORT (порт, на котором запускать приложеньку);
+- Запускаем приложеньку командой для запуска в режиме прода: `npm run start`;
+- Можно навертеть туда pm2 `pm2 start npm -- start`;
 
-### Routing
+## Stack
 
-[Vike's built-in router](https://vike.dev/routing) lets you choose between:
- - [Filesystem Routing](https://vike.dev/filesystem-routing) (the URL of a page is determined based on where its `+Page.jsx` file is located on the filesystem)
- - [Route Strings](https://vike.dev/route-string)
- - [Route Functions](https://vike.dev/route-function)
+- [ViteJS]();
+- [VikeJS]();
+- [ReactJS]();
+- [EffectorJS]();
+- [Farfetched]();
+- [NodeJS]();
+- [ExpressJS]();
+- [MantineUI]();
+- [ESLint]();
+- [Prettier]();
+- [PostCSS]();
+- [FSD]();
 
-### `/pages/_error/+Page.jsx`
+## Development
 
-The [error page](https://vike.dev/error-page) which is rendered when errors occur.
+### Старт
+Приложение запускается на сервере NodeJS
+Entry Point в приложение это файл - `express-entry.ts`;
 
-### `/pages/+onPageTransitionStart.ts` and `/pages/+onPageTransitionEnd.ts`
+### Структура проекта
+Настоятельно рекомендую внимательно просмотреть каждый файл в этом репозитории перед использованием его в продакшене.
 
-The [`onPageTransitionStart()` hook](https://vike.dev/onPageTransitionStart), together with [`onPageTransitionEnd()`](https://vike.dev/onPageTransitionEnd), enables you to implement page transition animations.
+Этот проект наследует структуру проекта Vike:
 
-### SSR
+```dist/
+pages/
+public/
+renderer/
+server/
+src/
+```
 
-SSR is enabled by default. You can [disable it](https://vike.dev/ssr) for all your pages or only for some pages.
-
-### HTML Streaming
-
-You can enable/disable [HTML streaming](https://vike.dev/streaming) for all your pages, or only for some pages while still using it for others.
-
+- `dist` содержит результат сборки `npm`, это продовая сборка;
+- `pages` — file-based роутинг системы `Vike`;
+- `public` — каталог статических файлов (картинки, лого, шрифты итп);
+- `renderer` — интеграционные хуки `React` + `Effector`;
+- `server` — сервер Express, собирается с помощью `tsc`, запускается с помощью `ts-node`;
+- `src` — основа FSD с кодом, импортированным в `pages`, и `renderer`;

@@ -7,7 +7,6 @@
     "dev": "tsx ./express-entry.ts",
     "build": "vite build",
     "start": "npm run build && cross-env NODE_ENV=production tsx ./express-entry.ts",
-    "shivkumarscript": "tsx ./express-entry.ts",
     "lint": "eslint ."
   },
   "keywords": [],
