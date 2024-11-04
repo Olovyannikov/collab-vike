@@ -1,6 +1,6 @@
 import { FormEventHandler } from 'react';
 import { Container } from '@mantine/core';
-import { useUnit } from 'effector-react/effector-react.umd';
+import { useUnit } from 'effector-react';
 import { useData } from 'vike-react/useData';
 
 import { getCommentsQuery } from '@/entities/Comments/api';

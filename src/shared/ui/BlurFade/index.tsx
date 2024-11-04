@@ -1,5 +1,5 @@
 import { type ReactNode, useRef } from 'react';
-import { AnimatePresence, motion, useInView, UseInViewOptions, Variants } from 'framer-motion';
+import { AnimatePresence, motion, useInView, type UseInViewOptions, type Variants } from 'framer-motion';
 
 type MarginType = UseInViewOptions['margin'];
 

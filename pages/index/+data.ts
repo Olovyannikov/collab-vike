@@ -1,5 +1,7 @@
-import { allSettled, fork, serialize } from 'effector';
+import { allSettled, fork } from 'effector';
 import type { PageContextServer } from 'vike/types';
+
+import { normalizeSSRData } from '@/shared/api/normalizer';
 
 import { indexPage } from '~/pages/index/model';
 
@@ -8,5 +10,7 @@ export async function data(pageContext: PageContextServer) {
 
     await allSettled(indexPage.open, { scope });
 
-    return Object.values(serialize(scope)).find(Array.isArray);
+    const { data } = normalizeSSRData(scope);
+
+    return data;
 }

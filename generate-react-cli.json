@@ -5,9 +5,9 @@
   "component": {
     "page": {
       "customTemplates": {
-        "component": "./templates/pages/+Page.tsx",
-        "model": "./templates/pages/model.ts",
-        "data": "./templates/pages/+data.ts"
+        "component": "./templates/_page/Page.tsx",
+        "model": "./templates/_page/model.ts",
+        "data": "./templates/_page/+data.ts"
       },
       "path": "./pages",
       "withLazy": false,

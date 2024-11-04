@@ -2,7 +2,7 @@ import { ColorSchemeScript } from '@mantine/core';
 
 import logoUrl from '../assets/logo.svg';
 
-// Default <head> (can be overridden by pages)
+// Default <head> (can be overridden by _page)
 export default function HeadDefault() {
     return (
         <>
