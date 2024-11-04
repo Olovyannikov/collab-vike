@@ -1,11 +1,16 @@
-import React from 'react';
+import type { ReactNode } from 'react';
 
-import { EffectorProvider, ScopeProvider } from '@utils/effector';
+import { MantineProvider } from '@/app/providers/Mantine';
+import { EffectorProvider, ScopeProvider } from '@/shared/utils/effector';
 
-export default function Wrapper({ children }: { children: React.ReactNode }) {
-  return (
-    <ScopeProvider>
-      <EffectorProvider>{children}</EffectorProvider>
-    </ScopeProvider>
-  );
+import '@/app/styles/index.css';
+
+export default function Wrapper({ children }: { children: ReactNode }) {
+    return (
+        <MantineProvider>
+            <ScopeProvider>
+                <EffectorProvider>{children}</EffectorProvider>
+            </ScopeProvider>
+        </MantineProvider>
+    );
 }

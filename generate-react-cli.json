@@ -1,0 +1,30 @@
+{
+  "usesTypeScript": true,
+  "usesCssModule": true,
+  "cssPreprocessor": "css",
+  "component": {
+    "page": {
+      "customTemplates": {
+        "component": "./templates/pages/+Page.tsx",
+        "model": "./templates/pages/model.ts",
+        "data": "./templates/pages/+data.ts"
+      },
+      "path": "./pages",
+      "withLazy": false,
+      "withStory": false,
+      "withStyle": false,
+      "withTest": false,
+      "withData": true,
+      "withModel": true
+    },
+    "default": {
+      "path": "src/components",
+      "withStyle": false,
+      "withTest": false,
+      "withStory": false,
+      "withLazy": false
+    }
+  },
+  "usesStyledComponents": false,
+  "testLibrary": "None"
+}
