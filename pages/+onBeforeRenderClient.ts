@@ -1,14 +1,15 @@
 import { allSettled } from 'effector';
 import type { PageContextClient } from 'vike/types';
 
-import { appService } from '@services/app';
-import { getScope } from '@utils/effector';
+import { getScope } from '@/shared/utils/effector';
+
+import { appService } from '~/services/app';
 
 export const onBeforeRenderClient = async (pageContext: PageContextClient) => {
-  const { scopeValues } = pageContext;
-  const scope = getScope(scopeValues);
+    const { scopeValues } = pageContext;
+    const scope = getScope(scopeValues);
 
-  if (pageContext.isHydration) {
-    await allSettled(appService.appStarted, { scope });
-  }
+    if (pageContext.isHydration) {
+        await allSettled(appService.appStarted, { scope });
+    }
 };

@@ -1,0 +1,4 @@
+@import '@mantine/core/styles.css';
+
+/* Components */
+@import url('./general/_scaffoldings.css');

@@ -12,13 +12,8 @@
     "noEmit": true,
     "moduleResolution": "Bundler",
     "paths": {
-      "@assets/*": ["./assets/*"],
-      "@components/*": ["./components/*"],
-      "@layouts/*": ["./layouts/*"],
-      "@services/*": ["./services/*"],
-      "@styles/*": ["./styles/*"],
-      "@utils/*": ["./utils/*"],
-      "@/*": ["./*"]
+      "~/*": ["./*"],
+      "@/*": ["./src/*"]
     },
     "target": "ES2022",
     "lib": [

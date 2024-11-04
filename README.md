@@ -10,7 +10,7 @@
 
 ## Stack
 
-- [ViteJS]();
+- [ViteJS](https://vitejs.ru/);
 - [VikeJS]();
 - [ReactJS]();
 - [EffectorJS]();
