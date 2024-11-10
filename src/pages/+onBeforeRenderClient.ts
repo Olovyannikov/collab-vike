@@ -3,7 +3,7 @@ import type { PageContextClient } from 'vike/types';
 
 import { getScope } from '@/shared/utils/effector';
 
-import { appService } from '~/services/app';
+import { appService } from '../shared/services/app';
 
 export const onBeforeRenderClient = async (pageContext: PageContextClient) => {
     const { scopeValues } = pageContext;

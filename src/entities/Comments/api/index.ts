@@ -3,7 +3,7 @@ import { createMutation, createQuery } from '@farfetched/core';
 import { createCommonRequestFx } from '@/shared/api';
 import { HTTP_METHODS } from '@/shared/api/methods';
 
-import { CommentsResponse, CreateCommentRequest } from './dto';
+import type { CommentsResponse, CreateCommentRequest } from './dto';
 
 export const getCommentsQuery = createQuery({
     effect: createCommonRequestFx<void, CommentsResponse[]>(() => ({

@@ -12,7 +12,6 @@
     "noEmit": true,
     "moduleResolution": "Bundler",
     "paths": {
-      "~/*": ["./*"],
       "@/*": ["./src/*"]
     },
     "target": "ES2022",

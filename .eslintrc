@@ -20,8 +20,8 @@
     "simple-import-sort"
   ],
   "extends": [
-    "ts-react-important-stuff",
     "eslint:recommended",
+    "ts-react-important-stuff",
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
     "plugin:react-hooks/recommended",
@@ -213,7 +213,7 @@
   "overrides": [
     {
       "files": [
-        "jest.config.js"
+        "jest.config.ts"
       ],
       "rules": {
         "import/no-default-export": "off"
@@ -236,10 +236,8 @@
       "files": [
         "pages/**/*",
         "src/pages/**/*",
-        "layouts/**/*",
-        "src/app/**/*",
-        "**/*.async.tsx",
-        "templates/**/*"
+        "src/layouts/**/*",
+        "src/_app/**/*"
       ],
       "rules": {
         "import/no-default-export": "off",

@@ -11,7 +11,7 @@
   "arrowParens": "always",
   "overrides": [
     {
-      "files": ["**/*.css", "**/*.scss", "**/*.html"],
+      "files": ["**/*.css", "**/*.scss", "**/*.html", "**/*.json"],
       "options": {
         "singleQuote": false,
         "tabWidth": 2

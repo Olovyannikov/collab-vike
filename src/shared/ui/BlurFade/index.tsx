@@ -1,10 +1,7 @@
-import { type ReactNode, useRef } from 'react';
+import { type PropsWithChildren, useMemo, useRef } from 'react';
 import { AnimatePresence, motion, useInView, type UseInViewOptions, type Variants } from 'framer-motion';
 
-type MarginType = UseInViewOptions['margin'];
-
 interface BlurFadeProps {
-    children: ReactNode;
     className?: string;
     variant?: {
         hidden: { y: number };
@@ -14,7 +11,7 @@ interface BlurFadeProps {
     delay?: number;
     yOffset?: number;
     inView?: boolean;
-    inViewMargin?: MarginType;
+    inViewMargin?: UseInViewOptions['margin'];
     blur?: string;
 }
 
@@ -28,29 +25,38 @@ export const BlurFade = ({
     inView = false,
     inViewMargin = '-50px',
     blur = '6px',
-}: BlurFadeProps) => {
+}: PropsWithChildren<BlurFadeProps>) => {
     const ref = useRef(null);
     const inViewResult = useInView(ref, { once: true, margin: inViewMargin });
     const isInView = !inView || inViewResult;
-    const defaultVariants: Variants = {
-        hidden: { y: yOffset, opacity: 0, filter: `blur(${blur})` },
-        visible: { y: -yOffset, opacity: 1, filter: `blur(0px)` },
-    };
+    const defaultVariants: Variants = useMemo(
+        () => ({
+            hidden: { y: yOffset, opacity: 0, filter: `blur(${blur})` },
+            visible: { y: -yOffset, opacity: 1, filter: `blur(0px)` },
+        }),
+        [yOffset, blur]
+    );
     const combinedVariants = variant || defaultVariants;
+
+    const transition = useMemo(
+        () => ({
+            duration,
+            ease: 'easeOut',
+            delay: 0.04 + delay,
+        }),
+        [delay, duration]
+    );
+
     return (
         <AnimatePresence>
             <motion.div
                 ref={ref}
-                initial='hidden'
-                animate={isInView ? 'visible' : 'hidden'}
                 exit='hidden'
-                variants={combinedVariants}
-                transition={{
-                    delay: 0.04 + delay,
-                    duration,
-                    ease: 'easeOut',
-                }}
+                initial='hidden'
                 className={className}
+                transition={transition}
+                variants={combinedVariants}
+                animate={isInView ? 'visible' : 'hidden'}
             >
                 {children}
             </motion.div>

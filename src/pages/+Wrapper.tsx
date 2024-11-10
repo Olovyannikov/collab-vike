@@ -1,13 +1,15 @@
-import type { ReactNode } from 'react';
+import type { PropsWithChildren } from 'react';
+import { NavigationProgress } from '@mantine/nprogress';
 
 import { MantineProvider } from '@/app/providers/Mantine';
 import { EffectorProvider, ScopeProvider } from '@/shared/utils/effector';
 
 import '@/app/styles/index.css';
 
-export default function Wrapper({ children }: { children: ReactNode }) {
+export default function Wrapper({ children }: PropsWithChildren) {
     return (
         <MantineProvider>
+            <NavigationProgress />
             <ScopeProvider>
                 <EffectorProvider>{children}</EffectorProvider>
             </ScopeProvider>

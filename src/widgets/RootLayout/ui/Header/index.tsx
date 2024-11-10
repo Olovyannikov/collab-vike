@@ -2,13 +2,12 @@ import { Burger, Container, Group } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { usePageContext } from 'vike-react/usePageContext';
 
+import logoUrl from '@/app/assets/logo.svg';
 import { APP_ROUTES } from '@/shared/navigation';
 
 import s from './Header.module.css';
 
-import logoUrl from '~/assets/logo.svg';
-
-export function Header() {
+export const Header = () => {
     const [opened, { toggle }] = useDisclosure(false);
     const pageContext = usePageContext();
     const { urlPathname } = pageContext;
@@ -39,4 +38,4 @@ export function Header() {
             </Container>
         </header>
     );
-}
+};

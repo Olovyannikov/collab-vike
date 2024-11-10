@@ -1,5 +1,5 @@
 {
-  "name": "vike-react-effector",
+  "name": "cognitive-lab-personalities",
   "version": "0.0.1",
   "description": "",
   "type": "module",
@@ -7,22 +7,20 @@
     "dev": "tsx ./express-entry.ts",
     "build": "vite build",
     "start": "npm run build && cross-env NODE_ENV=production tsx ./express-entry.ts",
-    "lint": "eslint .",
-    "generate:page": "npx generate-react-cli component --type=page"
+    "lint": "eslint ."
   },
   "keywords": [],
-  "author": "",
+  "author": "Elijah Olovyannikov",
   "dependencies": {
     "@farfetched/core": "^0.12.8",
     "@mantine/core": "^7.13.4",
     "@mantine/hooks": "^7.13.4",
     "@mantine/notifications": "^7.13.4",
+    "@mantine/nprogress": "^7.13.5",
     "@universal-middleware/core": "^0.2.13",
     "@universal-middleware/express": "^0.2.9",
-    "cross-fetch": "^4.0.0",
     "effector": "^23.2.3",
     "effector-react": "^23.2.1",
-    "efx-forms": "^2.0.27",
     "express": "^4.21.1",
     "framer-motion": "^11.11.11",
     "lodash-es": "^4.17.21",
@@ -30,13 +28,11 @@
     "patronum": "^2.3.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "telefunc": "^0.1.79",
     "zod": "^3.23.8"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
-    "@eslint/js": "^9.13.0",
     "@evilmartians/lefthook": "^1.8.2",
     "@types/express": "^5.0.0",
     "@types/lodash-es": "^4.17.12",
@@ -62,8 +58,6 @@
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-simple-import-sort": "^12.1.0",
-    "generate-react-cli": "^8.4.9",
-    "globals": "^15.11.0",
     "lodash-es": "^4.17.21",
     "postcss": "^8.4.47",
     "postcss-preset-mantine": "^1.17.0",
@@ -73,11 +67,11 @@
     "stylelint-config-prettier": "^9.0.5",
     "stylelint-declaration-block-no-ignored-properties": "^2.8.0",
     "stylelint-order": "^6.0.4",
-    "tsx": "^4.19.1",
+    "tsx": "^4.19.2",
     "typescript": "^5.6.3",
-    "typescript-eslint": "^8.10.0",
-    "vike": "^0.4.199",
+    "typescript-eslint": "^8.13.0",
+    "vike": "^0.4.201",
     "vike-react": "^0.5.7",
-    "vite": "^5.4.9"
+    "vite": "^5.4.10"
   }
 }
