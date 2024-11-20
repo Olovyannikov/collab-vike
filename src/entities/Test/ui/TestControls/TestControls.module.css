@@ -1,0 +1,10 @@
+.button {
+    &:not(:disabled):is(:hover, :focus-visible) {
+        color: var(--mantine-color-white) !important;
+        background-color: var(--mantine-color-violet-6);
+    }
+
+    &:disabled {
+        color: var(--mantine-color-gray-5) !important;
+    }
+}

@@ -1,14 +1,14 @@
-import { Burger, Container, Group } from '@mantine/core';
+import { Burger, Drawer, Group, Image, Stack } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { usePageContext } from 'vike-react/usePageContext';
 
-import logoUrl from '@/app/assets/logo.svg';
+import logoUrl from '@/app/assets/cognitive-logo.svg';
 import { APP_ROUTES } from '@/shared/navigation';
 
 import s from './Header.module.css';
 
 export const Header = () => {
-    const [opened, { toggle }] = useDisclosure(false);
+    const [opened, { toggle, close }] = useDisclosure(false);
     const pageContext = usePageContext();
     const { urlPathname } = pageContext;
     const isActive = ({ href }: { href: string }) =>
@@ -19,6 +19,7 @@ export const Header = () => {
             key={link.label}
             href={link.link}
             className={s.link}
+            onClick={close}
             {...(isActive({ href: link.link }) ? { 'data-active': true } : {})}
         >
             {link.label}
@@ -27,15 +28,18 @@ export const Header = () => {
 
     return (
         <header className={s.header}>
-            <Container size='md' className={s.inner}>
-                <a href='/'>
-                    <img src={logoUrl} height={64} width={64} alt='logo' />
+            <div className={s.inner}>
+                <a className={s.logo} href='/'>
+                    <Image src={logoUrl} height={20} width={125} alt='Cognitive Lab логотип' />
                 </a>
-                <Group gap={5} visibleFrom='xs'>
+                <Group gap={5} visibleFrom='sm'>
                     {items}
                 </Group>
-                <Burger opened={opened} onClick={toggle} hiddenFrom='xs' size='sm' />
-            </Container>
+                <Drawer hiddenFrom='sm' opened={opened} onClose={close} size='75%'>
+                    <Stack gap={5}>{items}</Stack>
+                </Drawer>
+                <Burger opened={opened} onClick={toggle} hiddenFrom='sm' size='sm' />
+            </div>
         </header>
     );
 };

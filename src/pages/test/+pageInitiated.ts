@@ -1,7 +1,8 @@
 import { sample } from 'effector';
 
-import { getQuestionsQuery } from '@/entities/Questions';
 import { createPageInit } from '@/shared/utils/effector';
+
+import { getQuestionsQuery } from '../../entities/Test';
 
 export const pageInitiated = createPageInit();
 
