@@ -1,5 +1,6 @@
 import { fileURLToPath, URL } from 'node:url';
 import vike from 'vike/plugin';
+import vercel from 'vite-plugin-vercel';
 import { defineConfig } from 'vite';
 
 import react from '@vitejs/plugin-react';
@@ -15,6 +16,7 @@ export default defineConfig({
                 babelrc: true,
             },
         }),
+        vercel(),
     ],
     ssr: {
         noExternal: ['efx-forms'],
