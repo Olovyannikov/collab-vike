@@ -1,15 +1,26 @@
 .header {
-    min-height: rem(56px);
-    padding-block: rem(20px);
+    min-height: rem(70px);
     background-color: var(--mantine-color-body);
-    border-bottom: rem(1px) solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+    margin-bottom: var(--mantine-spacing-lg);
 }
 
 .inner {
-    height: rem(56px);
+    padding-inline: var(--mantine-spacing-md);
+    min-height: rem(70px);
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @mixin larger-than 768px {
+        padding-inline: 64px;
+    }
+}
+
+.logo {
+    @mixin larger-than 768px {
+        width: 197px;
+        height: 32px;
+    }
 }
 
 .link {

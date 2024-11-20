@@ -6,7 +6,7 @@ const pageApi = createApi($currentPage, {
     dec: (page) => page - 1,
 });
 
-export const model = {
+export const TestModel = {
     $currentPage,
     pageApi,
 };
