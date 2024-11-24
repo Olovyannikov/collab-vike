@@ -13,6 +13,8 @@
   "keywords": [],
   "author": "Elijah Olovyannikov",
   "dependencies": {
+    "@effector-reform/core": "^0.13.10",
+    "@effector-reform/react": "^0.13.10",
     "@farfetched/core": "^0.12.8",
     "@mantine/core": "^7.13.4",
     "@mantine/hooks": "^7.13.4",
@@ -23,6 +25,7 @@
     "@universal-middleware/express": "^0.2.9",
     "effector": "^23.2.3",
     "effector-react": "^23.2.1",
+    "effector-storage": "^7.1.0",
     "express": "^4.21.1",
     "framer-motion": "^11.11.11",
     "lodash-es": "^4.17.21",

@@ -1,4 +1,8 @@
 .button {
+    display: flex;
+    padding: 20px 10px;
+    border: 0;
+
     &:not(:disabled):is(:hover, :focus-visible) {
         color: var(--mantine-color-white) !important;
         background-color: var(--mantine-color-violet-6);
@@ -6,5 +10,14 @@
 
     &:disabled {
         color: var(--mantine-color-gray-5) !important;
+    }
+
+    &:first-child::after {
+        content: "Назад"
+    }
+
+    &:last-child::after {
+        content: "Вперед";
+        order: -1;
     }
 }

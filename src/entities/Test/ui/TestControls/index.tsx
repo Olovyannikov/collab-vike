@@ -1,34 +1,37 @@
-import { Button, Flex } from '@mantine/core';
+import { useCallback } from 'react';
+import { Button, Flex, Group, Pagination } from '@mantine/core';
 import { ArrowLeft, ArrowRight } from '@phosphor-icons/react';
 import { useUnit } from 'effector-react';
 
-import { getQuestionsQuery, TestModel } from '@/entities/Test';
+import { getQuestionsQuery, TestPageModel } from '@/entities/Test';
 
 import s from './TestControls.module.css';
 
-export const TestControls = () => {
+interface TestControlsProps {
+    onPageChange: VoidFunction;
+}
+
+export const TestControls = ({ onPageChange }: TestControlsProps) => {
     const { data: questions } = useUnit(getQuestionsQuery);
-    const [page, next, prev] = useUnit([TestModel.$currentPage, TestModel.pageApi.inc, TestModel.pageApi.dec]);
+    const [activePage, pageChangeHandler] = useUnit([TestPageModel.$currentTestPage, TestPageModel.testPageChanged]);
+
+    const onPageChangeHandler = (page: number) => {
+        onPageChange();
+        pageChangeHandler(page);
+    };
 
     if (!questions) return;
 
-    const isFirstPage = page < 1;
-    const isLastPage = page === questions?.length - 1;
+    const isFirstPage = activePage === 1;
 
     return (
-        <Flex justify='space-between'>
-            <Button c='black' variant='subtle' className={s.button} radius='lg' onClick={prev} disabled={isFirstPage}>
-                <Flex gap='sm'>
-                    <ArrowLeft />
-                    Назад
-                </Flex>
-            </Button>
-            <Button className={s.button} c='black' variant='subtle' radius='lg' disabled={isLastPage} onClick={next}>
-                <Flex gap='sm'>
-                    Вперед
-                    <ArrowRight />
-                </Flex>
-            </Button>
-        </Flex>
+        <Pagination.Root total={questions.length} value={activePage} onChange={onPageChangeHandler} mt='sm'>
+            <Group justify='space-between'>
+                <Pagination.Previous disabled={isFirstPage} icon={ArrowLeft} className={s.button} />
+                <Pagination.Next icon={ArrowRight} className={s.button}>
+                    Next
+                </Pagination.Next>
+            </Group>
+        </Pagination.Root>
     );
 };

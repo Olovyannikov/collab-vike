@@ -2,4 +2,5 @@
 @import "@mantine/nprogress/styles.css";
 
 /* Components */
+@import url("./general/_fonts.css");
 @import url("./general/_scaffoldings.css");

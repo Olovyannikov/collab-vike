@@ -22,6 +22,7 @@ export default {
     passToClient: ['scopeValues'],
     prerender: false,
     title: 'Cognitive Lab',
+    lang: 'ru',
     reactStrictMode: false,
     extends: vikeReact,
 } satisfies Config;

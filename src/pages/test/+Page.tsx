@@ -1,18 +1,25 @@
+import { useCallback, useRef } from 'react';
 import { Container } from '@mantine/core';
-import { useUnit } from 'effector-react';
+import { useUnit } from 'effector-react/effector-react.mjs';
 
-import { getQuestionsQuery, TestControls, TestModel } from '@/entities/Test';
+import { ActiveQuestionModel, TestControls, TestStarter } from '@/entities/Test';
+import { TestBlock } from '@/widgets/TestBlock';
 
 export default function Page() {
-    const { data: questions } = useUnit(getQuestionsQuery);
-    const [page] = useUnit([TestModel.$currentPage]);
+    const setActiveQuestion = useUnit(ActiveQuestionModel.activeQuestionChanged);
+    const myRef = useRef<HTMLDivElement | null>(null);
+    const executeScroll = () => myRef.current?.scrollIntoView();
 
-    if (!questions) return;
+    const onTestStartedHandler = useCallback(() => {
+        setActiveQuestion(0);
+        executeScroll();
+    }, []);
 
     return (
-        <Container>
-            <ul>{questions[page]?.map((question) => <li key={question.id}>{question.text}</li>)}</ul>
-            <TestControls />
+        <Container pb={40}>
+            <TestStarter onTestStarted={onTestStartedHandler} />
+            <TestBlock ref={myRef} />
+            <TestControls onPageChange={executeScroll} />
         </Container>
     );
 }
