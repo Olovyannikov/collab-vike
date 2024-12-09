@@ -19,7 +19,7 @@ export default defineConfig({
         vercel(),
     ],
     ssr: {
-        noExternal: ['efx-forms'],
+        noExternal: ['@siberiancancode/reactuse'],
     },
     resolve: {
         alias: {

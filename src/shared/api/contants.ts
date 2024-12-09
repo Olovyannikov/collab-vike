@@ -1,3 +1,3 @@
 export const API = {
-    URL: 'https://api.cognitivelab.ru',
+    URL: import.meta.env.VITE_BASE_URL,
 };

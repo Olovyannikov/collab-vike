@@ -1,25 +1,38 @@
-import { useCallback, useRef } from 'react';
 import { Container } from '@mantine/core';
+import { useGate } from 'effector-react';
 import { useUnit } from 'effector-react/effector-react.mjs';
 
-import { ActiveQuestionModel, TestControls, TestStarter } from '@/entities/Test';
-import { TestBlock } from '@/widgets/TestBlock';
+import { ScaleQuestion } from '@/entities/Test';
+import { $currentPage, $currentQuestion, $scaleForm, scaleFormFieldChanged, TestPageGate } from '@/entities/Test/model';
+const containerHeight = `calc(100dvh - 90px)`;
 
 export default function Page() {
-    const setActiveQuestion = useUnit(ActiveQuestionModel.activeQuestionChanged);
-    const myRef = useRef<HTMLDivElement | null>(null);
-    const executeScroll = () => myRef.current?.scrollIntoView();
+    useGate(TestPageGate);
+    const {
+        question,
+        onChange,
+        page,
+        testForm: { answers },
+    } = useUnit({
+        question: $currentQuestion,
+        onChange: scaleFormFieldChanged,
+        page: $currentPage,
+        testForm: $scaleForm,
+    });
 
-    const onTestStartedHandler = useCallback(() => {
-        setActiveQuestion(0);
-        executeScroll();
-    }, []);
+    const currentValue = () => {
+        if (answers && answers.length > 0 && 'value' in answers[page].answer) {
+            return answers[page].answer.value;
+        }
+
+        return '';
+    };
+
+    if (!question) return null;
 
     return (
-        <Container pb={40}>
-            <TestStarter onTestStarted={onTestStartedHandler} />
-            <TestBlock ref={myRef} />
-            <TestControls onPageChange={executeScroll} />
+        <Container display='grid' pb={40}>
+            <ScaleQuestion {...question} value={String(currentValue())} page={page} onChange={onChange} />
         </Container>
     );
 }

@@ -2,6 +2,8 @@
     display: flex;
     padding: 20px 10px;
     border: 0;
+    font-weight: 600;
+    gap: var(--mantine-spacing-sm);
 
     &:not(:disabled):is(:hover, :focus-visible) {
         color: var(--mantine-color-white) !important;
@@ -12,12 +14,18 @@
         color: var(--mantine-color-gray-5) !important;
     }
 
-    &:first-child::after {
+    &.prev::after {
         content: "Назад"
     }
 
-    &:last-child::after {
-        content: "Вперед";
-        order: -1;
+    &.next {
+        &::after {
+            content: "Вперед";
+            order: -1;
+        }
+
+        &:only-child::after {
+            order: -1;
+        }
     }
 }

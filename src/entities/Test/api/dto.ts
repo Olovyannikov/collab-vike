@@ -12,12 +12,12 @@ export interface Rephrasing {
 
 export interface QuestionsResponse {
     id: string;
-    category: string;
-    dimension?: string;
     text: string;
     type: string;
+    category: string;
     reverse_scored: boolean;
     hint?: string;
-    rephrasing?: Rephrasing[];
+    dimension?: string;
     options?: Option[];
+    rephrasing?: Rephrasing[];
 }

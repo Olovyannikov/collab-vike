@@ -1,17 +1,22 @@
-.paper {
-    border-radius: 0;
-    opacity: 0.4;
+.root {
+    --title-fz: 24px !important;
+    --title-lh: 28px !important;
 
-    &:not(:first-child) {
-        padding-top: 60px;
-    }
+    position: relative;
+    text-align: center;
+}
 
-    &:not(:last-child) {
-        border-bottom: 1px solid var(--mantine-color-dark-3);
-    }
+.hint {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 18px;
+    color: var(--mantine-color-gray-6);
+    text-align: center;
+}
 
-    &.active {
-        opacity: 1;
+.rephrase {
+    span {
+        align-items: start;
     }
 }
 
