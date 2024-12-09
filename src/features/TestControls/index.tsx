@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import { useUnit } from 'effector-react';
 import { motion } from 'framer-motion';
 
-import { getQuestionsQuery, TestPageModel } from '@/entities/Test';
+import { getQuestionsQuery } from '@/entities/Test';
 
 import s from './TestControls.module.css';
 
@@ -14,28 +14,15 @@ interface TestControlsProps {
 
 export const TestControls = ({ onPageChange }: TestControlsProps) => {
     const { data: questions } = useUnit(getQuestionsQuery);
-    const [activePage, pageChangeHandler] = useUnit([TestPageModel.$currentTestPage, TestPageModel.testPageChanged]);
-
-    const onPageChangeHandler = (page: number) => {
-        onPageChange();
-        pageChangeHandler(page);
-    };
 
     if (!questions) return;
-
-    const isFirstPage = activePage === 1;
 
     // const isCompleted = values.find((el) => el.question === key[activePage - 1]?.question);
 
     return (
-        <Pagination.Root total={questions.length} value={activePage} onChange={onPageChangeHandler} mt='auto'>
+        <Pagination.Root total={questions.length} mt='auto'>
             <Group style={{}} justify='space-between'>
-                <Pagination.Previous
-                    hidden={isFirstPage}
-                    disabled={isFirstPage}
-                    className={clsx(s.button, s.prev)}
-                    icon={() => <ArrowLeft weight='bold' />}
-                />
+                <Pagination.Previous className={clsx(s.button, s.prev)} icon={() => <ArrowLeft weight='bold' />} />
                 <motion.div
                     style={{ marginLeft: 'auto' }}
                     initial={{ opacity: 0 }}
