@@ -1,14 +1,4 @@
-export interface Option {
-    id: string;
-    text: string;
-    order: number;
-    requires_input?: boolean;
-}
-
-export interface Rephrasing {
-    hint: string;
-    text: string;
-}
+import type { Option, Rephrasing } from '../types';
 
 export interface QuestionsResponse {
     id: string;

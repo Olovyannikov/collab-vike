@@ -1,20 +1,34 @@
+export interface Option {
+    id: string;
+    text: string;
+    order: number;
+    requires_input?: boolean;
+}
+
+export interface Rephrasing {
+    hint: string;
+    text: string;
+}
+
 export interface ScaleChoiceAnswer {
     value: number;
 }
 
-export interface Answer2 {
-    value: string;
-}
-
-export interface Answer4 {
+export interface MultiChoiceAnswer {
     value: string;
     input?: string;
 }
 
+export interface SingleChoiceAnswer {
+    value: string;
+}
+
 export interface PreparedAnswer {
     question: string;
-    answer: ScaleChoiceAnswer | Answer2 | Answer2[] | Answer4[];
+    answer: ScaleChoiceAnswer | SingleChoiceAnswer | SingleChoiceAnswer[] | MultiChoiceAnswer[];
     index: number;
+    isMultiple?: boolean;
+    isSingle?: boolean;
 }
 
 export interface Answers {

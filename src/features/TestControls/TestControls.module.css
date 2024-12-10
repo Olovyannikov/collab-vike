@@ -29,3 +29,16 @@
         }
     }
 }
+
+.endText {
+    &:after {
+        display: none;
+        content: " тестирование";
+    }
+
+    @mixin larger-than 768px {
+        &:after {
+            display: block;
+        }
+    }
+}

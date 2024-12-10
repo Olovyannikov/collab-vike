@@ -20,6 +20,5 @@ persist({
 
 persist({
     store: $scaleForm,
-    key: 'scaleForm',
     pickup: pageStarted,
 });

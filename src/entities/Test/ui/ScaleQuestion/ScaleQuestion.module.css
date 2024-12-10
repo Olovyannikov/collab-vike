@@ -6,6 +6,10 @@
     text-align: center;
 }
 
+.wrap {
+    opacity: 0;
+}
+
 .hint {
     font-weight: 600;
     font-size: 16px;
