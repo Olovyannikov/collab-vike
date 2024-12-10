@@ -1,4 +1,4 @@
-import { type ReactNode, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ActionIcon, Group, Paper, Radio, Stack, Text, Title } from '@mantine/core';
 import { useDebouncedValue } from '@mantine/hooks';
 import { ArrowsClockwise } from '@phosphor-icons/react';
@@ -26,12 +26,10 @@ export const SingleQuestion = ({ options, value, page, text, hint, rephrasing, i
     const [localValue, setLocalValues] = useState<string>('');
     const [debounced] = useDebouncedValue(input, 200);
 
-    const Wrapper = ({ children }: { children: ReactNode }) => <>{children}</>;
-
     useEffect(() => {
         let obj: SingleChoiceAnswer = {} as SingleChoiceAnswer;
 
-        if (!value) return;
+        if (!localValue) return;
         if (!options) return;
 
         obj = {
@@ -48,48 +46,46 @@ export const SingleQuestion = ({ options, value, page, text, hint, rephrasing, i
 
     return (
         <AnimatePresence>
-            <Wrapper>
-                <Paper mb='5xl'>
-                    <Group mb='5xl' gap={0} align='start' wrap='nowrap'>
-                        <Stack gap='sm'>
-                            <Title classNames={s} order={4}>
-                                {currentPhrase.text}
-                            </Title>
-                            <Text className={s.hint}>{currentPhrase.hint}</Text>
-                        </Stack>
-                        <ActionIcon
-                            hidden={phrases.length < 2}
-                            onClick={onRephrasingHandler}
-                            flex={1}
-                            className={s.rephrase}
-                            variant='transparent'
-                            c='dark.6'
-                            size='lg'
-                        >
-                            <ArrowsClockwise weight='bold' size='22px' />
-                        </ActionIcon>
-                    </Group>
-                    <Stack gap='xs'>
-                        <Radio.Group name={id} value={value ?? localValue} onChange={setLocalValues}>
-                            <Stack gap='lg' className={s.wrapper}>
-                                {options?.map((option) => (
-                                    <Radio
-                                        size='lg'
-                                        color='lime.8'
-                                        key={option.id}
-                                        label={
-                                            <Text fw={600} fz={16} lh={1.878}>
-                                                {option.text}
-                                            </Text>
-                                        }
-                                        value={option.id}
-                                    />
-                                ))}
-                            </Stack>
-                        </Radio.Group>
+            <Paper mb='5xl'>
+                <Group mb='5xl' gap={0} align='start' wrap='nowrap'>
+                    <Stack gap='sm'>
+                        <Title classNames={s} order={4}>
+                            {currentPhrase.text}
+                        </Title>
+                        <Text className={s.hint}>{currentPhrase.hint}</Text>
                     </Stack>
-                </Paper>
-            </Wrapper>
+                    <ActionIcon
+                        hidden={phrases.length < 2}
+                        onClick={onRephrasingHandler}
+                        flex={1}
+                        className={s.rephrase}
+                        variant='transparent'
+                        c='dark.6'
+                        size='lg'
+                    >
+                        <ArrowsClockwise weight='bold' size='22px' />
+                    </ActionIcon>
+                </Group>
+                <Stack gap='xs'>
+                    <Radio.Group name={id} value={value ?? localValue} onChange={setLocalValues}>
+                        <Stack gap='lg' className={s.wrapper}>
+                            {options?.map((option) => (
+                                <Radio
+                                    size='lg'
+                                    color='lime.8'
+                                    key={option.id}
+                                    label={
+                                        <Text fw={600} fz={16} lh={1.878}>
+                                            {option.text}
+                                        </Text>
+                                    }
+                                    value={option.id}
+                                />
+                            ))}
+                        </Stack>
+                    </Radio.Group>
+                </Stack>
+            </Paper>
         </AnimatePresence>
     );
 };

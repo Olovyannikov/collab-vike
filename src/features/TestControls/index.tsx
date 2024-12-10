@@ -4,7 +4,6 @@ import { ArrowLeft, ArrowRight } from '@phosphor-icons/react';
 import clsx from 'clsx';
 import { useUnit } from 'effector-react';
 import { motion } from 'framer-motion';
-import { isArray } from 'lodash-es';
 import { useTimeout } from 'usehooks-ts';
 
 import {
@@ -12,8 +11,7 @@ import {
     $currentValue,
     $preparedQuestions,
     formPageChanged,
-    getQuestionsQuery,
-    submitScaleForm,
+    submitModalStateChanged,
 } from '@/entities/Test';
 
 import s from './TestControls.module.css';
@@ -21,32 +19,32 @@ import s from './TestControls.module.css';
 export const TestControls = () => {
     const [visible, setVisible] = useState<boolean>(false);
 
-    const { questions, page, onChange, currentValue, onSubmit } = useUnit({
+    const { questions, page, onChange, currentValue, controlModal } = useUnit({
         questions: $preparedQuestions,
         page: $currentPage,
         onChange: formPageChanged,
         currentValue: $currentValue,
-        onSubmit: submitScaleForm,
+        controlModal: submitModalStateChanged,
     });
 
-    const isExists = Boolean(isArray(currentValue) ? currentValue.length > 0 : currentValue);
+    const isExists = Boolean(currentValue !== null);
     useTimeout(() => (isExists ? setVisible(true) : setVisible(false)), isExists ? 1000 : 0);
 
     if (!questions) return null;
 
-    const isFirst = page === 0;
-    const isLast = page === questions.length - 1;
-
-    console.log({ visible, isLast, isExists, currentValue, page });
+    const isFirst = page === 1;
+    const isLast = page === questions.length;
 
     return (
         <Pagination.Root total={questions.length} mt='auto' value={page} onChange={onChange}>
             <Group justify='space-between'>
-                <Pagination.Previous
-                    hidden={isFirst}
-                    className={clsx(s.button, s.prev)}
-                    icon={() => <ArrowLeft weight='bold' />}
-                />
+                {!isFirst && (
+                    <Pagination.Previous
+                        disabled={false}
+                        className={clsx(s.button, s.prev)}
+                        icon={() => <ArrowLeft weight='bold' />}
+                    />
+                )}
                 <motion.div
                     style={{ marginLeft: 'auto' }}
                     initial={{ opacity: 0 }}
@@ -60,7 +58,7 @@ export const TestControls = () => {
                     />
                     <Button
                         hidden={!isLast}
-                        onClick={onSubmit}
+                        onClick={controlModal}
                         className={s.end}
                         variant='subtle'
                         c='dark.6'
