@@ -12,6 +12,7 @@ import {
     MultipleQuestion,
     scaleFormFieldChanged,
     ScaleQuestion,
+    type SingleChoiceAnswer,
     SingleQuestion,
     submitModalStateChanged,
     submitScaleForm,
@@ -44,7 +45,7 @@ export default function Page() {
             />
         ),
         single_choice: question.options && (
-            <SingleQuestion {...question} page={page} onChange={onChange} value={currentValue as unknown as string} />
+            <SingleQuestion {...question} page={page} onChange={onChange} value={currentValue as SingleChoiceAnswer} />
         ),
     };
 

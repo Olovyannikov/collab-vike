@@ -4,6 +4,8 @@ import { useDebouncedValue } from '@mantine/hooks';
 import { ArrowsClockwise } from '@phosphor-icons/react';
 import { AnimatePresence } from 'framer-motion';
 
+import { InputBorderless } from '@/shared/ui';
+
 import type { QuestionsResponse } from '../../api/dto';
 import type { SingleChoiceAnswer } from '../../types';
 import { useRephrasing } from '../../viewmodel';
@@ -17,14 +19,26 @@ interface SingleQuestionProps extends QuestionsResponse {
         isSingle: boolean;
     }) => void;
     page: number;
-    value: string | null;
+    value: SingleChoiceAnswer;
 }
 
 export const SingleQuestion = ({ options, value, page, text, hint, rephrasing, id, onChange }: SingleQuestionProps) => {
     const { currentPhrase, onRephrasingHandler, phrases } = useRephrasing({ hint, text, rephrasing });
-    const [input, setInput] = useState('');
+    const [input, setInput] = useState(() => value.input);
     const [localValue, setLocalValues] = useState<string>('');
     const [debounced] = useDebouncedValue(input, 200);
+
+    const showInput = options && value.value === options[options.length - 1].id;
+
+    useEffect(() => {
+        if (value.value) {
+            setLocalValues(value.value);
+        }
+
+        if (value.input) {
+            setInput(value.input);
+        }
+    }, [value]);
 
     useEffect(() => {
         let obj: SingleChoiceAnswer = {} as SingleChoiceAnswer;
@@ -32,9 +46,16 @@ export const SingleQuestion = ({ options, value, page, text, hint, rephrasing, i
         if (!localValue) return;
         if (!options) return;
 
-        obj = {
-            value: localValue,
-        };
+        if (showInput) {
+            obj = {
+                value: localValue,
+                input: debounced,
+            };
+        } else {
+            obj = {
+                value: localValue,
+            };
+        }
 
         onChange({
             question: id,
@@ -42,7 +63,7 @@ export const SingleQuestion = ({ options, value, page, text, hint, rephrasing, i
             index: page - 1,
             isSingle: true,
         });
-    }, [localValue, debounced]);
+    }, [localValue, debounced, showInput]);
 
     return (
         <AnimatePresence>
@@ -67,23 +88,29 @@ export const SingleQuestion = ({ options, value, page, text, hint, rephrasing, i
                     </ActionIcon>
                 </Group>
                 <Stack gap='xs'>
-                    <Radio.Group name={id} value={value ?? localValue} onChange={setLocalValues}>
+                    <Radio.Group name={id} value={localValue} onChange={setLocalValues}>
                         <Stack gap='lg' className={s.wrapper}>
-                            {options?.map((option) => (
-                                <Radio
-                                    size='lg'
-                                    color='lime.8'
-                                    key={option.id}
-                                    label={
-                                        <Text fw={600} fz={16} lh={1.878}>
-                                            {option.text}
-                                        </Text>
-                                    }
-                                    value={option.id}
-                                />
-                            ))}
+                            {options?.map((option) => {
+                                return (
+                                    <Radio
+                                        size='lg'
+                                        color='lime.8'
+                                        key={option.id}
+                                        label={
+                                            <Text fw={600} fz={16} lh={1.878}>
+                                                {option.text}
+                                            </Text>
+                                        }
+                                        value={option.id}
+                                        checked={localValue === option.id}
+                                    />
+                                );
+                            })}
                         </Stack>
                     </Radio.Group>
+                    {showInput && (
+                        <InputBorderless autoFocus value={input} onChange={(e) => setInput(e.target.value)} />
+                    )}
                 </Stack>
             </Paper>
         </AnimatePresence>

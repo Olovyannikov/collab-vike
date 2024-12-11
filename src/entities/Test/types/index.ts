@@ -23,6 +23,7 @@ export interface MultiChoiceAnswer {
 
 export interface SingleChoiceAnswer {
     value: string;
+    input?: string;
 }
 
 export interface PreparedAnswer {

@@ -1,7 +1,7 @@
 class StorageService {
     setItem<T extends string>(key: string, value: T) {
         try {
-            return window.localStorage.setItem(key, value);
+            return window?.localStorage.setItem(key, value);
         } catch (e) {
             console.log(e);
         }
@@ -19,7 +19,7 @@ class StorageService {
 
     getItem(key: string) {
         try {
-            return window.localStorage.getItem(key);
+            return window?.localStorage.getItem(key);
         } catch (e) {
             if (e instanceof Error) {
                 console.error(e);
@@ -47,7 +47,7 @@ class StorageService {
         }
     }
     clear(): void {
-        window.localStorage.clear();
+        window?.localStorage.clear();
     }
 }
 

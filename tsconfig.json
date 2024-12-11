@@ -28,6 +28,6 @@
     "jsxImportSource": "react"
   },
   "exclude": [
-    "dist"
+    "dist", "**/*.js"
   ]
 }

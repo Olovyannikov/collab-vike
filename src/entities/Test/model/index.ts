@@ -1,8 +1,8 @@
-import { createEffect, createEvent, createStore, sample } from 'effector';
+import { createEvent, createStore, sample } from 'effector';
 import { isArray } from 'lodash-es';
 import { delay, or } from 'patronum';
 
-import { getFreeResultQuery, submitAnswersMutation } from '@/entities/Test';
+import { getFreeResultQuery, SingleChoiceAnswer, submitAnswersMutation } from '@/entities/Test';
 
 import type { QuestionsResponse } from '../api/dto';
 import type { Answers, MultiChoiceAnswer, PreparedAnswer, ScaleChoiceAnswer } from '../types';
@@ -62,7 +62,7 @@ sample({
     clock: delayed,
     source: $currentPage,
     filter: (_, field) => !(field.isMultiple || field.isSingle),
-    fn: (page, field) => page + 1,
+    fn: (page) => page + 1,
     target: formPageChanged,
 });
 
@@ -78,7 +78,7 @@ sample({
 
         if (form.answers && form.answers.length > 0 && 'value' in form.answers[currentPage].answer) {
             if (form.answers[currentPage].answer.value) {
-                return form.answers[currentPage].answer.value as unknown as ScaleChoiceAnswer;
+                return form.answers[currentPage].answer as unknown as ScaleChoiceAnswer;
             }
             return null;
         }
@@ -99,8 +99,14 @@ sample({
             return answers[currentPage].answer as unknown as MultiChoiceAnswer;
         }
 
+        if (answers && answers.length > 0 && answers[currentPage].isSingle) {
+            return answers[currentPage].answer as unknown as SingleChoiceAnswer;
+        }
+
         if (answers && answers.length > 0 && 'value' in answers[currentPage].answer) {
-            return answers[currentPage].answer.value as unknown as ScaleChoiceAnswer;
+            console.log('here we go');
+
+            return answers[currentPage].answer as unknown as ScaleChoiceAnswer;
         }
 
         return null;
@@ -120,6 +126,10 @@ sample({
 
         if (answers && answers[currentPage].answer && isArray(answers[currentPage].answer)) {
             return answers[currentPage].answer as unknown as MultiChoiceAnswer;
+        }
+
+        if (answers && answers.length > 0 && answers[currentPage].isSingle) {
+            return answers[currentPage].answer as unknown as SingleChoiceAnswer;
         }
 
         if (answers && answers.length > 0 && 'value' in answers[currentPage].answer) {
