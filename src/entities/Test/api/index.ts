@@ -27,7 +27,7 @@ export const submitAnswersMutation = createMutation({
 });
 
 export const getFreeResultQuery = createQuery({
-    effect: createInternalRequestFx<void, void>((body) => ({
+    effect: createInternalRequestFx<void, void>(() => ({
         url: `/api/v1/surveys/free-report`,
     })),
 });

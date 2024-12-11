@@ -1,30 +1,30 @@
 .root {
-    --title-fz: 24px !important;
-    --title-lh: 28px !important;
+  --title-fz: 24px !important;
+  --title-lh: 28px !important;
 
-    position: relative;
-    text-align: center;
+  position: relative;
+  text-align: center;
 }
 
 .hint {
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 18px;
-    color: var(--mantine-color-gray-6);
-    text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 18px;
+  text-align: center;
+  color: var(--mantine-color-gray-6);
 }
 
 .rephrase {
-    span {
-        align-items: start;
-    }
+  span {
+    align-items: start;
+  }
 }
 
 .wrapper [data-label-position] {
-    display: flex;
-    place-items: center;
+  display: flex;
+  place-items: center;
 }
 
-input[type='checkbox'] {
-    border-color: var(--mantine-color-dark-2);
+input[type="checkbox"] {
+  border-color: var(--mantine-color-dark-2);
 }

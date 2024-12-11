@@ -13,6 +13,7 @@ export const EffectorProvider = ({ children }: { children: ReactNode }) => {
         const firePageStarted = async () => {
             const { pageStarted } = pageContext.config;
             if (pageStarted) {
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                 await allSettled(pageStarted, { scope: scope!, params: pageContext });
             }
         };
@@ -20,6 +21,6 @@ export const EffectorProvider = ({ children }: { children: ReactNode }) => {
             throw new Error('Page start failed');
         });
     }, [pageContext]);
-
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     return <Provider value={scope!}>{children}</Provider>;
 };

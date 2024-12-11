@@ -6,14 +6,10 @@ import { useUnit } from 'effector-react';
 import { motion } from 'framer-motion';
 import { useTimeout } from 'usehooks-ts';
 
-import {
-    $currentPage,
-    $currentValue,
-    $preparedQuestions,
-    formPageChanged,
-    submitModalStateChanged,
-} from '@/entities/Test';
+import { TestEvents, TestStores } from '@/entities/Test';
 
+const { $preparedQuestions, $currentPage, $currentValue } = TestStores;
+const { formPageChanged, submitModalStateChanged } = TestEvents;
 import s from './TestControls.module.css';
 
 export const TestControls = () => {

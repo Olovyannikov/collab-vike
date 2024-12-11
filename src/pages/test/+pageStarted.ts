@@ -1,8 +1,10 @@
 import { sample } from 'effector';
 import { persist } from 'effector-storage/local';
 
-import { $currentPage, $preparedQuestions, $scaleForm, getQuestionsQuery } from '@/entities/Test';
+import { getQuestionsQuery, TestStores } from '@/entities/Test';
 import { createPageStart } from '@/shared/utils/effector';
+
+const { $preparedQuestions, $currentPage, $scaleForm } = TestStores;
 
 export const pageStarted = createPageStart();
 

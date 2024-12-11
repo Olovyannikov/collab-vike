@@ -33,12 +33,10 @@ web_modules/
 .env.test.local
 .env.production.local
 .env.local
-.cache
 .parcel-cache
 firebase
 .next
 .nuxt
-.cache/
 .vuepress/dist
 .temp
 .docusaurus
@@ -53,3 +51,9 @@ firebase
 .yarn/install-state.gz
 .pnp.*
 .wrangler/
+.vercel
+yarn.lock
+.prettierignore
+.prettierrc
+.stylelintignore
+.stylelintrc

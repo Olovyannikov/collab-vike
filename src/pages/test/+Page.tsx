@@ -4,21 +4,18 @@ import { useUnit } from 'effector-react';
 import { isArray } from 'lodash-es';
 
 import {
-    $currentPage,
-    $currentQuestion,
-    $currentValue,
-    $isLoadingState,
-    $isSubmitModalShown,
     MultipleQuestion,
-    scaleFormFieldChanged,
     ScaleQuestion,
     type SingleChoiceAnswer,
     SingleQuestion,
-    submitModalStateChanged,
-    submitScaleForm,
     SubmitTestModal,
+    TestEvents,
+    TestStores,
 } from '@/entities/Test';
 import { TestControls } from '@/features/TestControls';
+
+const { $currentQuestion, $currentPage, $currentValue, $isLoadingState, $isSubmitModalShown } = TestStores;
+const { scaleFormFieldChanged, submitScaleForm, submitModalStateChanged } = TestEvents;
 
 export default function Page() {
     const { question, onChange, page, currentValue, onSubmit, isOpen, controlModal, pending } = useUnit({

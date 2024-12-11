@@ -1,9 +1,8 @@
+import react from '@vitejs/plugin-react';
 import { fileURLToPath, URL } from 'node:url';
 import vike from 'vike/plugin';
-import vercel from 'vite-plugin-vercel';
 import { defineConfig } from 'vite';
-
-import react from '@vitejs/plugin-react';
+import vercel from 'vite-plugin-vercel';
 
 export default defineConfig({
     plugins: [

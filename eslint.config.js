@@ -89,6 +89,8 @@ export default tseslint.config([
                     ],
                 },
             ],
+            '@typescript-eslint/no-invalid-void-type': 'off',
+            '@typescript-eslint/no-namespace': 'warn',
         },
     },
     {

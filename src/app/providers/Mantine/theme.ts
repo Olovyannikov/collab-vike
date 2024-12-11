@@ -1,4 +1,4 @@
-import { createTheme, Container } from '@mantine/core';
+import { Container, createTheme } from '@mantine/core';
 
 export const theme = createTheme({
     fontFamily: 'Raleway, sans-serif',
@@ -29,7 +29,7 @@ export const theme = createTheme({
         '5xl': '40px',
     },
     components: {
-         Container: Container.extend({
+        Container: Container.extend({
             vars: () => ({
                 root: {
                     '--container-size': '1418px',

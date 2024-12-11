@@ -5,7 +5,9 @@ import { usePageContext } from 'vike-react/usePageContext';
 
 import { getScope } from './getScope';
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const ScopeContext = createContext<Scope | undefined>(undefined);
+// eslint-disable-next-line react-refresh/only-export-components
 export const ScopeUpdateContext = createContext<(values: SerializedState) => void>(() => {});
 
 export const ScopeProvider = ({ children }: PropsWithChildren) => {
@@ -29,5 +31,7 @@ export const ScopeProvider = ({ children }: PropsWithChildren) => {
     );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useScope = () => useContext(ScopeContext);
+// eslint-disable-next-line react-refresh/only-export-components
 export const useScopeUpdate = () => useContext(ScopeUpdateContext);

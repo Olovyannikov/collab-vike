@@ -56,11 +56,6 @@ function HACK_injectValues(scope: Scope, values: Values) {
 }
 
 function HACK_runScopeWatchers(scope: ScopeInternal, linksToRun: string[]) {
-    /**
-     * Run watchers (`useUnit`, etc.) to push new values to them
-     *
-     * Manual launch is required because top-down re-render stops at `memo`-ed components
-     */
     if (linksToRun.length) {
         linksToRun.forEach((nodeId) => {
             const links = scope.additionalLinks[nodeId];
@@ -70,9 +65,6 @@ function HACK_runScopeWatchers(scope: ScopeInternal, linksToRun: string[]) {
                     if (link.meta.watchOp === 'store') {
                         launch({
                             target: link,
-                            /**
-                             * `effector-react` internals will get current value internally
-                             */
                             params: null,
                             scope,
                         });
@@ -102,14 +94,9 @@ function HACK_updateScopeRefs(tscope: Scope, values: Values) {
             }
 
             if (!ref.meta || (!ref.meta?.named && ref.meta?.derived)) {
-                /**
-                 * Force recalculation of derived values
-                 */
+                // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
                 delete scope.reg[id];
             } else {
-                /**
-                 * Update non-derived values
-                 */
                 const sid = ref?.meta?.sid;
                 if (sid && sid in values) {
                     const serialize = ref?.meta?.serialize as StoreSerializationConfig;
@@ -119,34 +106,13 @@ function HACK_updateScopeRefs(tscope: Scope, values: Values) {
             }
         }
     }
-
-    /**
-     * Delay links run to separate task,
-     * so React won't agro on us for updating state during render
-     */
     queueMicrotask(() => {
         HACK_runScopeWatchers(scope, linksToRun);
     });
 }
 
 function INTERNAL_getClientScope(values?: Values) {
-    if (
-        !values ||
-        /**
-         * This is a hack to handle edge cases with shallow navigation
-         *
-         * In this case Next.js will basically re-use old pageProps,
-         * but we already have the latest state in the client scope
-         *
-         * So this update is just skipped
-         */
-        values === prevValues
-    )
-        return currentScope;
-
-    /**
-     * Saving previous values to handle edge cases with shallow navigation
-     */
+    if (!values || values === prevValues) return currentScope;
     prevValues = values;
 
     HACK_injectValues(currentScope, values);
