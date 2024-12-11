@@ -74,8 +74,14 @@ export const ScaleQuestion = ({ value, page, text, hint, rephrasing, id, onChang
                         </ActionIcon>
                     </Group>
                     <Stack pos='relative' maw={1145} m='auto' gap='xs'>
-                        <Radio.Group name={id} value={value ?? localValue} onChange={setLocalValue}>
-                            <Flex className={s.radioWrapper} justify='space-between'>
+                        <Radio.Group
+                            maw={isLarge ? 700 : '100%'}
+                            m={isLarge ? 'auto' : 0}
+                            name={id}
+                            value={value ?? localValue}
+                            onChange={setLocalValue}
+                        >
+                            <Flex gap={isLarge ? 50 : 0} className={s.radioWrapper} justify='space-between'>
                                 <Radio className={s.radioRoot} icon={IconCheck} size='50px' value='-3' />
                                 <Radio className={s.radioRoot} icon={IconCheck} size='40px' value='-2' />
                                 <Radio className={s.radioRoot} icon={IconCheck} size='30px' value='-1' />
