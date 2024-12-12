@@ -5,7 +5,7 @@
 *.svg
 /node_modules
 *.json
-.vercel
+/.vercel
 .ideag
 **/*.lock
 .env

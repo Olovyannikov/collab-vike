@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react';
 import { ActionIcon, Checkbox, Group, Paper, Stack, Text, Title } from '@mantine/core';
-import { useDebouncedValue } from '@mantine/hooks';
 import { ArrowsClockwise } from '@phosphor-icons/react';
 
 import { IconCheck, InputBorderless } from '@/shared/ui';
@@ -9,6 +7,7 @@ import type { QuestionsResponse } from '../../api/dto';
 import type { MultiChoiceAnswer } from '../../types';
 import { useRephrasing } from '../../viewmodel';
 import s from './MultipleQuestion.module.css';
+import { useMultipleQuestionViewModel } from './viewmodel';
 
 interface MultipleQuestionProps extends QuestionsResponse {
     onChange: (payload: {
@@ -32,45 +31,14 @@ export const MultipleQuestion = ({
     onChange,
 }: MultipleQuestionProps) => {
     const { currentPhrase, onRephrasingHandler } = useRephrasing({ hint, text, rephrasing });
-    const [input, setInput] = useState('');
-    const [localValues, setLocalValues] = useState<string[]>([]);
-    const [debounced] = useDebouncedValue(input, 200);
-
+    const { localValues, input, setLocalValues, setInput } = useMultipleQuestionViewModel({
+        onChange,
+        options,
+        value,
+        page,
+        id,
+    });
     const showInput = options && value?.map((el) => el.value)?.includes(options[options?.length - 1].id);
-
-    useEffect(() => {
-        const obj: { value: string; input?: string }[] = [];
-
-        if (localValues.length < 1) {
-            return;
-        }
-
-        localValues.forEach((v, idx) => {
-            if (!options) return;
-
-            if (localValues[idx] === options[options?.length - 1].id) {
-                return (obj[idx] = {
-                    value: v,
-                    input: debounced,
-                });
-            }
-
-            obj[idx] = {
-                value: v,
-            };
-        });
-
-        onChange({
-            question: id,
-            answer: obj,
-            index: page - 1,
-            isMultiple: true,
-        });
-    }, [localValues, debounced]);
-
-    useEffect(() => {
-        setLocalValues([]);
-    }, [page]);
 
     return (
         <Paper mb='5xl'>
@@ -93,7 +61,10 @@ export const MultipleQuestion = ({
                 </ActionIcon>
             </Group>
             <Stack gap='xs'>
-                <Checkbox.Group value={value?.map((v) => v.value) ?? localValues} onChange={setLocalValues}>
+                <Checkbox.Group
+                    value={localValues.length ? localValues : (value?.map((v) => v.value) ?? localValues)}
+                    onChange={setLocalValues}
+                >
                     <Stack gap='lg' className={s.wrapper}>
                         {options?.map((option) => (
                             <Checkbox
@@ -112,7 +83,12 @@ export const MultipleQuestion = ({
                         ))}
                     </Stack>
                 </Checkbox.Group>
-                {showInput && <InputBorderless value={input} onChange={(e) => setInput(e.target.value)} />}
+                {showInput && (
+                    <InputBorderless
+                        value={input.length > 0 ? input : value?.find((el) => el.input)?.input}
+                        onChange={(e) => setInput(e.target.value)}
+                    />
+                )}
             </Stack>
         </Paper>
     );

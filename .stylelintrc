@@ -565,5 +565,5 @@
         "value-keyword-case": "lower",
         "value-no-vendor-prefix": true
     },
-    "ignoreFiles": ["yarn.lock", ".stylelintignore"]
+    "ignoreFiles": ["yarn.lock", ".stylelintignore", ".vercel/*"]
 }

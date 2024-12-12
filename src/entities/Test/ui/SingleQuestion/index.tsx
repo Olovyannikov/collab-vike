@@ -24,18 +24,18 @@ interface SingleQuestionProps extends QuestionsResponse {
 
 export const SingleQuestion = ({ options, value, page, text, hint, rephrasing, id, onChange }: SingleQuestionProps) => {
     const { currentPhrase, onRephrasingHandler, phrases } = useRephrasing({ hint, text, rephrasing });
-    const [input, setInput] = useState(() => value.input);
+    const [input, setInput] = useState('');
     const [localValue, setLocalValues] = useState<string>('');
     const [debounced] = useDebouncedValue(input, 200);
 
-    const showInput = options && value.value === options[options.length - 1].id;
+    const showInput = options?.find((el) => el.id === localValue)?.requires_input;
 
     useEffect(() => {
-        if (value.value) {
+        if (value?.value) {
             setLocalValues(value.value);
         }
 
-        if (value.input) {
+        if (value?.input) {
             setInput(value.input);
         }
     }, [value]);
