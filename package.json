@@ -9,7 +9,7 @@
     "start": "npm run build && cross-env NODE_ENV=production tsx ./express-entry.ts",
     "lint:ts": "eslint \"**/*.{ts,tsx}\"",
     "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix",
-    "lint:css": "npx stylelint \"**/*.{css}\"",
+    "lint:css": "npx stylelint \"**/*.{css}\" --allow-empty-input",
     "lint:css:fix": "npx stylelint \"**/*.{css}\" --fix"
   },
   "license": "UNLICENSED",

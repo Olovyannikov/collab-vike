@@ -564,6 +564,5 @@
         "unit-no-unknown": true,
         "value-keyword-case": "lower",
         "value-no-vendor-prefix": true
-    },
-    "ignoreFiles": ["yarn.lock", ".stylelintignore", ".vercel/*"]
+    }
 }
