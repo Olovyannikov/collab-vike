@@ -58,11 +58,9 @@ export const useMultipleQuestionViewModel = ({
     }, [localValues, debounced]);
 
     useEffect(() => {
-        if (localValues.length < 1) {
-            setInput(value?.find((el) => el.input)?.input ?? '');
-            setLocalValues(value?.map((el) => el.value) ?? []);
-        }
-    }, [value]);
+        setInput(value?.find((el) => el.input)?.input ?? '');
+        setLocalValues(value?.map((el) => el.value) ?? []);
+    }, [id, page]);
 
     return {
         localValues,

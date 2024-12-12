@@ -40,6 +40,8 @@ export const MultipleQuestion = ({
     });
     const showInput = options && value?.map((el) => el.value)?.includes(options[options?.length - 1].id);
 
+    console.log({ input, value });
+
     return (
         <Paper mb='5xl'>
             <Group mb='5xl' gap={0} align='start' wrap='nowrap'>
