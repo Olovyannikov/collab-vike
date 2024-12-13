@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from 'react';
 import { useStep } from 'usehooks-ts';
 
-import type { Rephrasing } from '../api/dto';
+import type { Rephrasing } from '../types';
 
 interface UseRephrasingProps {
     text: string;

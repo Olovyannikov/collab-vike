@@ -32424,7 +32424,7 @@ var init_src_pages_error = __esm({
       },
       ["Head"]: {
         type: "cumulative",
-        definedAtData: [{ "filePathToShowToUser": "/src/widgets/HeadDefault/index.tsx", "fileExportPathToShowToUser": ["HeadDefault"] }],
+        definedAtData: [{ "filePathToShowToUser": "/src/widgets/HeadDefault/index.ts", "fileExportPathToShowToUser": ["HeadDefault"] }],
         valueSerialized: [{
           type: "pointer-import",
           value: HeadDefault
@@ -32432,7 +32432,7 @@ var init_src_pages_error = __esm({
       },
       ["Layout"]: {
         type: "cumulative",
-        definedAtData: [{ "filePathToShowToUser": "/src/widgets/RootLayout/index.tsx", "fileExportPathToShowToUser": ["RootLayout"] }],
+        definedAtData: [{ "filePathToShowToUser": "/src/widgets/RootLayout/index.ts", "fileExportPathToShowToUser": ["RootLayout"] }],
         valueSerialized: [{
           type: "pointer-import",
           value: RootLayout
@@ -32560,7 +32560,7 @@ var init_src_pages_index = __esm({
       },
       ["Head"]: {
         type: "cumulative",
-        definedAtData: [{ "filePathToShowToUser": "/src/widgets/HeadDefault/index.tsx", "fileExportPathToShowToUser": ["HeadDefault"] }],
+        definedAtData: [{ "filePathToShowToUser": "/src/widgets/HeadDefault/index.ts", "fileExportPathToShowToUser": ["HeadDefault"] }],
         valueSerialized: [{
           type: "pointer-import",
           value: HeadDefault
@@ -32568,7 +32568,7 @@ var init_src_pages_index = __esm({
       },
       ["Layout"]: {
         type: "cumulative",
-        definedAtData: [{ "filePathToShowToUser": "/src/widgets/RootLayout/index.tsx", "fileExportPathToShowToUser": ["RootLayout"] }],
+        definedAtData: [{ "filePathToShowToUser": "/src/widgets/RootLayout/index.ts", "fileExportPathToShowToUser": ["RootLayout"] }],
         valueSerialized: [{
           type: "pointer-import",
           value: RootLayout
@@ -32816,10 +32816,10 @@ function E3(e5) {
 }
 function _t2() {
   const e5 = {
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
+     
     resolve: () => {
     },
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
+     
     reject: () => {
     },
     // @ts-expect-error it will be set later
@@ -40810,7 +40810,7 @@ var init_immediate = __esm({
 function asRGBA(color2) {
   const type = getColorType(color2);
   warning(Boolean(type), `'${color2}' is not an animatable color. Use the equivalent color code instead.`);
-  if (!Boolean(type))
+  if (!type)
     return false;
   let model = type.parse(color2);
   if (type === hsla) {
@@ -45145,7 +45145,7 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
         this.forceRelativeParentToResolveTarget();
         calcRelativeBox(this.target, this.relativeTarget, this.relativeParent.target);
       } else if (this.targetDelta) {
-        if (Boolean(this.resumingFrom)) {
+        if (this.resumingFrom) {
           this.target = this.applyTransform(this.layout.layoutBox);
         } else {
           copyBoxInto(this.target, this.layout.layoutBox);
@@ -49225,11 +49225,9 @@ var init_src_pages_test = __esm({
       }, [localValues, debounced]);
       (0, import_react189.useEffect)(() => {
         var _a;
-        if (localValues.length < 1) {
-          setInput(((_a = value == null ? void 0 : value.find((el2) => el2.input)) == null ? void 0 : _a.input) ?? "");
-          setLocalValues((value == null ? void 0 : value.map((el2) => el2.value)) ?? []);
-        }
-      }, [value]);
+        setInput(((_a = value == null ? void 0 : value.find((el2) => el2.input)) == null ? void 0 : _a.input) ?? "");
+        setLocalValues((value == null ? void 0 : value.map((el2) => el2.value)) ?? []);
+      }, [id3, page]);
       return {
         localValues,
         input: input2,
@@ -49269,6 +49267,10 @@ var init_src_pages_test = __esm({
         id: id3
       });
       const showInput = options && ((_a = value == null ? void 0 : value.map((el2) => el2.value)) == null ? void 0 : _a.includes(options[(options == null ? void 0 : options.length) - 1].id));
+      console.log({
+        input: input2,
+        value
+      });
       return /* @__PURE__ */ (0, import_jsx_runtime139.jsxs)(Paper, { mb: "5xl", children: [
         /* @__PURE__ */ (0, import_jsx_runtime139.jsxs)(Group, { mb: "5xl", gap: 0, align: "start", wrap: "nowrap", children: [
           /* @__PURE__ */ (0, import_jsx_runtime139.jsxs)(Stack, { gap: "sm", children: [
@@ -49774,7 +49776,7 @@ var init_src_pages_test = __esm({
       },
       ["Head"]: {
         type: "cumulative",
-        definedAtData: [{ "filePathToShowToUser": "/src/widgets/HeadDefault/index.tsx", "fileExportPathToShowToUser": ["HeadDefault"] }],
+        definedAtData: [{ "filePathToShowToUser": "/src/widgets/HeadDefault/index.ts", "fileExportPathToShowToUser": ["HeadDefault"] }],
         valueSerialized: [{
           type: "pointer-import",
           value: HeadDefault
@@ -49782,7 +49784,7 @@ var init_src_pages_test = __esm({
       },
       ["Layout"]: {
         type: "cumulative",
-        definedAtData: [{ "filePathToShowToUser": "/src/widgets/RootLayout/index.tsx", "fileExportPathToShowToUser": ["RootLayout"] }],
+        definedAtData: [{ "filePathToShowToUser": "/src/widgets/RootLayout/index.ts", "fileExportPathToShowToUser": ["RootLayout"] }],
         valueSerialized: [{
           type: "pointer-import",
           value: RootLayout
@@ -50027,7 +50029,7 @@ var init_entry = __esm({
           ]
         },
         "node_modules/vike/dist/esm/client/client-routing-runtime/entry.js": {
-          "file": "assets/entries/entry-client-routing.DweYjmXL.js",
+          "file": "assets/entries/entry-client-routing.CoaHq0Bo.js",
           "name": "entries/entry-client-routing",
           "src": "node_modules/vike/dist/esm/client/client-routing-runtime/entry.js",
           "isEntry": true,
@@ -50109,7 +50111,7 @@ var init_entry = __esm({
           ]
         },
         "virtual:vike:pageConfigValuesAll:client:/src/pages/test": {
-          "file": "assets/entries/src_pages_test.CH0_Hgsh.js",
+          "file": "assets/entries/src_pages_test.ChPafU49.js",
           "name": "entries/src/pages/test",
           "src": "virtual:vike:pageConfigValuesAll:client:/src/pages/test",
           "isEntry": true,
@@ -56669,7 +56671,7 @@ var require_get_intrinsic = __commonJS({
       "%encodeURIComponent%": encodeURIComponent,
       "%Error%": $Error,
       "%eval%": eval,
-      // eslint-disable-line no-eval
+       
       "%EvalError%": $EvalError,
       "%Float32Array%": typeof Float32Array === "undefined" ? undefined2 : Float32Array,
       "%Float64Array%": typeof Float64Array === "undefined" ? undefined2 : Float64Array,
@@ -57667,7 +57669,7 @@ var require_side_channel = __commonJS({
       } else {
         objects.next = /** @type {import('.').ListNode<typeof value>} */
         {
-          // eslint-disable-line no-param-reassign, no-extra-parens
+           
           key,
           next: objects.next,
           value
@@ -58451,7 +58453,7 @@ var require_parse2 = __commonJS({
         decodeDotInKeys: typeof opts.decodeDotInKeys === "boolean" ? opts.decodeDotInKeys : defaults.decodeDotInKeys,
         decoder: typeof opts.decoder === "function" ? opts.decoder : defaults.decoder,
         delimiter: typeof opts.delimiter === "string" || utils.isRegExp(opts.delimiter) ? opts.delimiter : defaults.delimiter,
-        // eslint-disable-next-line no-implicit-coercion, no-extra-parens
+         
         depth: typeof opts.depth === "number" || opts.depth === false ? +opts.depth : defaults.depth,
         duplicates,
         ignoreQueryPrefix: opts.ignoreQueryPrefix === true,

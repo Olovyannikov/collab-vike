@@ -31,6 +31,12 @@ export const useMultipleQuestionViewModel = ({
         const obj: { value: string; input?: string }[] = [];
 
         if (localValues.length < 1) {
+            onChange({
+                question: id,
+                answer: obj,
+                index: page - 1,
+                isMultiple: true,
+            });
             return;
         }
 

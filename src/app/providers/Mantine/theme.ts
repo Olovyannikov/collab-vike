@@ -28,6 +28,7 @@ export const theme = createTheme({
         '4xl': '36px',
         '5xl': '40px',
     },
+    cursorType: 'pointer',
     components: {
         Container: Container.extend({
             vars: () => ({

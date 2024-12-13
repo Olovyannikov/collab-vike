@@ -53,13 +53,13 @@ export const TestControls = () => {
                         icon={() => <ArrowRight weight='bold' />}
                     />
                     <Button
-                        hidden={!isLast}
-                        onClick={controlModal}
-                        className={s.end}
-                        variant='subtle'
-                        c='dark.6'
                         fw='700'
                         fz={16}
+                        c='dark.6'
+                        variant='subtle'
+                        hidden={!isLast}
+                        className={s.end}
+                        onClick={controlModal}
                         rightSection={<ArrowRight weight='bold' />}
                     >
                         <span className={s.endText}>Завершить</span>

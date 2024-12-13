@@ -1,7 +1,9 @@
 import { createStore } from 'effector';
 import { or } from 'patronum';
 
-import { Answers, getFreeResultQuery, PreparedAnswer, QuestionsResponse, submitAnswersMutation } from '@/entities/Test';
+import { getFreeResultQuery, submitAnswersMutation } from '../api';
+import { QuestionsResponse } from '../api/dto';
+import { Answers, PreparedAnswer } from '../types';
 
 const $preparedQuestions = createStore<QuestionsResponse[] | null>(null);
 

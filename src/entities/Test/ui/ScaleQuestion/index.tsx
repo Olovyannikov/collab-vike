@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
-import { ActionIcon, Flex, Group, Paper, Radio, Stack, Text, Title, Transition } from '@mantine/core';
-import { ArrowsClockwise } from '@phosphor-icons/react';
+import { Flex, Paper, Radio, Stack, Text, Transition } from '@mantine/core';
 
-import type { PreparedAnswer } from '@/entities/Test';
-import { useRephrasing } from '@/entities/Test/viewmodel';
 import { useIsLarge } from '@/shared/hooks';
-import { IconCheck } from '@/shared/ui';
 
 import type { QuestionsResponse } from '../../api/dto';
+import { SCALE_RADIO_ITEMS } from '../../constants';
+import type { PreparedAnswer } from '../../types';
+import { useRephrasing } from '../../viewmodel';
+import { QuestionTitle } from '../QuestionTitle';
+import { RadioElement } from '../RadioElement';
 import s from './ScaleQuestion.module.css';
 
 interface ScaleQuestionProps extends QuestionsResponse {
@@ -55,24 +56,11 @@ export const ScaleQuestion = ({ value, page, text, hint, rephrasing, id, onChang
         <Transition mounted={mounted} transition='fade' enterDelay={500} exitDelay={300}>
             {(transition) => (
                 <Paper className={s.wrapper} style={transition}>
-                    <Group className={s.top} mb='5xl' gap={0} align='start' wrap='nowrap'>
-                        <Stack gap='sm'>
-                            <Title classNames={s} order={4}>
-                                {currentPhrase.text}
-                            </Title>
-                            <Text className={s.hint}>{currentPhrase.hint}</Text>
-                        </Stack>
-                        <ActionIcon
-                            onClick={onRephrasingHandler}
-                            flex={1}
-                            className={s.rephrase}
-                            variant='transparent'
-                            c='dark.6'
-                            size='lg'
-                        >
-                            <ArrowsClockwise weight='regular' size={isLarge ? '32px' : '22px'} />
-                        </ActionIcon>
-                    </Group>
+                    <QuestionTitle
+                        text={currentPhrase.text}
+                        hint={currentPhrase.hint}
+                        onRephrasing={onRephrasingHandler}
+                    />
                     <Stack pos='relative' maw={1145} m='auto' gap='xs'>
                         <Radio.Group
                             maw={isLarge ? 700 : '100%'}
@@ -82,13 +70,9 @@ export const ScaleQuestion = ({ value, page, text, hint, rephrasing, id, onChang
                             onChange={setLocalValue}
                         >
                             <Flex gap={isLarge ? 50 : 0} className={s.radioWrapper} justify='space-between'>
-                                <Radio className={s.radioRoot} icon={IconCheck} size='50px' value='-3' />
-                                <Radio className={s.radioRoot} icon={IconCheck} size='40px' value='-2' />
-                                <Radio className={s.radioRoot} icon={IconCheck} size='30px' value='-1' />
-                                <Radio className={s.radioRoot} icon={IconCheck} size='20px' value='0' />
-                                <Radio className={s.radioRoot} icon={IconCheck} size='30px' value='1' />
-                                <Radio className={s.radioRoot} icon={IconCheck} size='40px' value='2' />
-                                <Radio className={s.radioRoot} icon={IconCheck} size='50px' value='3' />
+                                {SCALE_RADIO_ITEMS.map((radio) => (
+                                    <RadioElement key={radio.value} size={radio.size} value={radio.value} />
+                                ))}
                             </Flex>
                         </Radio.Group>
                         <Flex className={s.agreedBlock} justify='space-between'>

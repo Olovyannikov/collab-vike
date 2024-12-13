@@ -1,3 +1,10 @@
+.wrap {
+  @mixin larger-than 1200px {
+    margin: auto;
+    max-width: 860px;
+  }
+}
+
 .root {
   --title-fz: 24px !important;
   --title-lh: 28px !important;
@@ -20,12 +27,20 @@
   }
 }
 
-.wrapper [data-label-position] {
+.checkboxWrapper [data-label-position] {
   display: flex;
   place-items: center;
+
+  > div {
+    align-items: center;
+  }
+
+  input[type="checkbox"] {
+    border-color: var(--mantine-color-dark-2);
+  }
 }
 
-.wrapper input + svg {
+.checkboxWrapper input + svg {
   position: absolute;
   left: 50%;
   top: unset;
@@ -34,8 +49,4 @@
   color: #fff;
   transform: translateX(-50%);
   pointer-events: none;
-}
-
-input[type="checkbox"] {
-  border-color: var(--mantine-color-dark-2);
 }

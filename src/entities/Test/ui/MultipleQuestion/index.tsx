@@ -1,11 +1,13 @@
-import { ActionIcon, Checkbox, Group, Paper, Stack, Text, Title } from '@mantine/core';
-import { ArrowsClockwise } from '@phosphor-icons/react';
+import { Checkbox, Paper, Stack } from '@mantine/core';
 
+import { AnswerLabel } from '@/entities/Test/ui/AnswerLabel';
+import { useIsLarge } from '@/shared/hooks';
 import { IconCheck, InputBorderless } from '@/shared/ui';
 
 import type { QuestionsResponse } from '../../api/dto';
 import type { MultiChoiceAnswer } from '../../types';
 import { useRephrasing } from '../../viewmodel';
+import { QuestionTitle } from '../QuestionTitle';
 import s from './MultipleQuestion.module.css';
 import { useMultipleQuestionViewModel } from './viewmodel';
 
@@ -40,45 +42,24 @@ export const MultipleQuestion = ({
     });
     const showInput = options && value?.map((el) => el.value)?.includes(options[options?.length - 1].id);
 
-    console.log({ input, value });
+    const isLarge = useIsLarge();
 
     return (
         <Paper mb='5xl'>
-            <Group mb='5xl' gap={0} align='start' wrap='nowrap'>
-                <Stack gap='sm'>
-                    <Title classNames={s} order={4}>
-                        {currentPhrase.text}
-                    </Title>
-                    <Text className={s.hint}>{currentPhrase.hint}</Text>
-                </Stack>
-                <ActionIcon
-                    onClick={onRephrasingHandler}
-                    flex={1}
-                    className={s.rephrase}
-                    variant='transparent'
-                    c='dark.6'
-                    size='lg'
-                >
-                    <ArrowsClockwise weight='bold' size='22px' />
-                </ActionIcon>
-            </Group>
-            <Stack gap='xs'>
+            <QuestionTitle text={currentPhrase.text} hint={currentPhrase.hint} onRephrasing={onRephrasingHandler} />
+            <Stack gap='xs' className={s.wrap}>
                 <Checkbox.Group
                     value={localValues.length ? localValues : (value?.map((v) => v.value) ?? localValues)}
                     onChange={setLocalValues}
                 >
-                    <Stack gap='lg' className={s.wrapper}>
+                    <Stack gap='lg' className={s.checkboxWrapper}>
                         {options?.map((option) => (
                             <Checkbox
-                                size='lg'
+                                size={isLarge ? '32px' : 'lg'}
                                 radius='xs'
                                 color='lime.8'
                                 key={option.id}
-                                label={
-                                    <Text fw={600} fz={16} lh={1.878}>
-                                        {option.text}
-                                    </Text>
-                                }
+                                label={<AnswerLabel>{option.text}</AnswerLabel>}
                                 value={option.id}
                                 icon={IconCheck}
                             />

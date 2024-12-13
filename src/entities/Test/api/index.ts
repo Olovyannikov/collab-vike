@@ -11,7 +11,7 @@ export const getQuestionsQuery = createQuery({
         url: `/api/v1/surveys/questions`,
     })),
     // TODO: @test only multiple
-    mapData: ({ result }) => result.filter((el) => el.type === 'multiple_choice'),
+    // mapData: ({ result }) => result.filter((el) => el.type === 'multiple_choice'),
     // TODO: @test only single
     // mapData: ({ result }) => result.filter((el) => el.type === 'single_choice'),
     // TODO: @test only scale
