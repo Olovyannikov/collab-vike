@@ -8,18 +8,20 @@ import {
     type SingleChoiceAnswer,
     SingleQuestion,
     TestEvents,
+    TestProgress,
     TestStores,
 } from '@/entities/Test';
 
-const { $currentQuestion, $currentPage, $currentValue } = TestStores;
+const { $currentQuestion, $currentPage, $currentValue, $currentProgress } = TestStores;
 const { scaleFormFieldChanged } = TestEvents;
 
 export const TestFlow = () => {
-    const { question, onChange, page, currentValue } = useUnit({
+    const { question, onChange, page, currentValue, progress } = useUnit({
         question: $currentQuestion,
         onChange: scaleFormFieldChanged,
         page: $currentPage,
         currentValue: $currentValue,
+        progress: $currentProgress,
     });
 
     if (!question) return null;
@@ -39,5 +41,10 @@ export const TestFlow = () => {
         ),
     };
 
-    return <>{Map[question.type]}</>;
+    return (
+        <>
+            <TestProgress value={progress} />
+            {Map[question.type]}
+        </>
+    );
 };

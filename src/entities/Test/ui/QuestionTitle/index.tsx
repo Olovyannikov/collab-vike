@@ -8,10 +8,14 @@ import s from './QuestionTitle.module.css';
 interface QuestionTitleProps {
     text: string;
     onRephrasing: VoidFunction;
+    phrases: {
+        text: string;
+        hint?: string;
+    }[];
     hint?: string;
 }
 
-export const QuestionTitle = ({ onRephrasing, text, hint }: QuestionTitleProps) => {
+export const QuestionTitle = ({ onRephrasing, text, hint, phrases }: QuestionTitleProps) => {
     const isLarge = useIsLarge();
 
     return (
@@ -23,6 +27,7 @@ export const QuestionTitle = ({ onRephrasing, text, hint }: QuestionTitleProps) 
                 <Text className={s.hint}>{hint}</Text>
             </Stack>
             <ActionIcon
+                hidden={phrases.length < 2}
                 flex={isLarge ? 0 : 1}
                 size='lg'
                 c='dark.6'

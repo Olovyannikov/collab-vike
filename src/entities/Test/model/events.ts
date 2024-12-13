@@ -1,6 +1,6 @@
 import { createEvent } from 'effector';
 
-import { PreparedAnswer } from '@/entities/Test';
+import type { PreparedAnswer } from '../types';
 
 const scaleFormFieldChanged = createEvent<PreparedAnswer>();
 const formPageChanged = createEvent<number>();

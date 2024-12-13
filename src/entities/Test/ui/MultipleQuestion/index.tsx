@@ -32,7 +32,7 @@ export const MultipleQuestion = ({
     id,
     onChange,
 }: MultipleQuestionProps) => {
-    const { currentPhrase, onRephrasingHandler } = useRephrasing({ hint, text, rephrasing });
+    const { currentPhrase, onRephrasingHandler, phrases } = useRephrasing({ hint, text, rephrasing });
     const { localValues, input, setLocalValues, setInput } = useMultipleQuestionViewModel({
         onChange,
         options,
@@ -46,7 +46,12 @@ export const MultipleQuestion = ({
 
     return (
         <Paper mb='5xl'>
-            <QuestionTitle text={currentPhrase.text} hint={currentPhrase.hint} onRephrasing={onRephrasingHandler} />
+            <QuestionTitle
+                phrases={phrases}
+                text={currentPhrase.text}
+                hint={currentPhrase.hint}
+                onRephrasing={onRephrasingHandler}
+            />
             <Stack gap='xs' className={s.wrap}>
                 <Checkbox.Group
                     value={localValues.length ? localValues : (value?.map((v) => v.value) ?? localValues)}

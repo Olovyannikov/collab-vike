@@ -23,7 +23,7 @@ export const ScaleQuestion = ({ value, page, text, hint, rephrasing, id, onChang
     const isLarge = useIsLarge();
     const [mounted, setIsMounted] = useState(false);
 
-    const { onRephrasingHandler, currentPhrase } = useRephrasing({
+    const { onRephrasingHandler, currentPhrase, phrases } = useRephrasing({
         hint,
         text,
         rephrasing,
@@ -57,6 +57,7 @@ export const ScaleQuestion = ({ value, page, text, hint, rephrasing, id, onChang
             {(transition) => (
                 <Paper className={s.wrapper} style={transition}>
                     <QuestionTitle
+                        phrases={phrases}
                         text={currentPhrase.text}
                         hint={currentPhrase.hint}
                         onRephrasing={onRephrasingHandler}

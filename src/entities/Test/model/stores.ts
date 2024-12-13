@@ -13,6 +13,7 @@ const $scaleForm = createStore<Answers>({
     answers: [],
 });
 const $currentValue = createStore<PreparedAnswer['answer'] | null>(null);
+const $currentProgress = createStore(0);
 
 const $isSubmitModalShown = createStore(false);
 
@@ -26,4 +27,5 @@ export const TestStores = {
     $isLoadingState,
     $scaleForm,
     $isSubmitModalShown,
+    $currentProgress,
 };

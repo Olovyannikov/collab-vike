@@ -24,7 +24,7 @@ interface SingleQuestionProps extends QuestionsResponse {
 }
 
 export const SingleQuestion = ({ options, value, page, text, hint, rephrasing, id, onChange }: SingleQuestionProps) => {
-    const { currentPhrase, onRephrasingHandler } = useRephrasing({ hint, text, rephrasing });
+    const { currentPhrase, onRephrasingHandler, phrases } = useRephrasing({ hint, text, rephrasing });
     const [input, setInput] = useState('');
     const [localValue, setLocalValues] = useState<string>('');
     const [debounced] = useDebouncedValue(input, 200);
@@ -70,7 +70,12 @@ export const SingleQuestion = ({ options, value, page, text, hint, rephrasing, i
 
     return (
         <Paper mb='5xl'>
-            <QuestionTitle text={currentPhrase.text} hint={currentPhrase.hint} onRephrasing={onRephrasingHandler} />
+            <QuestionTitle
+                phrases={phrases}
+                text={currentPhrase.text}
+                hint={currentPhrase.hint}
+                onRephrasing={onRephrasingHandler}
+            />
             <Stack gap='xs' className={s.stack}>
                 <Radio.Group name={id} value={localValue} onChange={setLocalValues}>
                     <Stack gap='lg' className={s.wrapper}>
