@@ -1,5 +1,3 @@
-export type PersonalityType = 'INFJ';
-
 export interface Option {
     id: string;
     text: string;

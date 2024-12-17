@@ -3,7 +3,7 @@ import { createMutation, createQuery } from '@farfetched/core';
 import { createCommonRequestFx, createInternalRequestFx } from '@/shared/api';
 import { HTTP_METHODS } from '@/shared/api/methods';
 
-import type { Answers, PersonalityType } from '../types';
+import type { Answers } from '../types';
 import type { QuestionsResponse } from './dto';
 
 export const getQuestionsQuery = createQuery({
@@ -23,17 +23,5 @@ export const submitAnswersMutation = createMutation({
         url: `/api/v1/surveys/answers/submit`,
         method: HTTP_METHODS.POST,
         body,
-    })),
-});
-
-export const getFreeResultQuery = createQuery({
-    effect: createInternalRequestFx<void, void>(() => ({
-        url: `/api/v1/surveys/free-report`,
-    })),
-});
-
-export const getPersonalityTypeQuery = createQuery({
-    effect: createCommonRequestFx<PersonalityType, void>((type) => ({
-        url: `api/v1/surveys/personality-types/${type}`,
     })),
 });

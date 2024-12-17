@@ -6,7 +6,7 @@ import { Header } from './ui';
 export const RootLayout = ({ children }: PropsWithChildren) => (
     <>
         <Header />
-        <Divider />
+        <Divider visibleFrom='md' />
         <main id='page-content'>{children}</main>
     </>
 );

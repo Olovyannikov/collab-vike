@@ -1,7 +1,6 @@
 import { createStore } from 'effector';
-import { or } from 'patronum';
 
-import { getFreeResultQuery, submitAnswersMutation } from '../api';
+import { submitAnswersMutation } from '../api';
 import { QuestionsResponse } from '../api/dto';
 import { Answers, PreparedAnswer } from '../types';
 
@@ -17,7 +16,7 @@ const $currentProgress = createStore(0);
 
 const $isSubmitModalShown = createStore(false);
 
-const $isLoadingState = or(getFreeResultQuery.$pending, submitAnswersMutation.$pending);
+const $isLoadingState = submitAnswersMutation.$pending;
 
 export const TestStores = {
     $currentPage,

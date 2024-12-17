@@ -1,11 +1,16 @@
-import { sample } from 'effector';
+import { createEffect, sample } from 'effector';
+import { navigate } from 'vike/client/router';
 
-import { getFreeResultQuery, submitAnswersMutation } from '../api';
+import { submitAnswersMutation } from '../api';
 import { TestEvents } from './events';
 import { TestStores } from './stores';
 
 const { $scaleForm, $isSubmitModalShown } = TestStores;
 const { submitScaleForm, submitModalStateChanged } = TestEvents;
+
+const redirectToFreeReportPageFx = createEffect(async () => {
+    await navigate('/free-report');
+});
 
 sample({
     clock: submitModalStateChanged,
@@ -28,6 +33,6 @@ sample({
 
 sample({
     clock: submitAnswersMutation.finished.success,
-    fn: () => {},
-    target: getFreeResultQuery.start,
+    filter: () => !window?.location.origin.includes('free-report'),
+    target: redirectToFreeReportPageFx,
 });
