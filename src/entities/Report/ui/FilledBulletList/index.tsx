@@ -2,10 +2,10 @@ import { List, Text } from '@mantine/core';
 
 interface FilledBulletListProps {
     items: {
-        color: 'primary' | 'secondary';
         text: string;
-        title: string;
-        type: 'title_paragraph';
+        type: 'title_paragraph' | 'paragraph';
+        title?: string;
+        color?: 'primary' | 'secondary';
     }[];
 }
 

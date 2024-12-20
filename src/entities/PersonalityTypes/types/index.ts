@@ -7,24 +7,32 @@ type ContentType =
     | 'filled_bullet_list'
     | 'paywall'
     | 'header'
-    | 'ordered_cards';
+    | 'ordered_cards'
+    | 'icon_list'
+    | 'subscription'
+    | 'title';
 
-export interface BulletListItem {
-    color: 'primary' | 'secondary';
+export interface ListItem {
     text: string;
-    title: string;
-    type: 'title_paragraph';
+    type: 'paragraph' | 'title_paragraph';
+    title?: string;
+    color?: 'primary' | 'secondary';
+    order?: number;
+    highlight?: null;
 }
 
 export interface Content {
     type: 'block';
     content: {
+        color: string;
         text: string;
         type: ContentType;
         points: string[];
         title: string;
         button_text: string;
-        items: BulletListItem[];
+        items: ListItem[];
+        mbti_percentages: Record<string, { negative: number; positive: number }>;
+        mbti_data: Record<string, { text: string; type: 'header' | 'paragraph' }[]>;
     }[];
 }
 

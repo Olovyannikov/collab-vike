@@ -5,9 +5,13 @@
   font-weight: 600;
   gap: var(--mantine-spacing-sm);
 
-  &:not(:disabled):is(:hover, :focus-visible) {
-    color: var(--mantine-color-white) !important;
-    background-color: var(--mantine-color-violet-6);
+  &:not(:disabled) {
+    @media (hover: hover) {
+      &:is(:hover, :focus-visible) {
+        color: var(--mantine-color-white) !important;
+        background-color: var(--mantine-color-violet-6);
+      }
+    }
   }
 
   &:disabled {

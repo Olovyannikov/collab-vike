@@ -1,5 +1,7 @@
 import { cache } from '@farfetched/core';
 import { sample } from 'effector';
+import { persist } from 'effector-storage/local';
+import { delay } from 'patronum';
 
 import { getFreeResultQuery, getPersonalityTypesQuery } from '@/entities/PersonalityTypes';
 import { $reportName } from '@/entities/Report/model';
@@ -8,6 +10,23 @@ import { STORAGE } from '@/shared/services/Storage';
 import { createPageStart } from '@/shared/utils/effector';
 
 export const pageStarted = createPageStart();
+
+const delayedPageStarted = delay(pageStarted, 3000);
+
+sample({
+    clock: delayedPageStarted,
+    source: $uuid,
+    fn: (uuid) => {
+        if (uuid.length > 0) return uuid;
+        return crypto.randomUUID();
+    },
+    target: $uuid,
+});
+
+persist({
+    store: $uuid,
+    pickup: pageStarted,
+});
 
 sample({
     clock: pageStarted,

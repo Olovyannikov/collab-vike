@@ -9,7 +9,7 @@ import { createPageStart } from '@/shared/utils/effector';
 
 export const pageStarted = createPageStart();
 
-const delayedPageStarted = delay(pageStarted, 300);
+const delayedPageStarted = delay(pageStarted, 3000);
 
 sample({
     clock: delayedPageStarted,
@@ -28,15 +28,15 @@ persist({
 
 persist({
     store: $currentPage,
-    pickup: pageStarted,
+    pickup: delayedPageStarted,
 });
 
 persist({
     store: $scaleForm,
-    pickup: pageStarted,
+    pickup: delayedPageStarted,
 });
 
 persist({
     store: $currentProgress,
-    pickup: pageStarted,
+    pickup: delayedPageStarted,
 });

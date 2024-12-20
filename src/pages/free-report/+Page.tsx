@@ -20,13 +20,13 @@ export default function Page() {
                 <ReportHeader name={name} type={data?.mbti_type} />
                 <SendReportEmail />
                 <Stack>
-                    {data?.content.slice(2, 3).map((item, idx) => {
+                    {data?.content.map((item) => {
                         console.log({ item });
 
                         return (
                             <Stack key={item.title}>
                                 <Title fz={26}>{item.title}</Title>
-                                <ContentResolver content={item.content.map((el) => el.content)[idx]} />
+                                <ContentResolver content={item.content.map((el) => el.content).flat()} />
                             </Stack>
                         );
                     })}

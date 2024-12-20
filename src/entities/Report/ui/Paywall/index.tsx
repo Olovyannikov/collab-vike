@@ -18,7 +18,7 @@ export const Paywall = ({ onPaywallClick, title, buttonText, points }: PaywallPr
         <Stack gap='lg' align='center'>
             <Top title={title} />
             <Points points={points} />
-            <MainButton fullWidth leftSection={<Key size={20} />} onClick={onPaywallClick}>
+            <MainButton size='md' radius='sm' fullWidth leftSection={<Key size={20} />} onClick={onPaywallClick}>
                 {buttonText}
             </MainButton>
         </Stack>

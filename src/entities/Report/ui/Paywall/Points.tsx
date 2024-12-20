@@ -10,7 +10,7 @@ export const Points = ({ points }: PointsProps) => {
         <Stack>
             {points.map((item, index) => (
                 <Group key={`${item}_${index}`} gap='xs'>
-                    <Check color='var(--mantine-color-violet-9)' />
+                    <Check size={16} weight='bold' color='var(--mantine-color-violet-9)' />
                     <Text flex={1} fz={16} lh='18px'>
                         {item}
                     </Text>

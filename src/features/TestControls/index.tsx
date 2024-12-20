@@ -1,15 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, Group, Pagination } from '@mantine/core';
 import { ArrowLeft, ArrowRight } from '@phosphor-icons/react';
 import clsx from 'clsx';
 import { useUnit } from 'effector-react';
 import { motion } from 'framer-motion';
+import { isArray } from 'lodash-es';
 import { useTimeout } from 'usehooks-ts';
 
 import { TestEvents, TestStores } from '@/entities/Test';
 
 const { $preparedQuestions, $currentPage, $currentValue } = TestStores;
 const { formPageChanged, submitModalStateChanged } = TestEvents;
+
 import s from './TestControls.module.css';
 
 export const TestControls = () => {
@@ -23,8 +25,14 @@ export const TestControls = () => {
         controlModal: submitModalStateChanged,
     });
 
-    const isExists = Boolean(currentValue !== null);
-    useTimeout(() => (isExists ? setVisible(true) : setVisible(false)), isExists ? 1000 : 0);
+    const isExists = isArray(currentValue) ? currentValue.length > 0 : currentValue !== null;
+    useTimeout(() => (isExists ? setVisible(true) : setVisible(false)), isExists ? 500 : 0);
+
+    useEffect(() => {
+        if (isArray(currentValue) && currentValue.length > 0) {
+            setVisible(true);
+        }
+    }, [currentValue]);
 
     if (!questions) return null;
 
@@ -33,7 +41,7 @@ export const TestControls = () => {
 
     return (
         <Pagination.Root total={questions.length} mt='auto' value={page} onChange={onChange}>
-            <Group justify='space-between'>
+            <Group justify='space-between' pb={20}>
                 {!isFirst && (
                     <Pagination.Previous
                         disabled={false}

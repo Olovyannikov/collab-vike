@@ -1,3 +1,4 @@
+import { notifications } from '@mantine/notifications';
 import { createEffect, sample } from 'effector';
 import { navigate } from 'vike/client/router';
 
@@ -10,6 +11,14 @@ const { submitScaleForm, submitModalStateChanged } = TestEvents;
 
 const redirectToFreeReportPageFx = createEffect(async () => {
     await navigate('/free-report');
+});
+
+const showSubmitErrorFx = createEffect(async (message: string) => {
+    notifications.show({
+        color: 'red',
+        title: 'Ошибка!',
+        message,
+    });
 });
 
 sample({
@@ -35,4 +44,12 @@ sample({
     clock: submitAnswersMutation.finished.success,
     filter: () => !window?.location.origin.includes('free-report'),
     target: redirectToFreeReportPageFx,
+});
+
+sample({
+    clock: submitAnswersMutation.finished.failure,
+    fn: (params) => {
+        return params.error.message;
+    },
+    target: showSubmitErrorFx,
 });

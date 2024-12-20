@@ -12,7 +12,7 @@ export const TestProgress = ({ value }: TestProgressProps) => {
     const isLarge = useIsLarge();
 
     return (
-        <Flex gap='xl' mt={isLarge ? 60 : 40} mb='lg' align='center' h='fit-content'>
+        <Flex gap='xl' mt={isLarge ? 60 : 0} mb='lg' align='center' h='fit-content'>
             <Progress
                 color='violet.4'
                 size={isLarge ? 'xl' : 'lg'}
