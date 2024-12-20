@@ -2,6 +2,7 @@ import { cache } from '@farfetched/core';
 import { sample } from 'effector';
 import { persist } from 'effector-storage/local';
 import { delay } from 'patronum';
+import { v4 as uuidv4 } from 'uuid';
 
 import { getFreeResultQuery, getPersonalityTypesQuery } from '@/entities/PersonalityTypes';
 import { $reportName } from '@/entities/Report/model';
@@ -18,7 +19,7 @@ sample({
     source: $uuid,
     fn: (uuid) => {
         if (uuid.length > 0) return uuid;
-        return crypto.randomUUID();
+        return uuidv4();
     },
     target: $uuid,
 });

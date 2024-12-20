@@ -1,11 +1,13 @@
 import { sample } from 'effector';
 import { persist } from 'effector-storage/local';
 import { delay } from 'patronum';
-const { $currentPage, $scaleForm, $currentProgress } = TestStores;
+import { v4 as uuidv4 } from 'uuid';
 
 import { TestStores } from '@/entities/Test';
 import { $uuid } from '@/entities/User';
 import { createPageStart } from '@/shared/utils/effector';
+
+const { $currentPage, $scaleForm, $currentProgress } = TestStores;
 
 export const pageStarted = createPageStart();
 
@@ -16,7 +18,7 @@ sample({
     source: $uuid,
     fn: (uuid) => {
         if (uuid.length > 0) return uuid;
-        return crypto.randomUUID();
+        return uuidv4();
     },
     target: $uuid,
 });

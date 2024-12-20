@@ -1,6 +1,7 @@
 import { sample } from 'effector';
 import { persist } from 'effector-storage/local';
 import { delay } from 'patronum';
+import { v4 as uuidv4 } from 'uuid';
 
 import { getQuestionsQuery, TestStores } from '@/entities/Test';
 import { $uuid } from '@/entities/User';
@@ -22,7 +23,7 @@ sample({
     source: $uuid,
     fn: (uuid) => {
         if (uuid.length > 0) return uuid;
-        return crypto.randomUUID();
+        return uuidv4();
     },
     target: $uuid,
 });
