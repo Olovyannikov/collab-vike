@@ -26,7 +26,7 @@ export const TestControls = () => {
     });
 
     const isExists = isArray(currentValue) ? currentValue.length > 0 : currentValue !== null;
-    useTimeout(() => (isExists ? setVisible(true) : setVisible(false)), isExists ? 500 : 0);
+    useTimeout(() => (isExists ? setVisible(true) : setVisible(false)), isExists ? 1000 : 0);
 
     useEffect(() => {
         if (isArray(currentValue) && currentValue.length > 0) {

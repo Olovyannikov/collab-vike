@@ -10,6 +10,7 @@ type ContentType =
     | 'ordered_cards'
     | 'icon_list'
     | 'subscription'
+    | 'conclusion_paywall'
     | 'title';
 
 export interface ListItem {
@@ -33,6 +34,8 @@ export interface Content {
         items: ListItem[];
         mbti_percentages: Record<string, { negative: number; positive: number }>;
         mbti_data: Record<string, { text: string; type: 'header' | 'paragraph' }[]>;
+        primary_button_text: string;
+        secondary_button_text: string;
     }[];
 }
 

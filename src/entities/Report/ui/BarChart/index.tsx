@@ -21,14 +21,14 @@ const TypeToColorMap: Record<string, string> = {
     'E-I': 'violet',
     'J-P': 'yellow',
     'S-N': 'green',
-    'T-F': 'blue',
+    'T-F': 'indigo',
 };
 
 export const BarChart = ({ marks }: BarChartProps) => {
     return (
         <Stack mt={40} mb={60} gap={84}>
             {marks.map((mark, i) => (
-                <Popover offset={40} key={i} position='top' withArrow shadow='md'>
+                <Popover offset={40} key={i} width='90%' position='top' shadow='sm'>
                     <Popover.Target>
                         <Box pos='relative'>
                             <Info style={{ '--offset': mark.value + '%' }} size={16} className={s.icon} />
@@ -38,11 +38,10 @@ export const BarChart = ({ marks }: BarChartProps) => {
                                 data-value={mark.value}
                                 data-type={mark.label}
                                 value={mark.value}
-                                disabled
                             />
                         </Box>
                     </Popover.Target>
-                    <Popover.Dropdown w='fit-content' bg={`${TypeToColorMap[mark.mbti_type[i]]}.0`}>
+                    <Popover.Dropdown bg={`${TypeToColorMap[mark.mbti_type[i]]}.0`}>
                         {mark.data.map((item, idx) => {
                             switch (item.type) {
                                 case 'paragraph':

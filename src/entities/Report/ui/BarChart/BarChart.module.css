@@ -64,7 +64,7 @@
   }
 
   [data-type="T-F"] & {
-    background-color: var(--mantine-color-blue-7);
+    background-color: var(--mantine-color-indigo-7);
   }
 }
 
@@ -84,7 +84,7 @@
   }
 
   [data-type="T-F"] & {
-    border-color: var(--mantine-color-blue-7);
+    border-color: var(--mantine-color-indigo-7);
   }
 }
 
@@ -109,7 +109,7 @@
   }
 
   [data-type="T-F"] & {
-    background-color: var(--mantine-color-blue-7);
+    background-color: var(--mantine-color-indigo-7);
   }
 }
 

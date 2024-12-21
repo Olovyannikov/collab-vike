@@ -1,11 +1,13 @@
 import { Group, Stack, Text } from '@mantine/core';
 import { Check } from '@phosphor-icons/react/dist/ssr';
 
-interface PointsProps {
-    points: string[];
+interface PointsBlockProps {
+    points?: string[];
 }
 
-export const Points = ({ points }: PointsProps) => {
+export const PointsBlock = ({ points }: PointsBlockProps) => {
+    if (!points || !points.length) return null;
+
     return (
         <Stack>
             {points.map((item, index) => (
