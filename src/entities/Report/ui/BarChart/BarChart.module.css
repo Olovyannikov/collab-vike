@@ -123,4 +123,8 @@
     left: unset;
     right: 42px;
   }
+
+  @mixin larger-than 1200px {
+    display: none;
+  }
 }

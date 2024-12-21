@@ -1,20 +1,14 @@
-import { Box, Popover, Slider, Stack } from '@mantine/core';
+import { Box, Group, Paper, Popover, Slider, Stack, Transition } from '@mantine/core';
 import { Info } from '@phosphor-icons/react/dist/ssr';
 
 import { Header, Paragraph } from '@/entities/Report';
+import { useIsLarge } from '@/shared/hooks';
 
 import s from './BarChart.module.css';
+import { type Mark, useBarChartViewModel } from './viewmodel';
 
 interface BarChartProps {
-    marks: {
-        value: number;
-        label: string;
-        data: {
-            text: string;
-            type: 'paragraph' | 'header';
-        }[];
-        mbti_type: string[];
-    }[];
+    marks: Mark[];
 }
 
 const TypeToColorMap: Record<string, string> = {
@@ -25,40 +19,80 @@ const TypeToColorMap: Record<string, string> = {
 };
 
 export const BarChart = ({ marks }: BarChartProps) => {
+    const isLarge = useIsLarge();
+    const { onSelectItemMouseOverHandler, selectedItem, mounted } = useBarChartViewModel({ marks });
+
     return (
-        <Stack mt={40} mb={60} gap={84}>
-            {marks.map((mark, i) => (
-                <Popover offset={40} key={i} width='90%' position='top' shadow='sm'>
-                    <Popover.Target>
-                        <Box pos='relative'>
-                            <Info style={{ '--offset': mark.value + '%' }} size={16} className={s.icon} />
-                            <Slider
-                                labelAlwaysOn
-                                classNames={s}
-                                data-value={mark.value}
-                                data-type={mark.label}
-                                value={mark.value}
-                            />
-                        </Box>
-                    </Popover.Target>
-                    <Popover.Dropdown bg={`${TypeToColorMap[mark.mbti_type[i]]}.0`}>
-                        {mark.data.map((item, idx) => {
-                            switch (item.type) {
-                                case 'paragraph':
-                                    return <Paragraph key={idx} text={item.text} />;
-                                case 'header':
-                                    return (
-                                        <Header
-                                            key={idx}
-                                            text={item.text}
-                                            c={`${TypeToColorMap[mark.mbti_type[i]]}.9`}
-                                        />
-                                    );
-                            }
-                        })}
-                    </Popover.Dropdown>
-                </Popover>
-            ))}
-        </Stack>
+        <Group align='stretch' gap='lg' mb={isLarge ? 100 : 0}>
+            <Stack flex={1} mt={isLarge ? 0 : 40} mb={isLarge ? 0 : 60} gap={isLarge ? 74 : 84}>
+                {marks.map((mark, i) => (
+                    <Box key={i} onMouseOver={() => isLarge && onSelectItemMouseOverHandler(mark)}>
+                        <Popover offset={40} width='90%' position='top' shadow='sm'>
+                            <Popover.Target>
+                                <Box pos='relative'>
+                                    <Info style={{ '--offset': mark.value + '%' }} size={16} className={s.icon} />
+                                    <Slider
+                                        labelAlwaysOn
+                                        classNames={s}
+                                        value={mark.value}
+                                        data-type={mark.label}
+                                        data-value={mark.value}
+                                    />
+                                </Box>
+                            </Popover.Target>
+                            <Popover.Dropdown hidden={isLarge} bg={`${TypeToColorMap[mark.mbti_type[i]]}.0`}>
+                                {mark.data.map((item, idx) => {
+                                    switch (item.type) {
+                                        case 'paragraph':
+                                            return <Paragraph key={idx} text={item.text} />;
+                                        case 'header':
+                                            return (
+                                                <Header
+                                                    key={idx}
+                                                    text={item.text}
+                                                    c={`${TypeToColorMap[mark.mbti_type[i]]}.9`}
+                                                />
+                                            );
+                                    }
+                                })}
+                            </Popover.Dropdown>
+                        </Popover>
+                    </Box>
+                ))}
+            </Stack>
+            <Box flex={1} h='auto' visibleFrom='lg'>
+                {selectedItem && (
+                    <Transition mounted={mounted}>
+                        {(styles) => (
+                            <Paper
+                                py={22}
+                                px='3xl'
+                                h='100%'
+                                mih='auto'
+                                radius={30}
+                                style={styles}
+                                visibleFrom='md'
+                                bg={`${TypeToColorMap[selectedItem.label]}.0`}
+                            >
+                                {selectedItem?.data.map((item, idx) => {
+                                    switch (item.type) {
+                                        case 'paragraph':
+                                            return <Paragraph key={idx} text={item.text} />;
+                                        case 'header':
+                                            return (
+                                                <Header
+                                                    key={idx}
+                                                    text={item.text}
+                                                    c={`${TypeToColorMap[selectedItem.label]}.9`}
+                                                />
+                                            );
+                                    }
+                                })}
+                            </Paper>
+                        )}
+                    </Transition>
+                )}
+            </Box>
+        </Group>
     );
 };
