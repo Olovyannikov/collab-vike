@@ -16,17 +16,22 @@ import {
     Subscription,
 } from '@/entities/Report';
 import { BuyFullReportButton } from '@/features/BuyFullReportButton';
+import { useIsLarge } from '@/shared/hooks';
+import { InnerContainer } from '@/shared/ui';
+
+import s from './ContentResolver.module.css';
 
 export const ContentResolver = () => {
+    const isLarge = useIsLarge();
     const content = useUnit($freeContent);
 
     if (!content) return null;
 
     return (
-        <Stack mb={60}>
+        <InnerContainer>
             {content.map((item, idx) => (
-                <Stack key={idx}>
-                    <Title fz={26}>{item.title}</Title>
+                <Stack gap={isLarge ? '5xl' : 'md'} mb={isLarge ? 100 : 60} key={idx}>
+                    <Title className={s.title}>{item.title}</Title>
                     {item.content.map((item, idx) => {
                         switch (item.type) {
                             case 'paywall':
@@ -61,7 +66,7 @@ export const ContentResolver = () => {
                                 return <BarChart marks={marks} key={`${item.type}_${idx}`} />;
                             }
                             case 'paragraph':
-                                return <Paragraph fz={18} text={item.text} key={`${item.type}_${idx}`} />;
+                                return <Paragraph text={item.text} key={`${item.type}_${idx}`} />;
                             case 'title':
                                 return <MainTitle key={`${item.type}_${idx}`}>{item.text}</MainTitle>;
                             case 'icon_list':
@@ -82,6 +87,6 @@ export const ContentResolver = () => {
                     })}
                 </Stack>
             ))}
-        </Stack>
+        </InnerContainer>
     );
 };

@@ -1,18 +1,28 @@
-import { Group, Image, Title } from '@mantine/core';
+import { Flex, Group, Image, Title } from '@mantine/core';
 
 import lockImage from '@/app/assets/icons/lock.webp';
-import menUrl from '@/app/assets/men-temp.png';
+import menLargeUrl from '@/app/assets/man-temp_large.webp';
+import menUrl from '@/app/assets/men-temp.webp';
+import { useIsLarge } from '@/shared/hooks';
 
 export const Top = ({ title }: { title: string }) => {
+    const isLarge = useIsLarge();
+
     return (
-        <Group w='100%' gap='xxs' justify='space-between'>
+        <Flex
+            w='100%'
+            gap={isLarge ? 'lg' : 'xxs'}
+            align={isLarge ? 'flex-start' : 'center'}
+            direction={isLarge ? 'row-reverse' : 'row'}
+            justify={isLarge ? 'flex-end' : 'space-between'}
+        >
             <Group gap='xs'>
                 <Image w={32} h={32} src={lockImage} />
-                <Title fz={20} textWrap='balance' maw={175}>
+                <Title fz={isLarge ? 32 : 20} textWrap='balance' maw={isLarge ? 'fit-content' : 175}>
                     {title}
                 </Title>
             </Group>
-            <Image src={menUrl} w={126} />
-        </Group>
+            <Image src={isLarge ? menLargeUrl : menUrl} w={isLarge ? 351 : 126} h={isLarge ? 311 : 116} />
+        </Flex>
     );
 };
