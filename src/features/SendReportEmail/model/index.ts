@@ -1,10 +1,18 @@
+import { createForm } from '@effector-reform/core';
+import { zodAdapter } from '@effector-reform/zod';
 import { notifications } from '@mantine/notifications';
-import { createEffect, createEvent, sample } from 'effector';
+import { createEffect, sample } from 'effector';
 
 import { sendFreeReportOnEmailMutation } from '@/entities/Report';
-import { $userEmail } from '@/entities/User';
 
-export const freeReportSent = createEvent();
+import { SendReportSchema } from '../schema';
+
+export const sendReportForm = createForm({
+    schema: {
+        email: '',
+    },
+    validation: zodAdapter(SendReportSchema),
+});
 
 const showUserEmailNotificationFx = createEffect((email: string) => {
     notifications.show({
@@ -14,9 +22,8 @@ const showUserEmailNotificationFx = createEffect((email: string) => {
 });
 
 sample({
-    clock: freeReportSent,
-    source: $userEmail,
-    fn: (email) => ({ email }),
+    clock: sendReportForm.submitted,
+    fn: (values) => ({ email: values.email }),
     target: sendFreeReportOnEmailMutation.start,
 });
 

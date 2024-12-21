@@ -1,13 +1,13 @@
 import { Group, Image, Title } from '@mantine/core';
-import { Lock } from '@phosphor-icons/react/dist/ssr';
 
+import lockImage from '@/app/assets/icons/lock.webp';
 import menUrl from '@/app/assets/men-temp.png';
 
 export const Top = ({ title }: { title: string }) => {
     return (
         <Group w='100%' gap='xxs' justify='space-between'>
             <Group gap='xs'>
-                <Lock size={32} />
+                <Image w={32} h={32} src={lockImage} />
                 <Title fz={20} textWrap='balance' maw={175}>
                     {title}
                 </Title>

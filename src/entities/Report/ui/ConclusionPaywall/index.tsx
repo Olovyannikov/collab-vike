@@ -15,7 +15,7 @@ interface ConclusionPaywallProps {
 export const ConclusionPaywall = ({ text, title, points, extraContentSlot, buyButtonSlot }: ConclusionPaywallProps) => {
     return (
         <Paper bg='violet.0' py='xl' px='md' pos='relative'>
-            <Image src={gemImage} w={108} h={108} pos='absolute' />
+            <Image src={gemImage} w={108} h={108} pos='absolute' top={-7} right={0} />
             <Stack gap='md'>
                 <Title order={5} fz={20} textWrap='balance'>
                     {title}

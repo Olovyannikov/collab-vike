@@ -13,6 +13,7 @@ import {
     OrderedCards,
     Paragraph,
     Paywall,
+    Subscription,
 } from '@/entities/Report';
 import { BuyFullReportButton } from '@/features/BuyFullReportButton';
 
@@ -28,10 +29,6 @@ export const ContentResolver = () => {
                     <Title fz={26}>{item.title}</Title>
                     {item.content.map((item, idx) => {
                         switch (item.type) {
-                            case 'blockquote_line':
-                                return <BlockquoteLine {...item} key={`${item.type}_${idx}`} />;
-                            case 'filled_bullet_list':
-                                return <FilledBulletList {...item} key={`${item.type}_${idx}`} />;
                             case 'paywall':
                                 return (
                                     <Paywall
@@ -41,6 +38,18 @@ export const ContentResolver = () => {
                                         buyButtonSlot={<BuyFullReportButton />}
                                     />
                                 );
+                            case 'conclusion_paywall':
+                                return (
+                                    <ConclusionPaywall
+                                        {...item}
+                                        buyButtonSlot={<BuyFullReportButton />}
+                                        key={`${item.type}_${item.color}_${idx}`}
+                                    />
+                                );
+                            case 'blockquote_line':
+                                return <BlockquoteLine {...item} key={`${item.type}_${idx}`} />;
+                            case 'filled_bullet_list':
+                                return <FilledBulletList {...item} key={`${item.type}_${idx}`} />;
                             case 'bar_chart': {
                                 const marks = Object.entries(item.mbti_percentages).map((el) => ({
                                     value: el[1].positive,
@@ -61,11 +70,11 @@ export const ContentResolver = () => {
                                 return <Header c={item.color} text={item.text} key={`${item.type}_${idx}`} />;
                             case 'ordered_cards':
                                 return <OrderedCards {...item} key={`${item.type}_${item.color}_${idx}`} />;
-                            case 'conclusion_paywall':
+                            case 'subscription':
                                 return (
-                                    <ConclusionPaywall
+                                    <Subscription
                                         {...item}
-                                        buyButtonSlot={<BuyFullReportButton />}
+                                        subscriptionFormSlot={<></>}
                                         key={`${item.type}_${item.color}_${idx}`}
                                     />
                                 );
