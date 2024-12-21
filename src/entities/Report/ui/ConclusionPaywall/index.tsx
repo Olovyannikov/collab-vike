@@ -17,7 +17,7 @@ export const ConclusionPaywall = ({ text, title, points, extraContentSlot, buyBu
         <Paper bg='violet.0' py='xl' px='md' pos='relative'>
             <Image src={gemImage} w={108} h={108} pos='absolute' top={-7} right={0} />
             <Stack gap='md'>
-                <Title order={5} fz={20} textWrap='balance'>
+                <Title order={5} fz={20} textWrap='balance' maw='60%'>
                     {title}
                 </Title>
                 <Text fz={16}>{text}</Text>

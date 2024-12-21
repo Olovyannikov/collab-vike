@@ -1,0 +1,67 @@
+.paper {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: var(--mantine-spacing-3xl);
+  border-radius: var(--mantine-radius-5xl);
+  padding-top: var(--mantine-spacing-5xl);
+  padding-bottom: 255px;
+  background-color: var(--mantine-color-violet-1);
+
+  @mixin larger-than 1200px {
+    border-radius: 80px;
+    padding-top: 88px;
+    padding-bottom: 88px;
+    padding-left: 123px;
+  }
+}
+
+.stack {
+  justify-content: center;
+  text-align: center;
+  gap: var(--mantine-spacing-lg);
+
+  @mixin larger-than 1200px {
+    justify-content: flex-start;
+    text-align: left;
+  }
+}
+
+.personalityType {
+  font-size: 18px;
+
+  @mixin larger-than 1200px {
+    font-size: 36px;
+  }
+}
+
+.name {
+  font-size: 32px;
+
+  @mixin larger-than 1200px {
+    font-size: 56px;
+  }
+}
+
+.type {
+  font-size: 18px;
+
+  @mixin larger-than 1200px {
+    font-size: 36px;
+  }
+}
+
+.image {
+  position: absolute;
+  right: 0;
+  top: 188px;
+  width: 364px;
+  height: 364px;
+  object-fit: contain;
+
+  @mixin larger-than 1200px {
+    right: -40px;
+    top: -144px;
+    width: 680px;
+    height: 680px;
+  }
+}

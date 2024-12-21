@@ -1,6 +1,11 @@
-import { Paper, RingProgress, Stack, Text, Title } from '@mantine/core';
+import { Image, Paper, Stack, Text, Title } from '@mantine/core';
 
+import circleImage from '@/app/assets/circle.svg';
+import circleSmallImage from '@/app/assets/circle_small.svg';
+import { useIsLarge } from '@/shared/hooks';
 import type { PersonalityType } from '@/shared/types/models';
+
+import s from './ReportHeader.module.css';
 
 interface ReportHeaderProps {
     name: string;
@@ -8,21 +13,16 @@ interface ReportHeaderProps {
 }
 
 export const ReportHeader = ({ name, type }: ReportHeaderProps) => {
+    const isLarge = useIsLarge();
+
     return (
-        <Paper mb='3xl' bg='violet.1' pt='5xl' radius='5xl' pb={255} pos='relative' style={{ overflow: 'hidden' }}>
-            <Stack ta='center' justify='center' gap='lg'>
-                <Text fz={18}>Ваш тип личности</Text>
-                <Title fz={32}>{name}</Title>
-                <Text fz={18}>{type}</Text>
+        <Paper className={s.paper}>
+            <Stack className={s.stack}>
+                <Text className={s.personalityType}>Ваш тип личности</Text>
+                <Title className={s.name}>{name}</Title>
+                <Text className={s.type}>{type}</Text>
             </Stack>
-            <RingProgress
-                sections={[{ value: 100, color: 'violet.2' }]}
-                thickness={86}
-                size={500}
-                pos='absolute'
-                bottom={-86 + -32 * 4}
-                right={-86 + -28}
-            />
+            <Image className={s.image} src={isLarge ? circleImage : circleSmallImage} />
         </Paper>
     );
 };
