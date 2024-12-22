@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import { Image, Paper, Stack, Text, Title } from '@mantine/core';
 
 import envelopeImage from '@/app/assets/icons/envelope.webp';
+import { useIsHuge, useIsLarge } from '@/shared/hooks';
 
 interface SubscriptionProps {
     title: string;
@@ -10,14 +11,31 @@ interface SubscriptionProps {
 }
 
 export const Subscription = ({ title, text, subscriptionFormSlot }: SubscriptionProps) => {
+    const isHuge = useIsHuge();
+    const isLarge = useIsLarge();
     return (
-        <Paper bg='violet.0' px='md' py='xl' radius='lg' pos='relative'>
-            <Image pos='absolute' top={5} right={33} w={84} h={84} src={envelopeImage} />
+        <Paper
+            radius='lg'
+            bg='violet.0'
+            pos='relative'
+            mt={isLarge ? 100 : 0}
+            mx={isHuge ? -157 : 0}
+            px={isLarge ? 153 : 'md'}
+            py={isLarge ? '3xl' : 'xl'}
+        >
+            <Image
+                pos='absolute'
+                top={isLarge ? 32 : 5}
+                right={isLarge ? 153 : 33}
+                w={isLarge ? 215 : 84}
+                h={isLarge ? 216 : 84}
+                src={envelopeImage}
+            />
             <Stack>
-                <Title order={5} fz={20} textWrap='balance' maw='50%'>
+                <Title order={5} fz={isLarge ? 32 : 20} textWrap='balance' maw='50%'>
                     {title}
                 </Title>
-                <Text fz={18}>{text}</Text>
+                <Text fz={isLarge ? 24 : 18}>{text}</Text>
                 {subscriptionFormSlot}
             </Stack>
         </Paper>

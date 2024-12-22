@@ -23,7 +23,7 @@ export const BarChart = ({ marks }: BarChartProps) => {
     const { onSelectItemMouseOverHandler, selectedItem, mounted } = useBarChartViewModel({ marks });
 
     return (
-        <Group align='stretch' gap='lg' mb={isLarge ? 100 : 0}>
+        <Group align='stretch' gap='lg' mb={isLarge ? 100 : 0} mt={isLarge ? '5xl' : 0}>
             <Stack flex={1} mt={isLarge ? 0 : 40} mb={isLarge ? 0 : 60} gap={isLarge ? 74 : 84}>
                 {marks.map((mark, i) => (
                     <Box key={i} onMouseOver={() => isLarge && onSelectItemMouseOverHandler(mark)}>

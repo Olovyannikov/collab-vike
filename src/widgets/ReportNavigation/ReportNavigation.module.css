@@ -1,0 +1,26 @@
+.inner,
+.label {
+  width: 100%;
+  color: var(--mantine-color-dark-9);
+
+  svg {
+    color: var(--mantine-color-violet-9);
+  }
+}
+
+.dropdownIcon {
+  svg {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+.dropdown {
+  border-radius: var(--mantine-spacing-lg);
+  padding: 16px;
+  box-shadow: var(--mantine-shadow-lg);
+}
+
+.item {
+  margin-bottom: 10px;
+}

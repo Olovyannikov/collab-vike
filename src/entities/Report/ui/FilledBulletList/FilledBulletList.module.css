@@ -1,3 +1,13 @@
 .itemWrapper {
   display: inline-flex;
 }
+
+.itemLabel {
+  p {
+    font-weight: 600;
+  }
+
+  @mixin larger-than 1200px {
+    gap: var(--mantine-spacing-xs);
+  }
+}

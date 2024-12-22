@@ -17,11 +17,11 @@ export const Paywall = ({ title, buyButtonSlot, points }: PaywallProps) => {
     const isLarge = useIsLarge();
 
     return (
-        <Stack gap='lg' align='center' pos='relative'>
+        <Stack gap='lg' align='center' pos='relative' mt={isLarge ? 60 : 0}>
             <Top title={title} />
             <PointsBlock points={points} />
             <Box
-                left={316}
+                left={332}
                 bottom={-20}
                 pos={isLarge ? 'absolute' : 'static'}
                 maw={isLarge ? 'fit-content' : '100%'}

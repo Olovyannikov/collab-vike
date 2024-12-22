@@ -13,9 +13,10 @@ import s from './SendReportEmail.module.css';
 
 interface SendReportEmailProps {
     isFreeReport?: boolean;
+    type?: 'block' | 'text';
 }
 
-export const SendReportEmail = ({ isFreeReport = true }: SendReportEmailProps) => {
+export const SendReportEmail = ({ isFreeReport = true, type = 'text' }: SendReportEmailProps) => {
     const isLarge = useIsLarge();
     const { onSubmit, fields } = useForm(sendReportForm);
     const isLoading = useUnit(sendFreeReportOnEmailMutation.$pending);
@@ -28,31 +29,34 @@ export const SendReportEmail = ({ isFreeReport = true }: SendReportEmailProps) =
     };
 
     return (
-        <InnerContainer>
+        <InnerContainer className={type === 'block' ? s.container : ''}>
             <form onSubmit={isFreeReport ? onFreeReportSendHandler : () => {}}>
                 <Flex className={s.wrapper}>
-                    <Text fw='bold' visibleFrom='md'>
-                        Отправьте отчет на почту
-                    </Text>
+                    {type === 'text' && (
+                        <Text fw='bold' visibleFrom='md' fz={24}>
+                            Отправьте отчет на почту
+                        </Text>
+                    )}
                     <TextInput
-                        ml='auto'
-                        size='md'
+                        ml={type === 'text' ? 'auto' : 0}
+                        size={type === 'block' ? 'lg' : 'md'}
                         disabled={isLoading}
                         placeholder='name@mail.ru'
                         value={fields.email.value}
                         error={fields.email.error}
                         miw={isLarge ? 514 : '100%'}
+                        bg={type === 'block' ? 'violet.0' : 'white'}
                         onChange={(e) => fields.email.onChange(e.target.value)}
                     />
                     <Button
-                        size='md'
-                        c='dark.7'
                         color='dark.7'
-                        variant='outline'
                         loading={isLoading}
                         fullWidth={!isLarge}
                         disabled={isButtonDisabled}
+                        size={type === 'block' ? 'lg' : 'md'}
                         leftSection={<EnvelopeSimple size={20} />}
+                        variant={type === 'block' ? 'filled' : 'outline'}
+                        c={type === 'block' && !isButtonDisabled ? 'white' : 'dark.7'}
                     >
                         {isLarge ? 'Отправить' : 'Отправить отчет на почту'}
                     </Button>

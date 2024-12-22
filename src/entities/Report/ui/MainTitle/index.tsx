@@ -1,6 +1,9 @@
-import { Title } from '@mantine/core';
+import { Title, TitleProps } from '@mantine/core';
 
-export const MainTitle = Title.withProps({
-    fz: 20,
-    mb: 'md',
-});
+import { useIsLarge } from '@/shared/hooks';
+
+export const MainTitle = ({ children }: TitleProps) => {
+    const isLarge = useIsLarge();
+
+    return <Title fz={isLarge ? 24 : 20}>{children}</Title>;
+};

@@ -1,7 +1,7 @@
 import { Image } from '@mantine/core';
 import { useUnit } from 'effector-react';
 
-import keyIconImage from '@/app/assets/icons/BuyIcon.png';
+import keyIconImage from '@/app/assets/icons/BuyIcon.webp';
 import { useIsLarge } from '@/shared/hooks';
 import { MainButton } from '@/shared/ui';
 

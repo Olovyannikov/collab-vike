@@ -1,5 +1,6 @@
+import { Element } from 'react-scroll';
 import { Stack, Title } from '@mantine/core';
-import { useUnit } from 'effector-react';
+import { useList, useUnit } from 'effector-react';
 
 import { $freeContent } from '@/entities/PersonalityTypes';
 import {
@@ -16,6 +17,7 @@ import {
     Subscription,
 } from '@/entities/Report';
 import { BuyFullReportButton } from '@/features/BuyFullReportButton';
+import { SendReportEmail } from '@/features/SendReportEmail';
 import { useIsLarge } from '@/shared/hooks';
 import { InnerContainer } from '@/shared/ui';
 
@@ -27,11 +29,13 @@ export const ContentResolver = () => {
 
     if (!content) return null;
 
-    return (
-        <InnerContainer>
-            {content.map((item, idx) => (
-                <Stack gap={isLarge ? '5xl' : 'md'} mb={isLarge ? 100 : 60} key={idx}>
-                    <Title className={s.title}>{item.title}</Title>
+    const render = useList($freeContent, (item, idx) => (
+        <Stack id={item.title} gap='md' mb={isLarge ? 100 : 60} key={idx}>
+            {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+            {/* @ts-expect-error mistypes */}
+            <Element name={item.title}>
+                <Title className={s.title}>{item.title}</Title>
+                <Stack gap='md'>
                     {item.content.map((item, idx) => {
                         switch (item.type) {
                             case 'paywall':
@@ -79,14 +83,16 @@ export const ContentResolver = () => {
                                 return (
                                     <Subscription
                                         {...item}
-                                        subscriptionFormSlot={<></>}
+                                        subscriptionFormSlot={<SendReportEmail type='block' />}
                                         key={`${item.type}_${item.color}_${idx}`}
                                     />
                                 );
                         }
                     })}
                 </Stack>
-            ))}
-        </InnerContainer>
-    );
+            </Element>
+        </Stack>
+    ));
+
+    return <InnerContainer>{render}</InnerContainer>;
 };
