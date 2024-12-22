@@ -14,7 +14,7 @@ export default function Page() {
     if (!data) return null;
 
     return (
-        <Box component='section'>
+        <Box component='section' pb={800}>
             <Container mt='xs'>
                 <ReportHeader name={name} type={data?.mbti_type} />
                 <SendReportEmail />

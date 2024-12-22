@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-scroll';
 import { Button, Center, Group, Menu, Paper, Text } from '@mantine/core';
 import { CaretDown } from '@phosphor-icons/react';
-import { useStoreMap } from 'effector-react';
-import { useUnit } from 'effector-react';
+import { useStoreMap, useUnit } from 'effector-react';
 
 import { $freeContent, $navigationIconMap } from '@/entities/PersonalityTypes';
 import { InnerContainer } from '@/shared/ui';
@@ -56,7 +55,7 @@ export const ReportNavigation = () => {
                         >
                             {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
                             {/* @ts-expect-error mistypes */}
-                            <Link spy hashSpy offset={-50} to={`${title}`} onSetActive={setActiveMenu}>
+                            <Link spy hashSpy offset={50} to={`${title}`} onSetActive={setActiveMenu}>
                                 <Text fz={14} fw='bold'>
                                     {title}
                                 </Text>
