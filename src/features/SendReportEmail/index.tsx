@@ -1,4 +1,4 @@
-import type { FormEventHandler } from 'react';
+import { type FormEventHandler } from 'react';
 import { useForm } from '@effector-reform/react';
 import { Button, Flex, Text, TextInput } from '@mantine/core';
 import { EnvelopeSimple } from '@phosphor-icons/react/dist/ssr';
@@ -18,19 +18,20 @@ interface SendReportEmailProps {
 
 export const SendReportEmail = ({ isFreeReport = true, type = 'text' }: SendReportEmailProps) => {
     const isLarge = useIsLarge();
-    const { onSubmit, fields } = useForm(sendReportForm);
+    const { fields, onSubmit, isValid, onValidate } = useForm(sendReportForm);
     const isLoading = useUnit(sendFreeReportOnEmailMutation.$pending);
+    const isButtonDisabled = isLoading;
 
-    const isButtonDisabled = isLoading || !fields.email.value || Boolean(fields.email.error);
-
-    const onFreeReportSendHandler: FormEventHandler<HTMLFormElement> = (e) => {
+    const onS: FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault();
-        onSubmit(e);
+        onValidate();
+
+        if (!isValid) onSubmit(e);
     };
 
     return (
         <InnerContainer className={type === 'block' ? s.container : ''}>
-            <form onSubmit={isFreeReport ? onFreeReportSendHandler : () => {}}>
+            <form onSubmit={isFreeReport ? onS : () => {}}>
                 <Flex className={s.wrapper}>
                     {type === 'text' && (
                         <Text fw='bold' visibleFrom='md' fz={24}>
@@ -38,17 +39,20 @@ export const SendReportEmail = ({ isFreeReport = true, type = 'text' }: SendRepo
                         </Text>
                     )}
                     <TextInput
-                        ml={type === 'text' ? 'auto' : 0}
-                        size={type === 'block' ? 'lg' : 'md'}
+                        required
+                        inputMode='email'
                         disabled={isLoading}
                         placeholder='name@mail.ru'
                         value={fields.email.value}
                         error={fields.email.error}
                         miw={isLarge ? 514 : '100%'}
+                        ml={type === 'text' ? 'auto' : 0}
+                        size={type === 'block' ? 'lg' : 'md'}
                         bg={type === 'block' ? 'violet.0' : 'white'}
                         onChange={(e) => fields.email.onChange(e.target.value)}
                     />
                     <Button
+                        type='submit'
                         color='dark.7'
                         loading={isLoading}
                         fullWidth={!isLarge}

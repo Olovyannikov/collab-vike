@@ -11,6 +11,7 @@ import {
     TestProgress,
     TestStores,
 } from '@/entities/Test';
+import { STORAGE } from '@/shared/services/Storage';
 
 const { $currentQuestion, $currentPage, $currentValue, $currentProgress } = TestStores;
 const { scaleFormFieldChanged } = TestEvents;
@@ -23,6 +24,8 @@ export const TestFlow = () => {
         currentValue: $currentValue,
         progress: $currentProgress,
     });
+
+    console.log({ token: STORAGE.getItem('$uuid') });
 
     if (!question) return null;
 

@@ -53,7 +53,7 @@ export const ScaleQuestion = ({ value, page, text, hint, rephrasing, id, onChang
     }, [localValue]);
 
     return (
-        <Transition mounted={mounted} transition='pop' enterDelay={200} exitDelay={200}>
+        <Transition mounted={mounted} transition='pop'>
             {(transition) => (
                 <Paper className={s.wrapper} style={transition}>
                     <QuestionTitle

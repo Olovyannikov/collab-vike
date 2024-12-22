@@ -1,18 +1,18 @@
 import { cache } from '@farfetched/core';
 import { sample } from 'effector';
 import { persist } from 'effector-storage/local';
-import { delay } from 'patronum';
+import { delay, or } from 'patronum';
 import { v4 as uuidv4 } from 'uuid';
 
 import { getFreeResultQuery, getPersonalityTypesQuery } from '@/entities/PersonalityTypes';
 import { $reportName } from '@/entities/Report/model';
 import { $uuid } from '@/entities/User';
-import { STORAGE } from '@/shared/services/Storage';
 import { createPageStart } from '@/shared/utils/effector';
 
 export const pageStarted = createPageStart();
 
-const delayedPageStarted = delay(pageStarted, 3000);
+const delayedPageStarted = delay(pageStarted, 1000);
+export const $isLoadingPage = or(getPersonalityTypesQuery.$pending, getFreeResultQuery.$pending);
 
 sample({
     clock: delayedPageStarted,
@@ -30,21 +30,20 @@ persist({
 });
 
 sample({
-    clock: pageStarted,
-    source: $uuid,
-    filter: () => Boolean(STORAGE.getItem('$uuid')),
-    target: getFreeResultQuery.start,
-});
-
-sample({
-    clock: getFreeResultQuery.finished.success,
+    clock: delayedPageStarted,
     target: getPersonalityTypesQuery.start,
 });
 
 sample({
     clock: getPersonalityTypesQuery.finished.success,
-    source: getFreeResultQuery.$data,
-    fn: (freeResult, { result }) => result.find((el) => el.code === freeResult?.mbti_type)?.name ?? '',
+    source: $uuid,
+    target: getFreeResultQuery.start,
+});
+
+sample({
+    clock: getFreeResultQuery.finished.success,
+    source: getPersonalityTypesQuery.$data,
+    fn: (result, { result: freeResult }) => result?.find((el) => el.code === freeResult?.mbti_type)?.name ?? '',
     target: $reportName,
 });
 

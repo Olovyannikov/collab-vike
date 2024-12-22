@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import { Heart } from '@phosphor-icons/react/dist/ssr';
 import { createStore, sample } from 'effector';
 
-import { Content, getFreeResultQuery } from '@/entities/PersonalityTypes';
+import { type Content, getFreeResultQuery } from '@/entities/PersonalityTypes';
 
 import type { FreeResult } from '../types';
 

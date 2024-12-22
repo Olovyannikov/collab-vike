@@ -12,6 +12,7 @@ export const sendReportForm = createForm({
         email: '',
     },
     validation: zodAdapter(SendReportSchema),
+    validationStrategies: ['submit'],
 });
 
 const showUserEmailNotificationFx = createEffect((email: string) => {
@@ -23,6 +24,7 @@ const showUserEmailNotificationFx = createEffect((email: string) => {
 
 sample({
     clock: sendReportForm.submitted,
+    filter: () => Boolean(sendReportForm.$isValid),
     fn: (values) => ({ email: values.email }),
     target: sendFreeReportOnEmailMutation.start,
 });

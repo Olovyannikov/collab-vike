@@ -9,8 +9,6 @@ interface HeaderProps extends TitleProps {
 export const Header = ({ text, c = 'violet.9', ...props }: HeaderProps) => {
     const isLarge = useIsLarge();
 
-    console.log({ c });
-
     return (
         <Title
             mt={c === 'black' ? 60 : 0}

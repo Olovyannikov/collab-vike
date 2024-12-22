@@ -17,7 +17,7 @@
 
 .dropdown {
   border-radius: var(--mantine-spacing-lg);
-  padding: 16px;
+  padding: 12px 4px 0;
   box-shadow: var(--mantine-shadow-lg);
 }
 

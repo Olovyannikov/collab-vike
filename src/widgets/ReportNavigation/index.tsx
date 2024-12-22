@@ -5,11 +5,14 @@ import { CaretDown } from '@phosphor-icons/react';
 import { useStoreMap, useUnit } from 'effector-react';
 
 import { $freeContent, $navigationIconMap } from '@/entities/PersonalityTypes';
+import { useIsLarge } from '@/shared/hooks';
 import { InnerContainer } from '@/shared/ui';
 
 import s from './ReportNavigation.module.css';
 
 export const ReportNavigation = () => {
+    const isLarge = useIsLarge();
+
     const content = useStoreMap({
         store: $freeContent,
         keys: ['title'],
@@ -20,30 +23,44 @@ export const ReportNavigation = () => {
 
     const [activeMenu, setActiveMenu] = useState(content[0]);
 
-    console.log({ content });
-
-    console.log({ activeMenu });
-
     return (
-        <InnerContainer style={{ zIndex: 1000 }} pos='sticky' top={0} py={20} mb={32} bg='white'>
-            <Menu closeOnItemClick keepMounted key={activeMenu} classNames={s}>
+        <InnerContainer style={{ zIndex: 1000 }} pos='sticky' top={0} py='lg' pb='md' mb={32} bg='white'>
+            <Menu
+                offset={16}
+                keepMounted
+                width='target'
+                classNames={s}
+                position='bottom'
+                key={activeMenu}
+                closeOnItemClick
+                middlewares={{
+                    flip: false,
+                }}
+            >
                 <Menu.Target>
                     <Button px={0} size='lg' variant='transparent' classNames={s} fullWidth justify='flex-start'>
-                        <Group gap={0} w='100%' justify='space-between' wrap='nowrap' align='center'>
-                            <Group gap='xs' wrap='nowrap'>
+                        <Group
+                            style={{ overflow: 'hidden' }}
+                            gap={0}
+                            w='100%'
+                            wrap='nowrap'
+                            align='center'
+                            justify={isLarge ? 'flex-start' : 'space-between'}
+                        >
+                            <Group gap='xs' wrap='nowrap' style={{ overflow: 'hidden' }}>
                                 <Paper p={10} radius='sm' bg='violet.1'>
                                     <Center>{icons[activeMenu]}</Center>
                                 </Paper>
-                                <Text ta='start' truncate='end' w='29ch' fz={20} fw='bold'>
+                                <Text ta='start' truncate='end' fz={20} fw='bold'>
                                     {activeMenu}
                                 </Text>
                             </Group>
-                            <CaretDown color='var(--mantine-color-dark-9)' size={20} />
+                            <CaretDown style={{ flex: '0 1 32px' }} color='var(--mantine-color-dark-9)' size={20} />
                         </Group>
                     </Button>
                 </Menu.Target>
 
-                <Menu.Dropdown>
+                <Menu.Dropdown w='auto'>
                     {content.map((title) => (
                         <Menu.Item
                             leftSection={
@@ -55,8 +72,8 @@ export const ReportNavigation = () => {
                         >
                             {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
                             {/* @ts-expect-error mistypes */}
-                            <Link spy hashSpy offset={50} to={`${title}`} onSetActive={setActiveMenu}>
-                                <Text fz={14} fw='bold'>
+                            <Link spy hashSpy offset={-100} to={title} onSetActive={setActiveMenu}>
+                                <Text span inline fz={14} fw='bold'>
                                     {title}
                                 </Text>
                             </Link>
