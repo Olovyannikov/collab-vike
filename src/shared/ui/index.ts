@@ -1,5 +1,6 @@
 export * from './BoldText';
 export * from './BlurFade';
+export * from './BackButton';
 export * from './MainButton';
 export * from './PageLoader';
 export * from './PointsBlock';

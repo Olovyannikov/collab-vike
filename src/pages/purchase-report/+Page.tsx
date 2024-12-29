@@ -1,31 +1,25 @@
-import { Container, Image, Stack, Text, Title } from '@mantine/core';
-import { useUnit } from 'effector-react';
+import { Box, Button, Container, Image } from '@mantine/core';
 
 import manImage from '@/app/assets/man-temp_large.webp';
-import { getRegularPriceQuery } from '@/entities/Payment';
-import { useIsLarge } from '@/shared/hooks';
-import { BackButton } from '@/shared/ui/BackButton';
+import { BackButton, InnerContainer } from '@/shared/ui';
+import { ReportBuyForm, ReportPriceInfo } from '@/widgets/BuyReport';
+
+import s from './PurchaseReportPage.module.css';
 
 export default function Page() {
-    const isLarge = useIsLarge();
-    const { data } = useUnit(getRegularPriceQuery);
-
     return (
-        <Container>
-            <BackButton mt={isLarge ? '5xl' : 0} />
-            <Stack gap='xs' align='center'>
-                <Image src={manImage} w={185} h={178} flex='auto' style={{ objectPosition: 'top' }} />
-                <Title mb='xxs' fz={20} ta='center' order={2}>
-                    Полный отчет по вашему типу личности
-                </Title>
-
-                <Text hidden={!data} fz={28} fw={700}>
-                    {data?.regular_price}{' '}
-                    <Text fz={28} fw={700} span ff='system-ui'>
-                        ₽
-                    </Text>
-                </Text>
-            </Stack>
+        <Container pb='5xl'>
+            <BackButton />
+            <InnerContainer className={s.wrapper}>
+                <Image src={manImage} width={185} height={178} flex='auto' />
+                <Box>
+                    <ReportPriceInfo />
+                    <ReportBuyForm />
+                    <Button fullWidth variant='transparent' c='dark.7' component='a' href='/help'>
+                        Служба поддержки
+                    </Button>
+                </Box>
+            </InnerContainer>
         </Container>
     );
 }

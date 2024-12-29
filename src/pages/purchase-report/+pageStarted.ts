@@ -7,5 +7,5 @@ export const pageStarted = createPageStart();
 
 sample({
     clock: pageStarted,
-    target: getRegularPriceQuery.start,
+    target: getRegularPriceQuery.refresh,
 });

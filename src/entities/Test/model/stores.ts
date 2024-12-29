@@ -4,6 +4,7 @@ import { submitAnswersMutation } from '../api';
 import { QuestionsResponse } from '../api/dto';
 import { Answers, PreparedAnswer } from '../types';
 
+const $surveyId = createStore<string | null>(null);
 const $preparedQuestions = createStore<QuestionsResponse[] | null>(null);
 
 const $currentPage = createStore<number>(1);
@@ -27,4 +28,5 @@ export const TestStores = {
     $scaleForm,
     $isSubmitModalShown,
     $currentProgress,
+    $surveyId,
 };

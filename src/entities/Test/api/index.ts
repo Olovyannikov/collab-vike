@@ -19,7 +19,7 @@ export const getQuestionsQuery = createQuery({
 });
 
 export const submitAnswersMutation = createMutation({
-    effect: createInternalRequestFx<Answers, void>((body) => ({
+    effect: createInternalRequestFx<Answers, { id: string }>((body) => ({
         url: `/api/v1/surveys/answers/submit`,
         method: HTTP_METHODS.POST,
         body,

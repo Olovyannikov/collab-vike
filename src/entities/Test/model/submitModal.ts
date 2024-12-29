@@ -43,6 +43,13 @@ sample({
 sample({
     clock: submitAnswersMutation.finished.success,
     filter: () => !window?.location.origin.includes('free-report'),
+    fn: ({ result }) => result.id,
+    target: TestStores.$surveyId,
+});
+
+sample({
+    clock: submitAnswersMutation.finished.success,
+    filter: () => !window?.location.origin.includes('free-report'),
     target: redirectToFreeReportPageFx,
 });
 

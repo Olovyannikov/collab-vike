@@ -23,4 +23,3 @@ sample({
     },
     target: $uuid,
 });
-$uuid.watch(console.log);
