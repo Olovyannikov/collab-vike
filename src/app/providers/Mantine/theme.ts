@@ -3,7 +3,7 @@ import { Container, createTheme } from '@mantine/core';
 export const theme = createTheme({
     fontFamily: 'Raleway, sans-serif',
     fontFamilyMonospace: 'Monaco, Courier, monospace',
-    headings: { fontFamily: 'Raleway, sans-serif' },
+    headings: { fontFamily: 'Raleway, Montserrat, system-ui, sans-serif' },
     spacing: {
         xxs: '4px',
         xs: '8px',

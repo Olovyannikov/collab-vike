@@ -1,8 +1,7 @@
 import { cache } from '@farfetched/core';
-import { sample } from 'effector';
-import { persist } from 'effector-storage/local';
-import { delay, or } from 'patronum';
-import { v4 as uuidv4 } from 'uuid';
+import { createEffect, sample } from 'effector';
+import { or } from 'patronum';
+import { navigate } from 'vike/client/router';
 
 import { getFreeResultQuery, getPersonalityTypesQuery } from '@/entities/PersonalityTypes';
 import { $reportName } from '@/entities/Report/model';
@@ -11,32 +10,21 @@ import { createPageStart } from '@/shared/utils/effector';
 
 export const pageStarted = createPageStart();
 
-const delayedPageStarted = delay(pageStarted, 1000);
 export const $isLoadingPage = or(getPersonalityTypesQuery.$pending, getFreeResultQuery.$pending);
 
-sample({
-    clock: delayedPageStarted,
-    source: $uuid,
-    fn: (uuid) => {
-        if (uuid.length > 0) return uuid;
-        return uuidv4();
-    },
-    target: $uuid,
-});
-
-persist({
-    store: $uuid,
-    pickup: pageStarted,
+const redirectToIndexPageFx = createEffect(async () => {
+    await navigate('/');
 });
 
 sample({
-    clock: delayedPageStarted,
+    clock: pageStarted,
     target: getPersonalityTypesQuery.start,
 });
 
 sample({
     clock: getPersonalityTypesQuery.finished.success,
     source: $uuid,
+    filter: (uuid) => Boolean(uuid.length),
     target: getFreeResultQuery.start,
 });
 
@@ -45,6 +33,11 @@ sample({
     source: getPersonalityTypesQuery.$data,
     fn: (result, { result: freeResult }) => result?.find((el) => el.code === freeResult?.mbti_type)?.name ?? '',
     target: $reportName,
+});
+
+sample({
+    clock: getFreeResultQuery.finished.failure,
+    target: redirectToIndexPageFx,
 });
 
 cache(getFreeResultQuery);

@@ -15,7 +15,7 @@ export default function Page() {
     const { name, data } = useUnit({ name: $reportName, data: $freeResult });
     const isLoading = useUnit($isLoadingPage);
 
-    if (isLoading) return <PageLoader />;
+    if (isLoading && !data) return <PageLoader />;
     if (!data) return null;
 
     return (

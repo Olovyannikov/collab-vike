@@ -72,7 +72,7 @@ export const ReportNavigation = () => {
                         >
                             {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
                             {/* @ts-expect-error mistypes */}
-                            <Link spy hashSpy offset={-100} to={title} onSetActive={setActiveMenu}>
+                            <Link delay={400} spy offset={-100} to={title} onSetActive={setActiveMenu}>
                                 <Text span inline fz={14} fw='bold'>
                                     {title}
                                 </Text>

@@ -1,0 +1,1 @@
+const a={URL:"https://api.dev.cognitivelab.ru",PERSONALITY_TYPES:"/api/v1/surveys/personality-types",PERSONALITY_TYPE:e=>`/api/v1/surveys/personality-types/${e}`,SEND_FREE_EMAIL:"/api/v1/surveys/free-report/email",GET_REGULAR_PRICE:"/api/v1/payments/regular-price"},s="/assets/static/man-temp_large.C17Lahl-.webp";export{a as A,s as m};
