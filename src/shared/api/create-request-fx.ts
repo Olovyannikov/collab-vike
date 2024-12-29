@@ -24,11 +24,16 @@ const createRequestInstance = <P = CreateRequestParams, R = void>({
     baseURL,
     headers,
     payload,
+    withTokenInHeaders,
 }: CreateRequestInstanceParams<P>) =>
     createEffect<P, R>((params): Promise<R> => {
         const { url, ...fetchOptions } = getConfig(payload, params);
 
         const newHeaders = new Headers(headers);
+
+        if (withTokenInHeaders) {
+            newHeaders.append('Authorization', `Token ${localStorage.getItem('$uuid')?.replaceAll('"', '')}`);
+        }
 
         return ofetch(url, {
             ...fetchOptions,

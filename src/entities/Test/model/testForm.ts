@@ -1,8 +1,11 @@
 import { sample } from 'effector';
+import { persist } from 'effector-storage/local';
 import { isArray, isNumber } from 'lodash-es';
 import { delay } from 'patronum';
 
 import type { MultiChoiceAnswer, ScaleChoiceAnswer, SingleChoiceAnswer } from '@/entities/Test';
+import { $uuid } from '@/entities/User';
+import { appService } from '@/shared/services/app';
 
 import { TestEvents } from './events';
 import { TestStores } from './stores';
@@ -100,4 +103,9 @@ sample({
         return page;
     },
     target: $currentPage,
+});
+
+persist({
+    store: $uuid,
+    pickup: appService.appStarted,
 });

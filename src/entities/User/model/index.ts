@@ -7,7 +7,7 @@ import { appService } from '@/shared/services/app';
 
 export const $uuid = createStore('');
 
-const delayedAppStarted = delay(appService.appStarted, 500);
+const delayedAppStarted = delay(appService.appStarted, 300);
 
 persist({
     store: $uuid,

@@ -1,11 +1,10 @@
-import { cache } from '@farfetched/core';
+import { cache, retry } from '@farfetched/core';
 import { createEffect, sample } from 'effector';
 import { or } from 'patronum';
 import { navigate } from 'vike/client/router';
 
 import { getFreeResultQuery, getPersonalityTypesQuery } from '@/entities/PersonalityTypes';
 import { $reportName } from '@/entities/Report/model';
-import { $uuid } from '@/entities/User';
 import { createPageStart } from '@/shared/utils/effector';
 
 export const pageStarted = createPageStart();
@@ -23,8 +22,6 @@ sample({
 
 sample({
     clock: getPersonalityTypesQuery.finished.success,
-    source: $uuid,
-    filter: (uuid) => Boolean(uuid.length),
     target: getFreeResultQuery.start,
 });
 
@@ -35,9 +32,11 @@ sample({
     target: $reportName,
 });
 
-sample({
-    clock: getFreeResultQuery.finished.failure,
-    target: redirectToIndexPageFx,
+retry(getFreeResultQuery, {
+    times: 5,
+    delay: 500,
+    // @ts-expect-error make issue
+    otherwise: redirectToIndexPageFx,
 });
 
 cache(getFreeResultQuery);
