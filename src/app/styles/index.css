@@ -5,3 +5,13 @@
 /* Components */
 @import url("./general/_fonts.css");
 @import url("./general/_scaffoldings.css");
+
+@view-transition {
+  navigation: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
+}

@@ -56754,7 +56754,7 @@ var init_src_pages_free_report = __esm({
     };
     pageStarted = createPageStart();
     $isLoadingPage = ke({
-      sid: "tm8un9",
+      sid: "t57892",
       fn: () => or2(getPersonalityTypesQuery.$pending, getFreeResultQuery.$pending),
       name: "$isLoadingPage",
       method: "or"
@@ -56763,7 +56763,7 @@ var init_src_pages_free_report = __esm({
       await navigate2("/");
     }, {
       name: "redirectToIndexPageFx",
-      sid: "oyzftu"
+      sid: "ohxtfn"
     });
     x({
       and: [{
@@ -56771,7 +56771,7 @@ var init_src_pages_free_report = __esm({
         target: getPersonalityTypesQuery.start
       }],
       or: {
-        sid: "-9vc7md"
+        sid: "-9vw07q"
       }
     });
     x({
@@ -56780,7 +56780,7 @@ var init_src_pages_free_report = __esm({
         target: getFreeResultQuery.start
       }],
       or: {
-        sid: "-9h1k6z"
+        sid: "-9hlcsc"
       }
     });
     x({
@@ -56796,11 +56796,11 @@ var init_src_pages_free_report = __esm({
         target: $reportName
       }],
       or: {
-        sid: "-9eal86"
+        sid: "-9eudtj"
       }
     });
     ke({
-      sid: "-8ywcm2",
+      sid: "-8zg57f",
       fn: () => Rr(getFreeResultQuery, {
         times: 5,
         delay: 500,
@@ -56811,13 +56811,13 @@ var init_src_pages_free_report = __esm({
       method: "retry"
     });
     ke({
-      sid: "-8ji3zy",
+      sid: "-8k1wlb",
       fn: () => Mr(getFreeResultQuery),
       name: "none",
       method: "cache"
     });
     ke({
-      sid: "-8iybel",
+      sid: "-8ji3zy",
       fn: () => Mr(getPersonalityTypesQuery),
       name: "none",
       method: "cache"
@@ -70254,7 +70254,7 @@ var init_entry = __esm({
           ]
         },
         "node_modules/vike/dist/esm/client/client-routing-runtime/entry.js": {
-          "file": "assets/entries/entry-client-routing.ZrJOZ8_z.js",
+          "file": "assets/entries/entry-client-routing.Dx1V7sHT.js",
           "name": "entries/entry-client-routing",
           "src": "node_modules/vike/dist/esm/client/client-routing-runtime/entry.js",
           "isEntry": true,
@@ -70339,7 +70339,7 @@ var init_entry = __esm({
           ]
         },
         "virtual:vike:pageConfigValuesAll:client:/src/pages/free-report": {
-          "file": "assets/entries/src_pages_free-report.JWgQr19D.js",
+          "file": "assets/entries/src_pages_free-report.CE-ThuKJ.js",
           "name": "entries/src/pages/free-report",
           "src": "virtual:vike:pageConfigValuesAll:client:/src/pages/free-report",
           "isEntry": true,

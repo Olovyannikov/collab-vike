@@ -1,31 +1,9 @@
-.label {
-  margin-bottom: var(--mantine-spacing-xxs);
-  font-weight: 600;
-  font-size: 14px;
-
-  @mixin larger-than 976px {
-    font-size: 16px;
-  }
-}
-
-.required {
-  font-size: 16px;
-}
-
 input[data-success="true"] {
   border-color: var(--mantine-color-green-8);
 }
 
 div:has(input[data-success="true"]) + p {
   color: var(--mantine-color-green-8);
-}
-
-.stackWrapper {
-  gap: var(--mantine-spacing-xl);
-
-  @mixin larger-than 976px {
-    gap: var(--mantine-spacing-3xl);
-  }
 }
 
 .promocodeLabel {
