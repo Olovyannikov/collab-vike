@@ -1,0 +1,1 @@
+import{r as U,ap as t}from"./chunk-Bh0Djd6l.js";function p(s,o){return u=>{s==null||s(u),o==null||o(u)}}function w({value:s,defaultValue:o,finalValue:u,onChange:c=()=>{}}){const[r,f]=U.useState(o!==void 0?o:u),m=(i,...x)=>{f(i),c==null||c(i,...x)};return s!==void 0?[s,c,!0]:[r,m,!1]}const I=()=>t("(min-width: 1200px"),b=()=>t("(min-width: 1440px)");export{I as a,b,p as c,w as u};

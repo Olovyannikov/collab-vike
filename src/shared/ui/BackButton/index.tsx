@@ -1,13 +1,17 @@
 import { Button, type ButtonProps } from '@mantine/core';
 import { ArrowLeft } from '@phosphor-icons/react';
+import { navigate } from 'vike/client/router';
 
-import { navigate } from '@/shared/utils/navigate';
+import { navigate as customNavigate } from '@/shared/utils/navigate';
 
 import s from './BackButton.module.css';
 
-type BackButtonProps = ButtonProps;
+interface BackButtonProps extends ButtonProps {
+    to?: string;
+    text?: string;
+}
 
-export const BackButton = ({ ...rest }: BackButtonProps) => {
+export const BackButton = ({ to, text = 'Назад', ...rest }: BackButtonProps) => {
     return (
         <Button
             {...rest}
@@ -15,10 +19,10 @@ export const BackButton = ({ ...rest }: BackButtonProps) => {
             component='a'
             variant='subtle'
             className={s.back}
-            onClick={navigate.back}
+            onClick={() => (to ? navigate(to) : customNavigate.back())}
             leftSection={<ArrowLeft />}
         >
-            Назад
+            {text}
         </Button>
     );
 };

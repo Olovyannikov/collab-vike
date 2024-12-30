@@ -22,7 +22,7 @@ export const Paywall = ({ title, buyButtonSlot, points }: PaywallProps) => {
             <PointsBlock points={points} />
             <Box
                 left={332}
-                bottom={-20}
+                bottom={-40}
                 pos={isLarge ? 'absolute' : 'static'}
                 maw={isLarge ? 'fit-content' : '100%'}
                 display={isLarge ? 'block' : 'contents'}

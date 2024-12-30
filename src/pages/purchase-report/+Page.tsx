@@ -1,6 +1,7 @@
-import { Box, Button } from '@mantine/core';
+import { Box } from '@mantine/core';
 
 import manImage from '@/app/assets/man-temp_large.webp';
+import { HelpNavigator } from '@/features/HelpNavigator';
 import { ReportBuyForm, ReportPriceInfo } from '@/widgets/BuyReport';
 import { InnerWrapper } from '@/widgets/InnerWrapper';
 
@@ -10,9 +11,7 @@ export default function Page() {
             <Box>
                 <ReportPriceInfo />
                 <ReportBuyForm />
-                <Button fullWidth variant='transparent' c='dark.7' component='a' href='/help'>
-                    Служба поддержки
-                </Button>
+                <HelpNavigator />
             </Box>
         </InnerWrapper>
     );

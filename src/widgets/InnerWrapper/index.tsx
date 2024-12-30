@@ -9,13 +9,22 @@ interface InnerWrapperProps {
     image?: string;
     text?: ReactNode;
     title?: ReactNode;
+    navigateTo?: string;
+    backButtonText?: string;
 }
 
-export const InnerWrapper = ({ children, image, title, text }: PropsWithChildren<InnerWrapperProps>) => {
+export const InnerWrapper = ({
+    children,
+    backButtonText,
+    navigateTo,
+    image,
+    title,
+    text,
+}: PropsWithChildren<InnerWrapperProps>) => {
     return (
         <Box component='section'>
             <Container pb='5xl'>
-                <BackButton />
+                <BackButton to={navigateTo} text={backButtonText} />
                 <InnerContainer className={s.wrapper}>
                     <Image src={image} width={185} height={178} flex='auto' />
                     <Stack w='100%'>
