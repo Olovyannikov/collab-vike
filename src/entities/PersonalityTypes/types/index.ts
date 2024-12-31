@@ -1,6 +1,6 @@
 import type { PersonalityType } from '@/shared/types/models';
 
-type ContentType =
+export type ContentType =
     | 'paragraph'
     | 'blockquote_line'
     | 'bar_chart'
@@ -11,6 +11,10 @@ type ContentType =
     | 'icon_list'
     | 'subscription'
     | 'conclusion_paywall'
+    | 'text_stroke_dash'
+    | 'subtitle'
+    | 'cards'
+    | ''
     | 'title';
 
 export interface ListItem {
@@ -31,7 +35,7 @@ export interface Content {
         points: string[];
         title: string;
         button_text: string;
-        items: ListItem[];
+        items: ListItem | ListItem[];
         mbti_percentages: Record<string, { negative: number; positive: number }>;
         mbti_data: Record<string, { text: string; type: 'header' | 'paragraph' }[]>;
         primary_button_text: string;
