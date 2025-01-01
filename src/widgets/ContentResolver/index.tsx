@@ -2,20 +2,20 @@ import { Element } from 'react-scroll';
 import { Stack, Title } from '@mantine/core';
 import { useList, useUnit } from 'effector-react';
 
-import { $freeContent } from '@/entities/PersonalityTypes';
+import { $currentContent } from '@/entities/PersonalityTypes';
 import { useIsLarge } from '@/shared/hooks';
 import { InnerContainer } from '@/shared/ui';
-import { resolver } from '@/widgets/ContentResolver/resolver';
 
 import s from './ContentResolver.module.css';
+import { resolver } from './resolver';
 
 export const ContentResolver = () => {
     const isLarge = useIsLarge();
-    const content = useUnit($freeContent);
+    const content = useUnit($currentContent);
 
     if (!content) return null;
 
-    const render = useList($freeContent, (item, idx) => (
+    const render = useList($currentContent, (item, idx) => (
         <Stack id={item.title} gap='md' mb={isLarge ? 100 : 60} key={idx}>
             {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
             {/* @ts-expect-error mistypes */}

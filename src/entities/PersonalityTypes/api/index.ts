@@ -4,7 +4,7 @@ import { createCommonRequestFx, createInternalRequestFx } from '@/shared/api';
 import { API } from '@/shared/api/contants';
 import type { PersonalityType } from '@/shared/types/models';
 
-import type { FreeResult } from '../types';
+import type { ContentResult } from '../types';
 import type { PersonalityTypesResponse } from './dto';
 
 export const getPersonalityTypesQuery = createQuery({
@@ -21,7 +21,7 @@ export const getPersonalityTypeQuery = createQuery({
 });
 
 export const getFreeResultQuery = createQuery({
-    effect: createInternalRequestFx<void, FreeResult>(() => ({
+    effect: createInternalRequestFx<void, ContentResult>(() => ({
         url: `/api/v1/surveys/free-report`,
     })),
 });

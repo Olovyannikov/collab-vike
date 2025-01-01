@@ -7,13 +7,11 @@ interface CardsProps {
 }
 
 export const Cards = ({ items }: CardsProps) => {
-    console.log({ items });
-
     return (
         <Grid grow>
             {items.map((item, index) => (
                 <Grid.Col key={index} span={6}>
-                    <Paper radius={30} px='3xl' py={22} bg='violet.0'>
+                    <Paper h='100%' radius={30} px='3xl' py={22} bg='violet.0'>
                         <Stack gap='xs'>
                             <Title c='violet.9' fz={24} order={4}>
                                 {item.title}

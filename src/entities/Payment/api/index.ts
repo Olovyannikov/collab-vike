@@ -1,6 +1,6 @@
 import { createMutation, createQuery } from '@farfetched/core';
 
-import { PurchasedReportRequest } from '@/entities/Payment';
+import { PurchasedReportRequest, SurveysInfoResponse } from '@/entities/Payment';
 import { createInternalRequestFx } from '@/shared/api';
 import { API } from '@/shared/api/contants';
 import { HTTP_METHODS } from '@/shared/api/methods';
@@ -35,5 +35,12 @@ export const purchaseReportMutation = createMutation({
         url: API.PURCHASE_REPORT,
         method: HTTP_METHODS.POST,
         body,
+    })),
+});
+
+export const getSurveysInfoQuery = createQuery({
+    effect: createInternalRequestFx<{ id: string }, SurveysInfoResponse>((params) => ({
+        url: API.SURVEYS_INFO,
+        params,
     })),
 });

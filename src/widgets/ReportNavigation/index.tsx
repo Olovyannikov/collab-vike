@@ -4,7 +4,7 @@ import { Button, Center, Group, Menu, Paper, Text } from '@mantine/core';
 import { CaretDown } from '@phosphor-icons/react';
 import { useStoreMap, useUnit } from 'effector-react';
 
-import { $freeContent, $navigationIconMap } from '@/entities/PersonalityTypes';
+import { $navigationIconMap, getFreeResultQuery } from '@/entities/PersonalityTypes';
 import { useIsLarge } from '@/shared/hooks';
 import { InnerContainer } from '@/shared/ui';
 
@@ -14,14 +14,14 @@ export const ReportNavigation = () => {
     const isLarge = useIsLarge();
 
     const content = useStoreMap({
-        store: $freeContent,
+        store: getFreeResultQuery.$data,
         keys: ['title'],
-        fn: (content) => content.map(({ title }) => title),
+        fn: (content) => content?.content.map(({ title }) => title),
     });
 
     const icons = useUnit($navigationIconMap);
 
-    const [activeMenu, setActiveMenu] = useState(content[0]);
+    const [activeMenu, setActiveMenu] = useState(content?.[0] ?? 'Введение');
 
     return (
         <InnerContainer style={{ zIndex: 1000 }} pos='sticky' top={0} py='lg' pb='md' mb={32} bg='white'>
@@ -61,7 +61,7 @@ export const ReportNavigation = () => {
                 </Menu.Target>
 
                 <Menu.Dropdown w='auto'>
-                    {content.map((title) => (
+                    {content?.map((title) => (
                         <Menu.Item
                             leftSection={
                                 <Paper p='xxs' radius='xs' bg='violet.1'>

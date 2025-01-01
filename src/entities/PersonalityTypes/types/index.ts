@@ -14,7 +14,6 @@ export type ContentType =
     | 'text_stroke_dash'
     | 'subtitle'
     | 'cards'
-    | ''
     | 'title';
 
 export interface ListItem {
@@ -43,7 +42,7 @@ export interface Content {
     }[];
 }
 
-export interface FreeResult {
+export interface ContentResult {
     title: string;
     mbti_type: PersonalityType;
     content: {

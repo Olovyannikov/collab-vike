@@ -1,7 +1,7 @@
 import { Box, Container } from '@mantine/core';
 import { useUnit } from 'effector-react';
 
-import { $freeResult } from '@/entities/PersonalityTypes';
+import { getFreeResultQuery } from '@/entities/PersonalityTypes';
 import { $reportName } from '@/entities/Report';
 import { SendReportEmail } from '@/features/SendReportEmail';
 import { PageLoader } from '@/shared/ui';
@@ -12,7 +12,8 @@ import { ReportNavigation } from '@/widgets/ReportNavigation';
 import { $isLoadingPage } from './+pageStarted';
 
 export default function Page() {
-    const { name, data } = useUnit({ name: $reportName, data: $freeResult });
+    const { data } = useUnit(getFreeResultQuery);
+    const { name } = useUnit({ name: $reportName });
     const isLoading = useUnit($isLoadingPage);
 
     if (isLoading && !data) return <PageLoader />;
