@@ -1,14 +1,15 @@
 import { Title } from '@mantine/core';
 
-import type { ContentType, ListItem } from '@/entities/PersonalityTypes';
 import {
     BarChart,
     BlockquoteLine,
     Cards,
     ConclusionPaywall,
+    type ContentType,
     FilledBulletList,
     Header,
     IconList,
+    type ListItem,
     MainTitle,
     OrderedCards,
     Paragraph,

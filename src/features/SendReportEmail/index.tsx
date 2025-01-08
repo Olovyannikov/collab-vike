@@ -18,20 +18,25 @@ interface SendReportEmailProps {
 
 export const SendReportEmail = ({ isFreeReport = true, type = 'text' }: SendReportEmailProps) => {
     const isLarge = useIsLarge();
-    const { fields, onSubmit, isValid, onValidate } = useForm(sendReportForm);
+    const {
+        fields: { email },
+        onSubmit,
+        isValid,
+        onValidate,
+    } = useForm(sendReportForm);
     const isLoading = useUnit(sendFreeReportOnEmailMutation.$pending);
     const isButtonDisabled = isLoading;
 
-    const onS: FormEventHandler<HTMLFormElement> = (e) => {
+    const onSubmitReport: FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault();
         onValidate();
 
-        if (!isValid) onSubmit(e);
+        if (isValid) onSubmit(e);
     };
 
     return (
         <InnerContainer className={type === 'block' ? s.container : ''}>
-            <form onSubmit={isFreeReport ? onS : () => {}}>
+            <form onSubmit={isFreeReport ? onSubmitReport : () => {}}>
                 <Flex className={s.wrapper}>
                     {type === 'text' && (
                         <Text fw='bold' visibleFrom='md' fz={24}>
@@ -39,17 +44,16 @@ export const SendReportEmail = ({ isFreeReport = true, type = 'text' }: SendRepo
                         </Text>
                     )}
                     <TextInput
-                        required
                         inputMode='email'
                         disabled={isLoading}
                         placeholder='name@mail.ru'
-                        value={fields.email.value}
-                        error={fields.email.error}
+                        value={email.value}
+                        error={email.error}
                         miw={isLarge ? 514 : '100%'}
                         ml={type === 'text' ? 'auto' : 0}
                         size={type === 'block' ? 'lg' : 'md'}
                         bg={type === 'block' ? 'violet.0' : 'white'}
-                        onChange={(e) => fields.email.onChange(e.target.value)}
+                        onChange={(e) => email.onChange(e.target.value)}
                     />
                     <Button
                         type='submit'

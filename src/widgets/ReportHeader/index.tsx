@@ -2,8 +2,8 @@ import { Image, Paper, Stack, Text, Title } from '@mantine/core';
 
 import circleImage from '@/app/assets/circle.svg';
 import circleSmallImage from '@/app/assets/circle_small.svg';
+import type { PersonalityType } from '@/entities/Report';
 import { useIsLarge } from '@/shared/hooks';
-import type { PersonalityType } from '@/shared/types/models';
 
 import s from './ReportHeader.module.css';
 

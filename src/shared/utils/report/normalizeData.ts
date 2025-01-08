@@ -1,4 +1,4 @@
-import type { ContentResult } from '@/entities/PersonalityTypes';
+import type { ContentResult } from '@/entities/Report';
 
 export function normalizeData(data: ContentResult) {
     return data.content

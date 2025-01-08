@@ -1,4 +1,4 @@
-import type { PersonalityType } from '@/shared/types/models';
+import { PersonalityType } from '@/entities/Report/api/dto';
 
 export const API = {
     URL: import.meta.env.VITE_BASE_URL,

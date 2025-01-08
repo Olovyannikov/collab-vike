@@ -1,8 +1,7 @@
 import { Box, Container } from '@mantine/core';
 import { useUnit } from 'effector-react';
 
-import { getFreeResultQuery } from '@/entities/PersonalityTypes';
-import { $reportName } from '@/entities/Report';
+import { $reportName, getFreeResultQuery } from '@/entities/Report';
 import { SendReportEmail } from '@/features/SendReportEmail';
 import { PageLoader } from '@/shared/ui';
 import { ContentResolver } from '@/widgets/ContentResolver';

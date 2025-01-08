@@ -1,3 +1,7 @@
+h5 + h5 {
+  margin-top: 0 !important;
+}
+
 .title {
   &:first-child {
     margin-top: 0 !important;

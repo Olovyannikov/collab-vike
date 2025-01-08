@@ -35,3 +35,5 @@ sample({
     fn: ({ params: { email } }) => email,
     target: showUserEmailNotificationFx,
 });
+
+sendReportForm.$values.watch(console.log);

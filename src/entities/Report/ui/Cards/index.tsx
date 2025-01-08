@@ -1,6 +1,6 @@
 import { Grid, Paper, Stack, Text, Title } from '@mantine/core';
 
-import type { ListItem } from '@/entities/PersonalityTypes';
+import type { ListItem } from '@/entities/Report';
 
 interface CardsProps {
     items: ListItem[];

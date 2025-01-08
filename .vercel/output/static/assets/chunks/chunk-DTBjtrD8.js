@@ -1,1 +1,0 @@
-const e="_paper_1h3wh_1",_="_stack_1h3wh_18",t="_personalityType_1h3wh_29",p="_name_1h3wh_37",a="_type_1h3wh_45",s="_image_1h3wh_53",n={paper:e,stack:_,personalityType:t,name:p,type:a,image:s};export{n as s};

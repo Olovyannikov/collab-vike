@@ -1,1 +1,0 @@
-import{r as l,aI as o}from"./chunk-CPOvvIjG.js";function p({value:s,defaultValue:e,finalValue:u,onChange:t=()=>{}}){const[c,i]=l.useState(e!==void 0?e:u),n=(r,...d)=>{i(r),t==null||t(r,...d)};return s!==void 0?[s,t,!0]:[c,n,!1]}const m=()=>o("(min-width: 1200px"),x=()=>o("(min-width: 1440px)");export{m as a,x as b,p as u};

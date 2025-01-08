@@ -32,7 +32,7 @@ export const Header = () => {
                 <a className={s.logo} href='/'>
                     <Image src={logoUrl} height={20} width={125} alt='Cognitive Lab логотип' />
                 </a>
-                <Group gap={5} visibleFrom='sm'>
+                <Group w='100%' gap={5} visibleFrom='sm'>
                     {items}
                 </Group>
                 <Drawer hiddenFrom='sm' opened={opened} onClose={close} size='75%'>

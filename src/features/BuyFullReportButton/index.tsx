@@ -2,7 +2,7 @@ import { Image } from '@mantine/core';
 import { useUnit } from 'effector-react';
 
 import keyIconImage from '@/app/assets/icons/BuyIcon.webp';
-import { getFreeResultQuery } from '@/entities/PersonalityTypes';
+import { getFreeResultQuery } from '@/entities/Report';
 import { useIsLarge } from '@/shared/hooks';
 import { MainButton } from '@/shared/ui';
 

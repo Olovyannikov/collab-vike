@@ -1,7 +1,7 @@
 import { createMutation, createQuery } from '@farfetched/core';
 
-import { ContentResult } from '@/entities/PersonalityTypes';
-import { createInternalRequestFx } from '@/shared/api';
+import { ContentResult, type PersonalityType, type PersonalityTypesResponse } from '@/entities/Report';
+import { createCommonRequestFx, createInternalRequestFx } from '@/shared/api';
 import { API } from '@/shared/api/contants';
 import { HTTP_METHODS } from '@/shared/api/methods';
 
@@ -16,5 +16,24 @@ export const sendFreeReportOnEmailMutation = createMutation({
 export const getFullReportQuery = createQuery({
     effect: createInternalRequestFx<{ id: string }, ContentResult>((user) => ({
         url: API.FULL_REPORT(user.id),
+    })),
+});
+
+export const getPersonalityTypesQuery = createQuery({
+    effect: createCommonRequestFx<void, PersonalityTypesResponse[]>(() => ({
+        url: API.PERSONALITY_TYPES,
+    })),
+    mapData: ({ result }) => result.map((el) => el.types).flat(),
+});
+
+export const getPersonalityTypeQuery = createQuery({
+    effect: createCommonRequestFx<PersonalityType, void>((type) => ({
+        url: API.PERSONALITY_TYPE(type),
+    })),
+});
+
+export const getFreeResultQuery = createQuery({
+    effect: createInternalRequestFx<void, ContentResult>(() => ({
+        url: `/api/v1/surveys/free-report`,
     })),
 });

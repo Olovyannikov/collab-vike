@@ -1,11 +1,16 @@
 .inner,
 .label {
   width: 100%;
+  height: auto;
   color: var(--mantine-color-dark-9);
 
   svg {
     color: var(--mantine-color-violet-9);
   }
+}
+
+[data-block] {
+  height: auto;
 }
 
 .dropdownIcon {
@@ -15,8 +20,10 @@
   }
 
   @mixin larger-than 768px {
-    width: 20px;
-    height: 20px;
+    svg {
+      width: 20px;
+      height: 20px;
+    }
   }
 }
 

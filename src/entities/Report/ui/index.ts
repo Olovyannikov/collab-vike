@@ -1,4 +1,5 @@
 export * from './Cards';
+export * from './Banner';
 export * from './Header';
 export * from './Paywall';
 export * from './BarChart';

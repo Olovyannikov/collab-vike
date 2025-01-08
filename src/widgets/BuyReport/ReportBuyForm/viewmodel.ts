@@ -2,7 +2,7 @@ import { useForm } from '@mantine/form';
 import { useUnit } from 'effector-react';
 
 import type { PurchasedReportRequest } from '@/entities/Payment';
-import { getFreeResultQuery } from '@/entities/PersonalityTypes';
+import { getFreeResultQuery } from '@/entities/Report';
 import { TestStores } from '@/entities/Test';
 
 import { reportPurchased } from './model';

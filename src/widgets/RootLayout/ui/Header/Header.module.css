@@ -16,9 +16,16 @@
 }
 
 .logo {
+  display: flex;
+  align-items: center;
+
   @mixin larger-than 768px {
-    width: 197px;
-    height: 32px;
+    margin-right: 52px;
+
+    img {
+      width: 200px;
+      height: 32px;
+    }
   }
 }
 
@@ -26,11 +33,15 @@
   display: block;
   border-radius: var(--mantine-radius-sm);
   padding: rem(8px) rem(12px);
-  font-weight: 500;
-  font-size: var(--mantine-font-size-sm);
+  font-weight: 600;
+  font-size: var(--mantine-font-size-lg);
   line-height: 1;
   text-decoration: none;
   color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0));
+
+  &:not(:last-child) {
+    margin-right: auto;
+  }
 
   [data-mantine-color-scheme] &[data-active] {
     color: var(--mantine-color-white);

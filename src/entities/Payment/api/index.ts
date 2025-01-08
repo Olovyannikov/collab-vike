@@ -1,9 +1,10 @@
 import { createMutation, createQuery } from '@farfetched/core';
 
-import { PurchasedReportRequest, SurveysInfoResponse } from '@/entities/Payment';
 import { createInternalRequestFx } from '@/shared/api';
 import { API } from '@/shared/api/contants';
 import { HTTP_METHODS } from '@/shared/api/methods';
+
+import type { PurchasedReportRequest, SurveysInfoResponse } from '../types';
 
 export const getRegularPriceQuery = createQuery({
     effect: createInternalRequestFx<void, { regular_price: number }>(() => ({

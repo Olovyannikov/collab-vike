@@ -3,7 +3,7 @@ import { createEffect, sample } from 'effector';
 import { or } from 'patronum';
 import { navigate } from 'vike/client/router';
 
-import { getFreeResultQuery, getPersonalityTypesQuery } from '@/entities/PersonalityTypes';
+import { getFreeResultQuery, getPersonalityTypesQuery } from '@/entities/Report';
 import { $reportName } from '@/entities/Report/model';
 import { createPageStart } from '@/shared/utils/effector';
 

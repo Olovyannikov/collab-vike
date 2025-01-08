@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { Link } from 'react-scroll';
 import { Button, Center, Group, Menu, Paper, Text } from '@mantine/core';
 import { CaretDown } from '@phosphor-icons/react';
-import { useStoreMap, useUnit } from 'effector-react';
+import { useStoreMap } from 'effector-react';
 
-import { $navigationIconMap, getFreeResultQuery } from '@/entities/PersonalityTypes';
+import { getFreeResultQuery, getIconsMap } from '@/entities/Report';
 import { useIsLarge } from '@/shared/hooks';
 import { InnerContainer } from '@/shared/ui';
 
@@ -19,7 +19,7 @@ export const ReportNavigation = () => {
         fn: (content) => content?.content.map(({ title }) => title),
     });
 
-    const icons = useUnit($navigationIconMap);
+    const icons = getIconsMap(isLarge);
 
     const [activeMenu, setActiveMenu] = useState(content?.[0] ?? 'Введение');
 
