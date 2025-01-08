@@ -1,8 +1,5 @@
 import { Flex, Group, Image, Title } from '@mantine/core';
 
-import lockImage from '@/app/assets/icons/lock.webp';
-import menLargeUrl from '@/app/assets/man-temp_large.webp';
-import menUrl from '@/app/assets/men-temp.webp';
 import { useIsLarge } from '@/shared/hooks';
 
 export const Top = ({ title }: { title: string }) => {
@@ -17,12 +14,12 @@ export const Top = ({ title }: { title: string }) => {
             justify={isLarge ? 'flex-end' : 'space-between'}
         >
             <Group gap='xs'>
-                <Image w={32} h={32} src={lockImage} />
+                <Image w={32} h={32} src='/images/lock.webp' />
                 <Title fz={isLarge ? 32 : 20} textWrap='balance' maw={isLarge ? 'fit-content' : 175}>
                     {title}
                 </Title>
             </Group>
-            <Image src={isLarge ? menLargeUrl : menUrl} w={isLarge ? 351 : 126} h={isLarge ? 311 : 116} />
+            <Image src={`/images/men-temp${isLarge ? '_large' : ''}`} w={isLarge ? 351 : 126} h={isLarge ? 311 : 116} />
         </Flex>
     );
 };

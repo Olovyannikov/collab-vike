@@ -1,6 +1,5 @@
 import { Text } from '@mantine/core';
 
-import manImage from '@/app/assets/man-temp_large.webp';
 import { HelpForm } from '@/widgets/HelpForm';
 import { InnerWrapper } from '@/widgets/InnerWrapper';
 
@@ -28,7 +27,7 @@ export default function Page() {
                     .
                 </>
             }
-            image={manImage}
+            image='/images/men-temp_large.webp'
         >
             <HelpForm />
         </InnerWrapper>

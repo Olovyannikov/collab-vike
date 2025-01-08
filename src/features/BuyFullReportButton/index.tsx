@@ -1,7 +1,6 @@
 import { Image } from '@mantine/core';
 import { useUnit } from 'effector-react';
 
-import keyIconImage from '@/app/assets/icons/BuyIcon.webp';
 import { getFreeResultQuery } from '@/entities/Report';
 import { useIsLarge } from '@/shared/hooks';
 import { MainButton } from '@/shared/ui';
@@ -24,7 +23,7 @@ export const BuyFullReportButton = ({ buttonText = 'Купить полный о
             size={isLarge ? 'lg' : 'md'}
             radius={isLarge ? 'md' : 'sm'}
             href={`/purchase-report?mbti=${mbti?.mbti_type}`}
-            leftSection={<Image src={keyIconImage} w={20} h={20} />}
+            leftSection={<Image src='/images/BuyIcon.webp' w={20} h={20} />}
         >
             {buttonText}
         </MainButton>
