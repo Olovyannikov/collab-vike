@@ -4,8 +4,8 @@ import { Image, Paper, Stack, Text, Title } from '@mantine/core';
 import { useIsHuge, useIsLarge } from '@/shared/hooks';
 
 interface SubscriptionProps {
-    title: string;
-    text: string;
+    title?: string;
+    text?: string;
     subscriptionFormSlot?: ReactNode;
 }
 

@@ -6,9 +6,9 @@ import { isNumber } from 'lodash-es';
 import { $currentContent } from '@/entities/Report';
 import { useIsLarge } from '@/shared/hooks';
 import { InnerContainer } from '@/shared/ui';
+import { resolver } from '@/shared/utils/report/resolver';
 
 import s from './ContentResolver.module.css';
-import { resolver } from './resolver';
 
 interface ContentResolverProps {
     page?: number;

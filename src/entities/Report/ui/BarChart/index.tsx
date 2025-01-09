@@ -1,14 +1,16 @@
 import { Box, Group, Paper, Popover, Slider, Stack, Transition } from '@mantine/core';
 import { Info } from '@phosphor-icons/react/dist/ssr';
 
-import { Header, Paragraph } from '@/entities/Report';
 import { useIsLarge } from '@/shared/hooks';
 
+import type { Mark } from '../../types';
+import { Header } from '../Header';
+import { Paragraph } from '../Paragraph';
 import s from './BarChart.module.css';
-import { type Mark, useBarChartViewModel } from './viewmodel';
+import { useBarChartViewModel } from './viewmodel';
 
 interface BarChartProps {
-    marks: Mark[];
+    marks?: Mark[];
 }
 
 const TypeToColorMap: Record<string, string> = {
@@ -25,7 +27,7 @@ export const BarChart = ({ marks }: BarChartProps) => {
     return (
         <Group align='stretch' gap='lg' mb={isLarge ? 100 : 0} mt={isLarge ? '5xl' : 0}>
             <Stack flex={1} mt={isLarge ? 0 : 40} mb={isLarge ? 0 : 60} gap={isLarge ? 74 : 84}>
-                {marks.map((mark, i) => (
+                {marks?.map((mark, i) => (
                     <Box key={i} onMouseOver={() => isLarge && onSelectItemMouseOverHandler(mark)}>
                         <Popover offset={40} width='90%' position='top' shadow='sm'>
                             <Popover.Target>

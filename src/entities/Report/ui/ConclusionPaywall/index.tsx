@@ -5,8 +5,8 @@ import { useIsLarge } from '@/shared/hooks';
 import { PointsBlock } from '@/shared/ui';
 
 interface ConclusionPaywallProps {
-    text: string;
-    title: string;
+    text?: string;
+    title?: string;
     points?: string[];
     buyButtonSlot?: ReactNode;
     extraContentSlot?: ReactNode;

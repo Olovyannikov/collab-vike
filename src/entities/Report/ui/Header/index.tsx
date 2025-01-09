@@ -1,6 +1,6 @@
 import { Title, type TitleProps } from '@mantine/core';
 
-import { useIsLarge } from '@/shared/hooks';
+import { useIsMedium } from '@/shared/hooks';
 
 import s from './ReportHeader.module.css';
 
@@ -9,7 +9,7 @@ interface HeaderProps extends TitleProps {
 }
 
 export const Header = ({ text, c = 'violet.9', ...props }: HeaderProps) => {
-    const isLarge = useIsLarge();
+    const isLarge = useIsMedium();
 
     return (
         <Title

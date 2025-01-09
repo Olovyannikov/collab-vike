@@ -7,9 +7,9 @@ import { PointsBlock } from '@/shared/ui';
 import { Top } from './Top';
 
 interface PaywallProps {
-    points: string[];
-    title: string;
-    buttonText: string;
+    points?: string[];
+    title?: string;
+    buttonText?: string;
     buyButtonSlot?: ReactNode;
 }
 
@@ -18,7 +18,7 @@ export const Paywall = ({ title, buyButtonSlot, points }: PaywallProps) => {
 
     return (
         <Stack gap='lg' align='center' pos='relative' mt={isLarge ? 60 : 0}>
-            <Top title={title} />
+            <Top title={title ?? ''} />
             <PointsBlock points={points} />
             <Box
                 left={332}

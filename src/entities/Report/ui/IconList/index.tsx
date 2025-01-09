@@ -3,13 +3,11 @@ import { CheckCircle } from '@phosphor-icons/react/dist/ssr';
 
 import { useIsLarge } from '@/shared/hooks';
 
+import type { ListItem } from '../../types';
 import s from './IconList.module.css';
 
 interface IconListProps {
-    items: {
-        text: string;
-        type: 'paragraph' | 'title_paragraph';
-    }[];
+    items: ListItem[];
 }
 
 export const IconList = ({ items }: IconListProps) => {

@@ -19,7 +19,11 @@ export const Top = ({ title }: { title: string }) => {
                     {title}
                 </Title>
             </Group>
-            <Image src={`/images/men-temp${isLarge ? '_large' : ''}`} w={isLarge ? 351 : 126} h={isLarge ? 311 : 116} />
+            <Image
+                w={isLarge ? 351 : 126}
+                h={isLarge ? 311 : 116}
+                src={`/images/men-temp${isLarge ? '_large' : ''}.webp`}
+            />
         </Flex>
     );
 };

@@ -19,6 +19,16 @@
 
   &[data-type="J-P"] {
     &::before {
+      content: "Суждение";
+    }
+
+    &::after {
+      content: "Восприятие";
+    }
+  }
+
+  &[data-type="S-N"] {
+    &::before {
       content: "Интуиция";
     }
 
@@ -27,23 +37,13 @@
     }
   }
 
-  &[data-type="S-N"] {
+  &[data-type="T-F"] {
     &::before {
       content: "Логика";
     }
 
     &::after {
       content: "Чувства";
-    }
-  }
-
-  &[data-type="T-F"] {
-    &::before {
-      content: "Суждение";
-    }
-
-    &::after {
-      content: "Восприятие";
     }
   }
 }

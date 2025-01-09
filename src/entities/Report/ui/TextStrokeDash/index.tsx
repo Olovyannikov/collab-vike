@@ -1,4 +1,6 @@
-import { Paper, Text } from '@mantine/core';
+import { Paper } from '@mantine/core';
+
+import { Paragraph } from '@/entities/Report';
 
 import s from './TextStrokeDash.module.css';
 
@@ -9,7 +11,7 @@ interface TextStrokeDashProps {
 export const TextStrokeDash = ({ text }: TextStrokeDashProps) => {
     return (
         <Paper className={s.paper}>
-            <Text fz={22}>{text}</Text>
+            <Paragraph fz={22} text={text} />
         </Paper>
     );
 };

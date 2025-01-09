@@ -14,15 +14,20 @@ export type ContentType =
     | 'text_stroke_dash'
     | 'subtitle'
     | 'cards'
+    | 'ordered_list'
     | 'title';
 
 export interface ListItem {
-    text: string;
-    type: 'paragraph' | 'title_paragraph';
+    text?: string;
+    type?: 'paragraph' | 'title_paragraph';
     title?: string;
     color?: 'primary' | 'secondary';
     order?: number;
     highlight?: null;
+    content?: {
+        text: string;
+        type: ContentType;
+    }[];
 }
 
 export interface Content {
@@ -49,4 +54,14 @@ export interface ContentResult {
         title: string;
         content: Content[];
     }[];
+}
+
+export interface Mark {
+    value: number;
+    label: string;
+    data: {
+        text: string;
+        type: 'paragraph' | 'header';
+    }[];
+    mbti_type: string[];
 }

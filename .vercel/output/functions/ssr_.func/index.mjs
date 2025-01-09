@@ -51098,15 +51098,6 @@ var init_chunk_BRRiLWPw = __esm({
   }
 });
 
-// dist/server/chunks/chunk-DvF6Lyv-.js
-var manImage;
-var init_chunk_DvF6Lyv = __esm({
-  "dist/server/chunks/chunk-DvF6Lyv-.js"() {
-    "use strict";
-    manImage = "/assets/static/man-temp_large.C17Lahl-.webp";
-  }
-});
-
 // dist/server/chunks/chunk-BikPkIUV.js
 var root2, track, bar, thumb, label, icon, s32;
 var init_chunk_BikPkIUV = __esm({
@@ -58318,7 +58309,7 @@ var init_chunk_DK20jVfX = __esm({
   }
 });
 
-// dist/server/chunks/chunk-BUmGGTfn.js
+// dist/server/chunks/chunk-i5EuwYMZ.js
 function isListItemArray(value) {
   return Array.isArray(value);
 }
@@ -58330,9 +58321,9 @@ function barChartPrepareData(item3) {
     mbti_type: Object.keys(item3.mbti_data)
   }));
 }
-var import_jsx_runtime173, import_react_scroll, import_react257, BoldText, PointsBlock, Cards, Header2, lockImage, menUrl, Top, Paywall, useBarChartViewModel, TypeToColorMap, BarChart, IconList, MainTitle, regex, Paragraph, OrderedCards, envelopeImage, Subscription, BlockquoteLine, TextStrokeDash, FilledBulletList, gemImage, sparklesImage, ConclusionPaywall, getIconsMap, SendReportSchema, sendReportForm, showUserEmailNotificationFx, SendReportEmail, keyIconImage, BuyFullReportButton, resolver, ContentResolver, circleImage, circleSmallImage, ReportHeader;
-var init_chunk_BUmGGTfn = __esm({
-  "dist/server/chunks/chunk-BUmGGTfn.js"() {
+var import_jsx_runtime173, import_react_scroll, import_react257, BoldText, PointsBlock, Cards, Header2, Top, Paywall, useBarChartViewModel, TypeToColorMap, BarChart, IconList, MainTitle, regex, Paragraph, OrderedCards, Subscription, BlockquoteLine, TextStrokeDash, FilledBulletList, ConclusionPaywall, getIconsMap, SendReportSchema, sendReportForm, showUserEmailNotificationFx, SendReportEmail, BuyFullReportButton, resolver, ContentResolver, circleImage, circleSmallImage, ReportHeader;
+var init_chunk_i5EuwYMZ = __esm({
+  "dist/server/chunks/chunk-i5EuwYMZ.js"() {
     "use strict";
     import_jsx_runtime173 = __toESM(require_jsx_runtime(), 1);
     init_ssr();
@@ -58349,7 +58340,6 @@ var init_chunk_BUmGGTfn = __esm({
     init_chunk_a_vQjrVb();
     init_chunk_BRRiLWPw();
     init_clsx();
-    init_chunk_DvF6Lyv();
     init_chunk_BikPkIUV();
     init_chunk_alFISafC();
     init_chunk_pUEbsvnZ();
@@ -58403,18 +58393,16 @@ var init_chunk_BUmGGTfn = __esm({
       const isLarge = useIsLarge();
       return /* @__PURE__ */ (0, import_jsx_runtime173.jsx)(Title, { className: s31.title, mt: c30 === "black" ? 60 : 0, lh: 1.1, order: 5, fz: isLarge ? 32 : 18, c: c30 === "primary" ? "violet.9" : c30, ...props, children: text6 });
     };
-    lockImage = "data:image/webp;base64,UklGRioCAABXRUJQVlA4WAoAAAAQAAAAHQAAHgAAQUxQSPYAAAANgLNt2/nlfn/Ztm3brqlNs7n3AYypD+Caamrqv2Vzq8m2jff35/M7fltjREwA5NWTwkQJf6SEmmRP4XhucEPURfXsdQIAz8yKvcYHaT6DACCCAeXNJQdSzCeA19HhXR5SXWHg01nzIqEFeKgEgJ2+qz77xNwuml0xUAPtkzM9aBp6I+UCS1c6MBgVa1U0TkoHFCAOVCJjnhQOrFFms+B9SPIC9ijXjnC4IZkBL5Rffej/EsZSAGw7iKIWxl4A/6nVUh1BAODKGNOiVd+FHev4X/00lufLSB65u06ZHhMEgTEAoshFzjm316XYF/9EzrkoQrLAIStWUDggDgEAALAGAJ0BKh4AHwA+hTaYR6UjIqEwDACgEIlmALb6gyCZbL5QBM37oAbcz74/ndR552iLp+1d0lh7u67trxiAAP7TFpbX7at0KLp4nyWObpej8jbj3L6mvdjJp0fOugwm3ACx0nBBn52dA8cYsw+k5+V/2I8NjIj5cAw7eff12KgOdvhRKTY6JfsuLdrLXX78UPWyCLi+zgXP6zG44A9ZueyKD/s4zE2FYSB6vmjLkT/xrVOof8zmUhnXZaSpAjvJuVk9W1PPuXdKpSVe8otPvlcJTzqRwWqoDdrFX4/pcN+8Q2vqoX8gTj79tTEtdta7Wwu1n12ICPcbN011J/5oRZvEX5ClNu/tPjiG/2w8AA==";
-    menUrl = "/assets/static/men-temp.e7uCjLN3.webp";
     Top = ({
       title: title5
     }) => {
       const isLarge = useIsLarge();
       return /* @__PURE__ */ (0, import_jsx_runtime173.jsxs)(Flex, { w: "100%", gap: isLarge ? "lg" : "xxs", align: isLarge ? "flex-start" : "center", direction: isLarge ? "row-reverse" : "row", justify: isLarge ? "flex-end" : "space-between", children: [
         /* @__PURE__ */ (0, import_jsx_runtime173.jsxs)(Group, { gap: "xs", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime173.jsx)(Image, { w: 32, h: 32, src: lockImage }),
+          /* @__PURE__ */ (0, import_jsx_runtime173.jsx)(Image, { w: 32, h: 32, src: "/images/lock.webp" }),
           /* @__PURE__ */ (0, import_jsx_runtime173.jsx)(Title, { fz: isLarge ? 32 : 20, textWrap: "balance", maw: isLarge ? "fit-content" : 175, children: title5 })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime173.jsx)(Image, { src: isLarge ? manImage : menUrl, w: isLarge ? 351 : 126, h: isLarge ? 311 : 116 })
+        /* @__PURE__ */ (0, import_jsx_runtime173.jsx)(Image, { src: `/images/men-temp${isLarge ? "_large" : ""}`, w: isLarge ? 351 : 126, h: isLarge ? 311 : 116 })
       ] });
     };
     Paywall = ({
@@ -58529,7 +58517,6 @@ var init_chunk_BUmGGTfn = __esm({
         item3.title
       ] }) }) }, item3.order)) });
     };
-    envelopeImage = "/assets/static/envelope.fCgPZGsq.webp";
     Subscription = ({
       title: title5,
       text: text6,
@@ -58538,7 +58525,7 @@ var init_chunk_BUmGGTfn = __esm({
       const isHuge = useIsHuge();
       const isLarge = useIsLarge();
       return /* @__PURE__ */ (0, import_jsx_runtime173.jsxs)(Paper, { radius: "lg", bg: "violet.0", pos: "relative", mt: isLarge ? 100 : 0, mx: isHuge ? -157 : 0, px: isLarge ? 153 : "md", py: isLarge ? "3xl" : "xl", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime173.jsx)(Image, { pos: "absolute", top: isLarge ? 32 : 5, right: isLarge ? 153 : 33, w: isLarge ? 215 : 84, h: isLarge ? 216 : 84, src: envelopeImage }),
+        /* @__PURE__ */ (0, import_jsx_runtime173.jsx)(Image, { pos: "absolute", top: isLarge ? 32 : 5, right: isLarge ? 153 : 33, w: isLarge ? 215 : 84, h: isLarge ? 216 : 84, src: "/images/envelope.webp" }),
         /* @__PURE__ */ (0, import_jsx_runtime173.jsxs)(Stack, { children: [
           /* @__PURE__ */ (0, import_jsx_runtime173.jsx)(Title, { order: 5, fz: isLarge ? 32 : 20, textWrap: "balance", maw: "50%", children: title5 }),
           /* @__PURE__ */ (0, import_jsx_runtime173.jsx)(Text, { fz: isLarge ? 24 : 18, children: text6 }),
@@ -58565,8 +58552,6 @@ var init_chunk_BUmGGTfn = __esm({
         /* @__PURE__ */ (0, import_jsx_runtime173.jsx)(Text, { span: true, c: "dark.7", fz: isLarge ? 22 : 18, lh: "21px", children: item3.text })
       ] }, `${item3.type}_${item3.title}`)) });
     };
-    gemImage = "/assets/static/gem.ld0lVkQd.webp";
-    sparklesImage = "data:image/webp;base64,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";
     ConclusionPaywall = ({
       text: text6,
       title: title5,
@@ -58576,10 +58561,10 @@ var init_chunk_BUmGGTfn = __esm({
     }) => {
       const isLarge = useIsLarge();
       return /* @__PURE__ */ (0, import_jsx_runtime173.jsxs)(Paper, { bg: "violet.0", pos: "relative", py: isLarge ? "3xl" : "xl", px: isLarge ? "3xl" : "md", radius: isLarge ? "lg" : "md", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime173.jsx)(Image, { src: gemImage, w: isLarge ? 250 : 108, h: isLarge ? 250 : 108, pos: "absolute", top: -7, right: 0 }),
+        /* @__PURE__ */ (0, import_jsx_runtime173.jsx)(Image, { src: "/images/gem.webp", w: isLarge ? 250 : 108, h: isLarge ? 250 : 108, pos: "absolute", top: -7, right: 0 }),
         /* @__PURE__ */ (0, import_jsx_runtime173.jsxs)(Stack, { gap: isLarge ? "lg" : "md", children: [
           /* @__PURE__ */ (0, import_jsx_runtime173.jsx)(Title, { order: 5, fz: isLarge ? 32 : 20, textWrap: "balance", maw: isLarge ? "100%" : "60%", children: /* @__PURE__ */ (0, import_jsx_runtime173.jsxs)(Group, { gap: "xs", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime173.jsx)(Image, { visibleFrom: "md", src: sparklesImage, w: 48, h: 48 }),
+            /* @__PURE__ */ (0, import_jsx_runtime173.jsx)(Image, { visibleFrom: "md", src: "/images/sparkles.webp", w: 48, h: 48 }),
             title5
           ] }) }),
           /* @__PURE__ */ (0, import_jsx_runtime173.jsx)(Text, { maw: isLarge ? 820 : "100%", fz: isLarge ? 24 : 16, children: text6 }),
@@ -58686,7 +58671,6 @@ var init_chunk_BUmGGTfn = __esm({
         /* @__PURE__ */ (0, import_jsx_runtime173.jsx)(Button, { type: "submit", color: "dark.7", loading: isLoading, fullWidth: !isLarge, disabled: isButtonDisabled, size: type2 === "block" ? "lg" : "md", leftSection: /* @__PURE__ */ (0, import_jsx_runtime173.jsx)(d6, { size: 20 }), variant: type2 === "block" ? "filled" : "outline", c: type2 === "block" && !isButtonDisabled ? "white" : "dark.7", children: isLarge ? "\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C" : "\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C \u043E\u0442\u0447\u0435\u0442 \u043D\u0430 \u043F\u043E\u0447\u0442\u0443" })
       ] }) }) });
     };
-    keyIconImage = "data:image/webp;base64,UklGRsoBAABXRUJQVlA4WAoAAAAQAAAAFAAAFAAAQUxQSK0AAAABgJtt27Hn+f3Htt4qNip09gDGGHkniJMNXGYEs0pn27bv4lWyQURMAP17YPvE9lIvM6i8hnhVq5X0DuCgInPgPU9nCQDqiCwb8xqpEGuJaBpM1SZZDKFKoEjFJXjYBpCvGpOJ714Ky4nOICk5NA+ZgkNzJZ7kHACevnG+M17nJDkHgGWKzCNdDnGG9DmAo4+PKj0OAAVWX9JmEFvIMAlAc0ncXxSScVBXVwczAwBWUDgg9gAAAPAFAJ0BKhUAFQA+jTaWR6UioiE39VgAoBGJbACuVY26BxgLsr3jkiIwvK8kl72w4PlL38nk1NAAAP78qQ/13xEgQjkfadt0X0/2+eBYrRTme898AHsYpQ1u2Bb2C6gv8Mh/pu/IXo4hcsPfds+5XbNuPxGfwX27WQdCKDyGD5jIBpjVrD2E0/GygpcYQJyc5kg+MIRHrGgJyRZ8rutDrXh+a/T/n/TbwBdaVSzP+Jqvpp1jF7pyFXTOzk2waQb8E4HLEIYp4b81R59sNTt7cU9KaBPxaiaxHVRcdO+UQmnpy/hwnfk3zB1MzbxzfqN/tYRNXVgAAA==";
     BuyFullReportButton = ({
       buttonText = "\u041A\u0443\u043F\u0438\u0442\u044C \u043F\u043E\u043B\u043D\u044B\u0439 \u043E\u0442\u0447\u0435\u0442"
     }) => {
@@ -58696,7 +58680,7 @@ var init_chunk_BUmGGTfn = __esm({
       } = c2({
         mbti: getFreeResultQuery.$data
       });
-      return /* @__PURE__ */ (0, import_jsx_runtime173.jsx)(MainButton, { fullWidth: true, component: "a", size: isLarge ? "lg" : "md", radius: isLarge ? "md" : "sm", href: `/purchase-report?mbti=${mbti == null ? void 0 : mbti.mbti_type}`, leftSection: /* @__PURE__ */ (0, import_jsx_runtime173.jsx)(Image, { src: keyIconImage, w: 20, h: 20 }), children: buttonText });
+      return /* @__PURE__ */ (0, import_jsx_runtime173.jsx)(MainButton, { fullWidth: true, component: "a", size: isLarge ? "lg" : "md", radius: isLarge ? "md" : "sm", href: `/purchase-report?mbti=${mbti == null ? void 0 : mbti.mbti_type}`, leftSection: /* @__PURE__ */ (0, import_jsx_runtime173.jsx)(Image, { src: "/images/BuyIcon.webp", w: 20, h: 20 }), children: buttonText });
     };
     resolver = (content) => {
       return /* @__PURE__ */ (0, import_jsx_runtime173.jsx)(import_jsx_runtime173.Fragment, { children: content.map((item3, idx) => {
@@ -58854,7 +58838,7 @@ var init_src_pages_free_report = __esm({
     init_chunk_Vlh7XtbV();
     init_chunk_L3VcMs93();
     init_clsx();
-    init_chunk_BUmGGTfn();
+    init_chunk_i5EuwYMZ();
     import_react_scroll2 = __toESM(require_modules(), 1);
     init_dist();
     init_chunk_cVPpzwHL();
@@ -58870,7 +58854,6 @@ var init_src_pages_free_report = __esm({
     init_chunk_D9_J8CTD();
     init_chunk_a_vQjrVb();
     init_chunk_BRRiLWPw();
-    init_chunk_DvF6Lyv();
     init_chunk_BikPkIUV();
     init_chunk_alFISafC();
     init_chunk_pUEbsvnZ();
@@ -60395,7 +60378,7 @@ function Page3() {
     " ",
     /* @__PURE__ */ (0, import_jsx_runtime177.jsx)(Text, { td: "underline", component: "a", c: "blue.7", target: "_blank", href: "https://api.whatsapp.com/send/?phone=79043330809", children: "WhatsApp" }),
     "."
-  ] }), image: manImage, children: /* @__PURE__ */ (0, import_jsx_runtime177.jsx)(HelpForm, {}) });
+  ] }), image: "/images/men-temp_large.webp", children: /* @__PURE__ */ (0, import_jsx_runtime177.jsx)(HelpForm, {}) });
 }
 var import_jsx_runtime177, import_react270, sendHelpForm, submitHelpForm, useHelpFormViewModel, HelpForm, import73, configValuesSerialized3;
 var init_src_pages_help = __esm({
@@ -60406,7 +60389,6 @@ var init_src_pages_help = __esm({
     init_chunk_ID2spThy();
     import_jsx_runtime177 = __toESM(require_jsx_runtime(), 1);
     init_esm2();
-    init_chunk_DvF6Lyv();
     import_react270 = __toESM(require_react(), 1);
     init_router();
     init_chunk_Vlh7XtbV();
@@ -60870,7 +60852,7 @@ function Page5() {
     text: text6
   } = getStatusInfo(status2);
   if (pending2 || !order) return /* @__PURE__ */ (0, import_jsx_runtime180.jsx)(PageLoader, {});
-  return /* @__PURE__ */ (0, import_jsx_runtime180.jsxs)(InnerWrapper, { title: title5, text: text6, image: manImage, navigateTo: "/", backButtonText: "\u041D\u0430 \u0433\u043B\u0430\u0432\u043D\u0443\u044E", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime180.jsxs)(InnerWrapper, { title: title5, text: text6, image: "/images/men-temp_large.webp", navigateTo: "/", backButtonText: "\u041D\u0430 \u0433\u043B\u0430\u0432\u043D\u0443\u044E", children: [
     /* @__PURE__ */ (0, import_jsx_runtime180.jsx)(MainButton, { component: "a", href: status2 === "paid" ? `/report/${order.user_report}` : `/`, children: buttonText }),
     /* @__PURE__ */ (0, import_jsx_runtime180.jsx)(HelpNavigator, {})
   ] });
@@ -60884,7 +60866,6 @@ var init_src_pages_payment_check = __esm({
     init_chunk_ID2spThy();
     import_jsx_runtime180 = __toESM(require_jsx_runtime(), 1);
     init_effector_react();
-    init_chunk_DvF6Lyv();
     init_chunk_DLY9Ejr3();
     import_react272 = __toESM(require_react(), 1);
     init_router();
@@ -61713,7 +61694,7 @@ function isErrorWithMessage(value) {
   return isObject_default(value) && "data" in value && "message" in value;
 }
 function Page6() {
-  return /* @__PURE__ */ (0, import_jsx_runtime182.jsx)(InnerWrapper, { image: manImage, children: /* @__PURE__ */ (0, import_jsx_runtime182.jsxs)(Box, { children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime182.jsx)(InnerWrapper, { image: "/images/man-temp_large.webp", children: /* @__PURE__ */ (0, import_jsx_runtime182.jsxs)(Box, { children: [
     /* @__PURE__ */ (0, import_jsx_runtime182.jsx)(ReportPriceInfo, {}),
     /* @__PURE__ */ (0, import_jsx_runtime182.jsx)(ReportBuyForm, {}),
     /* @__PURE__ */ (0, import_jsx_runtime182.jsx)(HelpNavigator, {})
@@ -61728,7 +61709,6 @@ var init_src_pages_purchase_report = __esm({
     init_chunk_ID2spThy();
     import_jsx_runtime182 = __toESM(require_jsx_runtime(), 1);
     init_esm2();
-    init_chunk_DvF6Lyv();
     init_chunk_DLY9Ejr3();
     init_effector_react();
     import_react274 = __toESM(require_react(), 1);
@@ -62171,7 +62151,7 @@ var init_src_pages_report_user_report_id = __esm({
     init_chunk_Vlh7XtbV();
     init_chunk_L3VcMs93();
     init_clsx();
-    init_chunk_BUmGGTfn();
+    init_chunk_i5EuwYMZ();
     init_dist();
     init_chunk_DdhwroG5();
     init_chunk_DB5ppTAU();
@@ -62185,7 +62165,6 @@ var init_src_pages_report_user_report_id = __esm({
     import_react_scroll3 = __toESM(require_modules(), 1);
     init_chunk_a_vQjrVb();
     init_chunk_BRRiLWPw();
-    init_chunk_DvF6Lyv();
     init_chunk_BikPkIUV();
     init_chunk_alFISafC();
     init_chunk_pUEbsvnZ();
@@ -73190,36 +73169,6 @@ var init_entry = __esm({
             "_chunk-ghiSciBk.js"
           ]
         },
-        "_chunk-B55wzx6n.js": {
-          "file": "assets/chunks/chunk-B55wzx6n.js",
-          "name": "index",
-          "imports": [
-            "_chunk-ghiSciBk.js",
-            "_chunk-B1-3sC8r.js",
-            "_chunk-BJM_8Jhx.js",
-            "_chunk-CbJBXCUw.js",
-            "_chunk-ASQl6zNv.js",
-            "_chunk-DQ9UAh4q.js",
-            "_chunk-DUZZMUrQ.js",
-            "_chunk-BfTxiJep.js",
-            "_chunk-Cn6HDmsI.js",
-            "_chunk-BS6Nmwvu.js",
-            "_chunk-CxZBtTW6.js",
-            "_chunk-xJnKZTLz.js",
-            "_chunk-BuvHUZPa.js",
-            "_chunk-BqOsCu5i.js",
-            "_chunk-DeCp3zjo.js",
-            "_chunk-osHy6G_S.js",
-            "_chunk-BOK1Suzk.js",
-            "_chunk-Bfedm1qN.js",
-            "_chunk-DTBjtrD8.js"
-          ],
-          "assets": [
-            "assets/static/men-temp.e7uCjLN3.webp",
-            "assets/static/envelope.fCgPZGsq.webp",
-            "assets/static/gem.ld0lVkQd.webp"
-          ]
-        },
         "_chunk-B7IjmMtm.js": {
           "file": "assets/chunks/chunk-B7IjmMtm.js",
           "name": "executeHook"
@@ -73266,13 +73215,6 @@ var init_entry = __esm({
           "name": "src_features_SendReportEmail_SendReportEmail.module-f58d5aab",
           "css": [
             "assets/static/src_features_SendReportEmail_SendReportEmail.BQzfTVjx.css"
-          ]
-        },
-        "_chunk-BS6Nmwvu.js": {
-          "file": "assets/chunks/chunk-BS6Nmwvu.js",
-          "name": "man-temp_large",
-          "assets": [
-            "assets/static/man-temp_large.C17Lahl-.webp"
           ]
         },
         "_chunk-BbMBgJ5h.js": {
@@ -73382,6 +73324,30 @@ var init_entry = __esm({
           "name": "src_widgets_InnerWrapper_InnerWrapper.module-52ecdf83",
           "css": [
             "assets/static/src_widgets_InnerWrapper_InnerWrapper.CoyYPize.css"
+          ]
+        },
+        "_chunk-CkTyTBvF.js": {
+          "file": "assets/chunks/chunk-CkTyTBvF.js",
+          "name": "index",
+          "imports": [
+            "_chunk-ghiSciBk.js",
+            "_chunk-B1-3sC8r.js",
+            "_chunk-BJM_8Jhx.js",
+            "_chunk-CbJBXCUw.js",
+            "_chunk-ASQl6zNv.js",
+            "_chunk-DQ9UAh4q.js",
+            "_chunk-DUZZMUrQ.js",
+            "_chunk-BfTxiJep.js",
+            "_chunk-Cn6HDmsI.js",
+            "_chunk-CxZBtTW6.js",
+            "_chunk-xJnKZTLz.js",
+            "_chunk-BuvHUZPa.js",
+            "_chunk-BqOsCu5i.js",
+            "_chunk-DeCp3zjo.js",
+            "_chunk-osHy6G_S.js",
+            "_chunk-BOK1Suzk.js",
+            "_chunk-Bfedm1qN.js",
+            "_chunk-DTBjtrD8.js"
           ]
         },
         "_chunk-Cn6HDmsI.js": {
@@ -73601,7 +73567,7 @@ var init_entry = __esm({
           ]
         },
         "node_modules/vike/dist/esm/client/client-routing-runtime/entry.js": {
-          "file": "assets/entries/entry-client-routing.CjunwDP0.js",
+          "file": "assets/entries/entry-client-routing.BrimGFdC.js",
           "name": "entries/entry-client-routing",
           "src": "node_modules/vike/dist/esm/client/client-routing-runtime/entry.js",
           "isEntry": true,
@@ -73640,22 +73606,6 @@ var init_entry = __esm({
           "file": "assets/static/raleway-v34-cyrillic_latin-regular.B2J1s-V4.woff2",
           "src": "src/app/assets/fonts/raleway-v34-cyrillic_latin-regular.woff2"
         },
-        "src/app/assets/icons/envelope.webp": {
-          "file": "assets/static/envelope.fCgPZGsq.webp",
-          "src": "src/app/assets/icons/envelope.webp"
-        },
-        "src/app/assets/icons/gem.webp": {
-          "file": "assets/static/gem.ld0lVkQd.webp",
-          "src": "src/app/assets/icons/gem.webp"
-        },
-        "src/app/assets/man-temp_large.webp": {
-          "file": "assets/static/man-temp_large.C17Lahl-.webp",
-          "src": "src/app/assets/man-temp_large.webp"
-        },
-        "src/app/assets/men-temp.webp": {
-          "file": "assets/static/men-temp.e7uCjLN3.webp",
-          "src": "src/app/assets/men-temp.webp"
-        },
         "virtual:vike:pageConfigValuesAll:client:/src/pages/_error": {
           "file": "assets/entries/src_pages_error.DyM-3Fwd.js",
           "name": "entries/src/pages/_error",
@@ -73691,7 +73641,7 @@ var init_entry = __esm({
           ]
         },
         "virtual:vike:pageConfigValuesAll:client:/src/pages/free-report": {
-          "file": "assets/entries/src_pages_free-report.DYJdx_u2.js",
+          "file": "assets/entries/src_pages_free-report.D-hpea6N.js",
           "name": "entries/src/pages/free-report",
           "src": "virtual:vike:pageConfigValuesAll:client:/src/pages/free-report",
           "isEntry": true,
@@ -73702,7 +73652,7 @@ var init_entry = __esm({
             "_chunk-BJM_8Jhx.js",
             "_chunk-ASQl6zNv.js",
             "_chunk-BHbO1qa3.js",
-            "_chunk-B55wzx6n.js",
+            "_chunk-CkTyTBvF.js",
             "_chunk-B1-3sC8r.js",
             "_chunk-DQ9UAh4q.js",
             "_chunk-BzmNH4EC.js",
@@ -73713,7 +73663,6 @@ var init_entry = __esm({
             "_chunk-DM-kx-Ge.js",
             "_chunk-DUZZMUrQ.js",
             "_chunk-Cn6HDmsI.js",
-            "_chunk-BS6Nmwvu.js",
             "_chunk-CxZBtTW6.js",
             "_chunk-xJnKZTLz.js",
             "_chunk-BuvHUZPa.js",
@@ -73739,7 +73688,7 @@ var init_entry = __esm({
           ]
         },
         "virtual:vike:pageConfigValuesAll:client:/src/pages/help": {
-          "file": "assets/entries/src_pages_help.CpWDu4VI.js",
+          "file": "assets/entries/src_pages_help.Csds4GAF.js",
           "name": "entries/src/pages/help",
           "src": "virtual:vike:pageConfigValuesAll:client:/src/pages/help",
           "isEntry": true,
@@ -73747,7 +73696,6 @@ var init_entry = __esm({
           "imports": [
             "_chunk-ghiSciBk.js",
             "_chunk-xwaEhPPG.js",
-            "_chunk-BS6Nmwvu.js",
             "_chunk-BJM_8Jhx.js",
             "_chunk-ASQl6zNv.js",
             "_chunk-s3S_eQqa.js",
@@ -73806,14 +73754,13 @@ var init_entry = __esm({
           ]
         },
         "virtual:vike:pageConfigValuesAll:client:/src/pages/payment-check": {
-          "file": "assets/entries/src_pages_payment-check.C7dYwRtI.js",
+          "file": "assets/entries/src_pages_payment-check.CdKhCHXA.js",
           "name": "entries/src/pages/payment-check",
           "src": "virtual:vike:pageConfigValuesAll:client:/src/pages/payment-check",
           "isEntry": true,
           "isDynamicEntry": true,
           "imports": [
             "_chunk-ghiSciBk.js",
-            "_chunk-BS6Nmwvu.js",
             "_chunk-CELtIG52.js",
             "_chunk-dfkXJ34Z.js",
             "_chunk-BJM_8Jhx.js",
@@ -73847,14 +73794,13 @@ var init_entry = __esm({
           ]
         },
         "virtual:vike:pageConfigValuesAll:client:/src/pages/purchase-report": {
-          "file": "assets/entries/src_pages_purchase-report.DgrMb00a.js",
+          "file": "assets/entries/src_pages_purchase-report.CpOtXMfg.js",
           "name": "entries/src/pages/purchase-report",
           "src": "virtual:vike:pageConfigValuesAll:client:/src/pages/purchase-report",
           "isEntry": true,
           "isDynamicEntry": true,
           "imports": [
             "_chunk-ghiSciBk.js",
-            "_chunk-BS6Nmwvu.js",
             "_chunk-dfkXJ34Z.js",
             "_chunk-CELtIG52.js",
             "_chunk-BJM_8Jhx.js",
@@ -73896,7 +73842,7 @@ var init_entry = __esm({
           ]
         },
         "virtual:vike:pageConfigValuesAll:client:/src/pages/report/@user_report_id": {
-          "file": "assets/entries/src_pages_report_-user_report_id.zwAog3Nq.js",
+          "file": "assets/entries/src_pages_report_-user_report_id.CPXEOBWy.js",
           "name": "entries/src/pages/report/@user_report_id",
           "src": "virtual:vike:pageConfigValuesAll:client:/src/pages/report/@user_report_id",
           "isEntry": true,
@@ -73909,7 +73855,7 @@ var init_entry = __esm({
             "_chunk-BJM_8Jhx.js",
             "_chunk-ASQl6zNv.js",
             "_chunk-BHbO1qa3.js",
-            "_chunk-B55wzx6n.js",
+            "_chunk-CkTyTBvF.js",
             "_chunk-DQ9UAh4q.js",
             "_chunk-_2QMcomy.js",
             "_chunk-DZBXMaph.js",
@@ -73922,7 +73868,6 @@ var init_entry = __esm({
             "_chunk-DM-kx-Ge.js",
             "_chunk-DUZZMUrQ.js",
             "_chunk-Cn6HDmsI.js",
-            "_chunk-BS6Nmwvu.js",
             "_chunk-CxZBtTW6.js",
             "_chunk-xJnKZTLz.js",
             "_chunk-BuvHUZPa.js",

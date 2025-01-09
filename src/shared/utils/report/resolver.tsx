@@ -17,6 +17,7 @@ import {
     Subscription,
     TextStrokeDash,
 } from '@/entities/Report';
+import { OrderedList } from '@/entities/Report/ui/OrderedList';
 import { BuyFullReportButton } from '@/features/BuyFullReportButton';
 import { SendReportEmail } from '@/features/SendReportEmail';
 import { isListItemArray } from '@/shared/types/guards';
@@ -36,17 +37,18 @@ interface ContentResolverType {
     secondary_button_text: string;
 }
 
-export const resolver = (content: ContentResolverType[]) => {
+export const resolver = (content?: Partial<ContentResolverType>[]) => {
     return (
         <>
-            {content.map((item, idx) => {
+            {content?.map((item, idx) => {
                 if (!item) return null;
+
                 switch (item.type) {
                     case 'paywall':
                         return (
                             <Paywall
                                 {...item}
-                                key={`${item.type}_${idx}`}
+                                key={`${item.type}_${item.button_text}_${idx}`}
                                 buttonText={item.button_text}
                                 buyButtonSlot={<BuyFullReportButton />}
                             />
@@ -71,7 +73,7 @@ export const resolver = (content: ContentResolverType[]) => {
                     case 'bar_chart':
                         return <BarChart marks={barChartPrepareData(item)} key={`${item.type}_${idx}`} />;
                     case 'paragraph':
-                        return <Paragraph text={item.text} key={`${item.type}_${idx}`} />;
+                        return <Paragraph text={item.text ?? ''} key={`${item.type}_${item.text}_${idx}`} />;
                     case 'title':
                         return <MainTitle key={`${item.type}_${idx}`}>{item.text}</MainTitle>;
                     case 'icon_list':
@@ -82,11 +84,11 @@ export const resolver = (content: ContentResolverType[]) => {
                             />
                         );
                     case 'header':
-                        return <Header c={item.color} text={item.text} key={`${item.type}_${idx}`} />;
+                        return <Header c={item.color} text={item.text ?? ''} key={`${item.type}_${idx}`} />;
                     case 'ordered_cards':
                         return (
                             <OrderedCards
-                                color={item.color}
+                                color={item.color ?? ''}
                                 key={`${item.type}_${item.color}_${idx}`}
                                 items={isListItemArray(item.items) ? item.items : []}
                             />
@@ -100,7 +102,7 @@ export const resolver = (content: ContentResolverType[]) => {
                             />
                         );
                     case 'text_stroke_dash':
-                        return <TextStrokeDash key={`${item.type}_${idx}`} text={item.text} />;
+                        return <TextStrokeDash key={`${item.type}_${idx}`} text={item.text ?? ''} />;
                     case 'subtitle':
                         return (
                             <Title fz={32} order={3} key={`${item.type}_${idx}`}>
@@ -109,6 +111,12 @@ export const resolver = (content: ContentResolverType[]) => {
                         );
                     case 'cards':
                         return isListItemArray(item.items) && <Cards key={`${item.type}_${idx}`} items={item.items} />;
+                    case 'ordered_list':
+                        return (
+                            isListItemArray(item.items) && (
+                                <OrderedList items={item.items} key={`${item.type}_${idx}`} />
+                            )
+                        );
                 }
             })}
         </>
