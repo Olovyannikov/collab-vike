@@ -1,0 +1,38 @@
+.card {
+  flex-direction: column;
+
+  @mixin larger-than 768px {
+    &.row {
+      flex-direction: row;
+    }
+  }
+}
+
+.image {
+  @mixin larger-than 768px {
+    width: calc(50% - 8px);
+    max-width: 791px;
+  }
+}
+
+.preview {
+  @mixin larger-than 768px {
+    max-width: calc(50% - 8px);
+  }
+}
+
+.title {
+  font-size: 24px;
+
+  @mixin larger-than 768px {
+    font-size: 40px;
+  }
+}
+
+.text p {
+  font-size: 16px;
+
+  @mixin larger-than 768px {
+    font-size: 22px;
+  }
+}

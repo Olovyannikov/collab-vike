@@ -27,3 +27,7 @@ span:has(strong) {
     font-size: 22px;
   }
 }
+
+pre {
+  overflow: auto;
+}

@@ -11,7 +11,7 @@ sample({
     fn: () => {
         const ctx = getPageContext();
 
-        return ctx?.urlParsed.search.order_id ?? 'cda940b9-1357-4792-adee-1f3b6446fca0';
+        return ctx?.urlParsed.search.order_id ?? '';
     },
     target: $currentOrderId,
 });

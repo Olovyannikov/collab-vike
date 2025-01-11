@@ -10,7 +10,7 @@ export const pageStarted = createPageStart();
 sample({
     clock: pageStarted,
     source: $userOrderReportId,
-    fn: (id) => ({ id: id ?? 'cda940b9-1357-4792-adee-1f3b6446fca0' }),
+    fn: (id) => ({ id: id ?? '' }),
     target: getFullReportQuery.start,
 });
 

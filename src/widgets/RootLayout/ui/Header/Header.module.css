@@ -39,8 +39,8 @@
   text-decoration: none;
   color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0));
 
-  &:not(:last-child) {
-    margin-right: auto;
+  &:last-child {
+    margin-left: auto;
   }
 
   [data-mantine-color-scheme] &[data-active] {
