@@ -11,7 +11,7 @@
 ## Stack
 
 - [ViteJS](https://vitejs.ru/);
-- [VikeJS]();
+- [VikeJS](https://vike.dev/);
 - [ReactJS]();
 - [EffectorJS]();
 - [Farfetched]();
