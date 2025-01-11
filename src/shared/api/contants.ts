@@ -10,4 +10,5 @@ export const API = {
     PURCHASE_REPORT: '/api/v1/payments/purchase-report',
     SURVEYS_INFO: '/api/v1/surveys/info',
     FULL_REPORT: (id: string) => `/api/v1/surveys/full-reports/${id}`,
+    FAQ_LIST: '/api/v1/posts',
 };
