@@ -1,4 +1,5 @@
 .paper {
+  position: relative;
   border-radius: var(--mantine-spacing-lg);
   width: 100%;
   background: var(--mantine-color-violet-0);

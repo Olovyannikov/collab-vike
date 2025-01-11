@@ -12,7 +12,7 @@
 
 - [ViteJS](https://vitejs.ru/);
 - [VikeJS](https://vike.dev/);
-- [ReactJS]();
+- [ReactJS](https://react.dev/);
 - [EffectorJS]();
 - [Farfetched]();
 - [NodeJS]();

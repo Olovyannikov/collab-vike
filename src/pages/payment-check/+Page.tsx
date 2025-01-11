@@ -1,4 +1,5 @@
 import { useUnit } from 'effector-react';
+import { navigate } from 'vike/client/router';
 
 import { $userOrder, $userOrderStatus, getSurveysInfoQuery } from '@/entities/Payment';
 import { HelpNavigator } from '@/features/HelpNavigator';
@@ -15,6 +16,7 @@ export default function Page() {
 
     const { title, buttonText, text } = getStatusInfo(status);
 
+    if (!pending && !order) navigate('/');
     if (pending || !order) return <PageLoader />;
 
     return (
@@ -25,7 +27,7 @@ export default function Page() {
             navigateTo='/'
             backButtonText='На главную'
         >
-            <MainButton component='a' href={status === 'paid' ? `/report/${order.user_report}` : `/`}>
+            <MainButton component='a' href={status === 'paid' ? `/report/${order?.user_report}` : `/`}>
                 {buttonText}
             </MainButton>
             <HelpNavigator />

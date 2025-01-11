@@ -11,7 +11,7 @@ interface AdBannerProps {
 
 export const AdBanner = ({ paySlot }: AdBannerProps) => {
     return (
-        <Paper className={s.paper} pos='relative'>
+        <Paper className={s.paper}>
             <Stack>
                 <Group className={s.group}>
                     <Image className={s.image} src='/images/sparkles.webp' />
