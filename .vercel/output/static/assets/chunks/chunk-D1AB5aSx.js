@@ -1,0 +1,1 @@
+import{r as l}from"./chunk-Bk084C9z.js";function i({value:r,defaultValue:e,finalValue:o,onChange:t=()=>{}}){const[s,u]=l.useState(e!==void 0?e:o),c=(n,...d)=>{u(n),t==null||t(n,...d)};return r!==void 0?[r,t,!0]:[s,c,!1]}export{i as u};

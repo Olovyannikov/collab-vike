@@ -1,0 +1,1 @@
+import{j as t}from"./chunk-Bk084C9z.js";import{B as r}from"./chunk-CgaiKyeh.js";const e=()=>t.jsx(r,{fullWidth:!0,variant:"transparent",c:"dark.7",component:"a",href:"/help",children:"Служба поддержки"});export{e as H};

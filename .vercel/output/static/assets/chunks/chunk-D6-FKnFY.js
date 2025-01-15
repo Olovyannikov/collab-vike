@@ -1,1 +1,0 @@
-import{q as t}from"./chunk-DGa-HmGp.js";import"./chunk-DwaozxT7.js";const e=t(),a=Object.freeze(Object.defineProperty({__proto__:null,pageStarted:e},Symbol.toStringTag,{value:"Module"}));export{a as i};

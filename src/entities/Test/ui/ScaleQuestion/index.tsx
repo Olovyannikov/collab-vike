@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { Flex, Paper, Radio, Stack, Text, Transition } from '@mantine/core';
 
 import { useIsLarge } from '@/shared/hooks';
@@ -29,7 +29,7 @@ export const ScaleQuestion = ({ value, page, text, hint, rephrasing, id, onChang
         rephrasing,
     });
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         setLocalValue('');
         setIsMounted(true);
     }, [page]);

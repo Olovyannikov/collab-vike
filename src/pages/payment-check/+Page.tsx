@@ -1,5 +1,4 @@
 import { useUnit } from 'effector-react';
-import { navigate } from 'vike/client/router';
 
 import { $userOrder, $userOrderStatus, getSurveysInfoQuery } from '@/entities/Payment';
 import { HelpNavigator } from '@/features/HelpNavigator';
@@ -16,7 +15,11 @@ export default function Page() {
 
     const { title, buttonText, text } = getStatusInfo(status);
 
-    if (!pending && !order) navigate('/');
+    console.log({
+        pending,
+        order,
+    });
+
     if (pending || !order) return <PageLoader />;
 
     return (

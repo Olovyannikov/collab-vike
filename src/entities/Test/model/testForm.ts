@@ -37,7 +37,7 @@ sample({
     target: $scaleForm,
 });
 
-const delayed = delay(scaleFormFieldChanged, 1000);
+const delayed = delay(scaleFormFieldChanged, 250);
 
 sample({
     clock: delayed,
