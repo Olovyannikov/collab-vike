@@ -14,7 +14,7 @@
 - [VikeJS](https://vike.dev/);
 - [ReactJS](https://react.dev/);
 - [EffectorJS](https://effector.dev/);
-- [Farfetched]();
+- [Farfetched](https://ff.effector.dev/);
 - [NodeJS]();
 - [ExpressJS]();
 - [MantineUI]();

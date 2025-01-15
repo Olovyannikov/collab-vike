@@ -63425,6 +63425,13 @@ __export(src_pages_payment_check_exports, {
 });
 function Page8() {
   const {
+    urlParsed: {
+      search: {
+        order_id
+      }
+    }
+  } = usePageContext();
+  const {
     pending: pending2
   } = c2(getSurveysInfoQuery);
   const {
@@ -63439,10 +63446,7 @@ function Page8() {
     buttonText,
     text: text9
   } = getStatusInfo(status2);
-  console.log({
-    pending: pending2,
-    order
-  });
+  if (!order_id) navigate("/");
   if (pending2 || !order) return /* @__PURE__ */ (0, import_jsx_runtime196.jsx)(PageLoader, {});
   return /* @__PURE__ */ (0, import_jsx_runtime196.jsxs)(InnerWrapper, { title: title10, text: text9, image: "/images/men-temp_large.webp", navigateTo: "/", backButtonText: "\u041D\u0430 \u0433\u043B\u0430\u0432\u043D\u0443\u044E", children: [
     /* @__PURE__ */ (0, import_jsx_runtime196.jsx)(MainButton, { component: "a", href: status2 === "paid" ? `/report/${order == null ? void 0 : order.user_report}` : `/`, children: buttonText }),
@@ -63458,16 +63462,16 @@ var init_src_pages_payment_check = __esm({
     init_chunk_CEGIduO0();
     import_jsx_runtime196 = __toESM(require_jsx_runtime(), 1);
     init_effector_react();
+    init_router();
+    init_usePageContext();
     init_chunk_RRSKe5PI();
     import_react290 = __toESM(require_react(), 1);
-    init_router();
     init_chunk_Vlh7XtbV();
     init_chunk_L3VcMs93();
     init_clsx();
     init_chunk_B1yhk26f();
     init_effector();
     init_getPageContext();
-    init_usePageContext();
     init_chunk_JnZ8N0CP();
     init_chunk_Cv0fGC95();
     init_core();
@@ -63683,7 +63687,7 @@ function Page9() {
     /* @__PURE__ */ (0, import_jsx_runtime197.jsx)(HelpNavigator, {})
   ] }) });
 }
-var import_jsx_runtime197, import_react291, applyPromocodeClicked, $promocodeErrorMessage, $showSuccessPromoMessage, reportPurchased, openTransactionPaywallFx, useReportBuyFormViewModel, ReportBuyForm, ReportPriceInfo, import79, configValuesSerialized9;
+var import_jsx_runtime197, import_react291, toInputUppercase, applyPromocodeClicked, $promocodeErrorMessage, $showSuccessPromoMessage, reportPurchased, openTransactionPaywallFx, useReportBuyFormViewModel, ReportBuyForm, ReportPriceInfo, import79, configValuesSerialized9;
 var init_src_pages_purchase_report = __esm({
   "dist/server/entries/src_pages_purchase-report.mjs"() {
     "use strict";
@@ -63704,11 +63708,11 @@ var init_src_pages_purchase_report = __esm({
     init_lodash();
     init_chunk_kfM5n80y();
     init_esm7();
+    init_usePageContext();
     init_chunk_Dv6_lxKE();
     init_chunk_Dhl_Zd_1();
     init_chunk_Bf5SNzKq();
     init_chunk_B1yhk26f();
-    init_usePageContext();
     init_chunk_Cv0fGC95();
     init_core();
     init_chunk_h3I4ZzGH();
@@ -63720,6 +63724,9 @@ var init_src_pages_purchase_report = __esm({
     init_chunk_BPnhoPvQ();
     init_chunk_BZe_aqzT();
     init_chunk_DZLuM7X3();
+    toInputUppercase = (e17) => {
+      e17.target.value = String(e17.target.value).toUpperCase();
+    };
     applyPromocodeClicked = p({
       name: "applyPromocodeClicked",
       sid: "-94troy"
@@ -63815,13 +63822,17 @@ var init_src_pages_purchase_report = __esm({
       const {
         data
       } = c2(getFreeResultQuery);
+      const {
+        urlParsed
+      } = usePageContext();
       const surveyId = c2(TestStores.$surveyId);
       const purchaseReportHandler = c2(reportPurchased);
+      const mbti = urlParsed.search.mbti;
       const form = useForm({
         mode: "controlled",
         initialValues: {
           email: "",
-          mbti_type: surveyId ? "" : (data == null ? void 0 : data.mbti_type) ?? "",
+          mbti_type: surveyId ? "" : (data == null ? void 0 : data.mbti_type) ?? mbti,
           promo_code: "",
           survey_result: surveyId ?? ""
         },
@@ -63851,6 +63862,9 @@ var init_src_pages_purchase_report = __esm({
         };
         if (surveyId) {
           delete preparedData.mbti_type;
+        }
+        if (!data2.mbti_type) {
+          preparedData.mbti_type = mbti;
         }
         if (!surveyId) {
           delete preparedData.survey_result;
@@ -63891,7 +63905,7 @@ var init_src_pages_purchase_report = __esm({
         /* @__PURE__ */ (0, import_jsx_runtime197.jsxs)(Paper, { bg: "gray.0", radius: "xs", p: "md", px: "sm", children: [
           /* @__PURE__ */ (0, import_jsx_runtime197.jsx)(Text, { className: s49.promocodeLabel, children: "\u0423 \u043C\u0435\u043D\u044F \u0435\u0441\u0442\u044C \u043F\u0440\u043E\u043C\u043E\u043A\u043E\u0434" }),
           /* @__PURE__ */ (0, import_jsx_runtime197.jsxs)(Flex, { className: s49.promocodeWrapper, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime197.jsx)(TextInput, { ...promocodeProps, disabled: pending2, error: promocodeError, "data-success": showSuccessMessage, description: showSuccessMessage ? "\u041F\u0440\u043E\u043C\u043E\u043A\u043E\u0434 \u043F\u0440\u0438\u043C\u0435\u043D\u0435\u043D" : "", inputWrapperOrder: ["label", "input", "description", "error"] }),
+            /* @__PURE__ */ (0, import_jsx_runtime197.jsx)(TextInput, { ...promocodeProps, disabled: pending2, error: promocodeError, onInput: toInputUppercase, "data-success": showSuccessMessage, description: showSuccessMessage ? "\u041F\u0440\u043E\u043C\u043E\u043A\u043E\u0434 \u043F\u0440\u0438\u043C\u0435\u043D\u0435\u043D" : "", inputWrapperOrder: ["label", "input", "description", "error"] }),
             /* @__PURE__ */ (0, import_jsx_runtime197.jsx)(Button, { fullWidth: true, c: "dark.7", radius: "xs", color: "dark.7", variant: "outline", disabled: pending2, loading: pending2, onClick: () => applyPromoHandler(form.values.promo_code.toUpperCase()), children: "\u041F\u0440\u0438\u043C\u0435\u043D\u0438\u0442\u044C" })
           ] })
         ] }),
@@ -76075,7 +76089,7 @@ var init_entry = __esm({
           ]
         },
         "node_modules/vike/dist/esm/client/client-routing-runtime/entry.js": {
-          "file": "assets/entries/entry-client-routing.CX_qez5g.js",
+          "file": "assets/entries/entry-client-routing.CmKQM_g2.js",
           "name": "entries/entry-client-routing",
           "src": "node_modules/vike/dist/esm/client/client-routing-runtime/entry.js",
           "isEntry": true,
@@ -76388,17 +76402,17 @@ var init_entry = __esm({
           ]
         },
         "virtual:vike:pageConfigValuesAll:client:/src/pages/payment-check": {
-          "file": "assets/entries/src_pages_payment-check.BNgdCyup.js",
+          "file": "assets/entries/src_pages_payment-check.B6y3Oncw.js",
           "name": "entries/src/pages/payment-check",
           "src": "virtual:vike:pageConfigValuesAll:client:/src/pages/payment-check",
           "isEntry": true,
           "isDynamicEntry": true,
           "imports": [
             "_chunk-Bk084C9z.js",
-            "_chunk-B8qbB2Nc.js",
-            "_chunk-B_eS1n6k.js",
             "_chunk-CgaiKyeh.js",
             "_chunk-ASQl6zNv.js",
+            "_chunk-B8qbB2Nc.js",
+            "_chunk-B_eS1n6k.js",
             "_chunk-Cpg2mx1a.js",
             "_chunk-DO3-1hAU.js",
             "_chunk-B7IjmMtm.js",
@@ -76430,7 +76444,7 @@ var init_entry = __esm({
           ]
         },
         "virtual:vike:pageConfigValuesAll:client:/src/pages/purchase-report": {
-          "file": "assets/entries/src_pages_purchase-report.tDg8166L.js",
+          "file": "assets/entries/src_pages_purchase-report.NXHQiKK-.js",
           "name": "entries/src/pages/purchase-report",
           "src": "virtual:vike:pageConfigValuesAll:client:/src/pages/purchase-report",
           "isEntry": true,
