@@ -1,4 +1,6 @@
 import { useUnit } from 'effector-react';
+import { navigate } from 'vike/client/router';
+import { usePageContext } from 'vike-react/usePageContext';
 
 import { $userOrder, $userOrderStatus, getSurveysInfoQuery } from '@/entities/Payment';
 import { HelpNavigator } from '@/features/HelpNavigator';
@@ -7,6 +9,11 @@ import { getStatusInfo } from '@/shared/utils/report/getStatusInfo';
 import { InnerWrapper } from '@/widgets/InnerWrapper';
 
 export default function Page() {
+    const {
+        urlParsed: {
+            search: { order_id },
+        },
+    } = usePageContext();
     const { pending } = useUnit(getSurveysInfoQuery);
     const { status, order } = useUnit({
         order: $userOrder,
@@ -15,11 +22,7 @@ export default function Page() {
 
     const { title, buttonText, text } = getStatusInfo(status);
 
-    console.log({
-        pending,
-        order,
-    });
-
+    if (!order_id) navigate('/');
     if (pending || !order) return <PageLoader />;
 
     return (

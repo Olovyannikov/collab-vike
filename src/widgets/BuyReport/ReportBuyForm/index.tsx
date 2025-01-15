@@ -3,6 +3,7 @@ import { useUnit } from 'effector-react';
 
 import { getPriceWithPromocodeQuery } from '@/entities/Payment';
 import { MainButton } from '@/shared/ui';
+import { toInputUppercase } from '@/shared/utils/toInputUppercase';
 import { FormWrapper } from '@/widgets/FormWrapper';
 import { FormInput } from '@/widgets/FormWrapper/FormInput';
 
@@ -29,6 +30,7 @@ export const ReportBuyForm = () => {
                         {...promocodeProps}
                         disabled={pending}
                         error={promocodeError}
+                        onInput={toInputUppercase}
                         data-success={showSuccessMessage}
                         description={showSuccessMessage ? 'Промокод применен' : ''}
                         inputWrapperOrder={['label', 'input', 'description', 'error']}
