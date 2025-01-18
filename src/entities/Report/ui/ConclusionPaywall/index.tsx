@@ -41,7 +41,7 @@ export const ConclusionPaywall = ({ text, title, points, extraContentSlot, buyBu
                 <Text maw={isLarge ? 820 : '100%'} fz={isLarge ? 24 : 16}>
                     {text}
                 </Text>
-                <PointsBlock points={points} />
+                <PointsBlock position='static' points={points} />
                 <Group gap='sm' w={isLarge ? 'fit-content' : '100%'}>
                     {buyButtonSlot}
                     {extraContentSlot}

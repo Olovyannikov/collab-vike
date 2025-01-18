@@ -1,22 +1,27 @@
 import { Element } from 'react-scroll';
-import { Stack, Title } from '@mantine/core';
+import { Button, Stack, Title } from '@mantine/core';
 import { useList, useUnit } from 'effector-react';
 import { isNumber } from 'lodash-es';
 
 import { $currentContent } from '@/entities/Report';
+import { AdBanner } from '@/entities/Test';
 import { useIsLarge } from '@/shared/hooks';
-import { InnerContainer } from '@/shared/ui';
+import { InnerContainer, MainButton } from '@/shared/ui';
 import { resolver } from '@/shared/utils/report/resolver';
 
 import s from './ContentResolver.module.css';
 
 interface ContentResolverProps {
     page?: number;
+    showTitle?: boolean;
+    showPurchaseBanner?: boolean;
 }
 
-export const ContentResolver = ({ page }: ContentResolverProps) => {
+export const ContentResolver = ({ page, showTitle = true, showPurchaseBanner = false }: ContentResolverProps) => {
     const isLarge = useIsLarge();
     const content = useUnit($currentContent);
+
+    const disabled = true;
 
     if (!content) return null;
 
@@ -30,8 +35,10 @@ export const ContentResolver = ({ page }: ContentResolverProps) => {
                         {/* @ts-expect-error mistypes */}
                         <Element name={item.title}>
                             <Stack>
-                                <Title className={s.title}>{item.title}</Title>
-                                <Stack gap='md'>{resolver(item.content)}</Stack>
+                                <Title hidden={!showTitle} className={s.title}>
+                                    {item.title}
+                                </Title>
+                                <Stack gap='md'>{resolver(item.content, showPurchaseBanner)}</Stack>
                             </Stack>
                         </Element>
                     </Stack>
@@ -57,5 +64,19 @@ export const ContentResolver = ({ page }: ContentResolverProps) => {
         },
     });
 
-    return <InnerContainer>{render}</InnerContainer>;
+    return (
+        <>
+            <InnerContainer>{render}</InnerContainer>
+            {showPurchaseBanner && (
+                <AdBanner>
+                    <MainButton size='md' radius='sm' component='a' href='/test'>
+                        Пройти тест
+                    </MainButton>
+                    <Button disabled={disabled} size='md' variant='outline' c='dark.7' color='dark.7'>
+                        Купить сейчас
+                    </Button>
+                </AdBanner>
+            )}
+        </>
+    );
 };

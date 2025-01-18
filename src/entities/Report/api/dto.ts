@@ -1,3 +1,5 @@
+import { ContentResult } from '@/entities/Report';
+
 export const PersonalityTypes = {
     ESTJ: 'ESTJ',
     ENTJ: 'ENTJ',
@@ -27,3 +29,5 @@ export interface PersonalityTypesResponse {
         descriptions: string[];
     }[];
 }
+
+export type PersonalityResponseResponse = ContentResult;

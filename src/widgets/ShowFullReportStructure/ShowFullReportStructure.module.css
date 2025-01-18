@@ -1,0 +1,27 @@
+.group {
+  justify-content: center;
+  gap: var(--mantine-spacing-sm);
+
+  a,
+  button {
+    width: 100%;
+  }
+
+  @mixin larger-than 840px {
+    justify-content: space-between;
+
+    a,
+    button {
+      width: fit-content;
+    }
+  }
+}
+
+.text {
+  font-weight: 700;
+  font-size: 18px;
+
+  @mixin larger-than 840px {
+    font-size: 24px;
+  }
+}

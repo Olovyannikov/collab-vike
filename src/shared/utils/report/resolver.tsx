@@ -18,10 +18,14 @@ import {
     TextStrokeDash,
 } from '@/entities/Report';
 import { OrderedList } from '@/entities/Report/ui/OrderedList';
+import { AdBanner } from '@/entities/Test';
 import { BuyFullReportButton } from '@/features/BuyFullReportButton';
+import { NavigateToFullStructureTemplate } from '@/features/NavigateToFullStructureTemplate';
 import { SendReportEmail } from '@/features/SendReportEmail';
-import { isListItemArray } from '@/shared/types/guards';
-import { barChartPrepareData } from '@/shared/utils/report/barChartPrepareData';
+
+import { isListItemArray } from '../../types/guards';
+import { MainButton } from '../../ui';
+import { barChartPrepareData } from './barChartPrepareData';
 
 interface ContentResolverType {
     color: string;
@@ -37,7 +41,11 @@ interface ContentResolverType {
     secondary_button_text: string;
 }
 
-export const resolver = (content?: Partial<ContentResolverType>[]) => {
+const BANNER_CONTENT =
+    'Узнайте свои сильные стороны и потенциал с нашим готовым отчетом по типу личности – доступно сразу после заказа!';
+const BANNER_TITLE = 'Купить отчет без прохождения теста';
+
+export const resolver = (content?: Partial<ContentResolverType>[], showBanner?: boolean) => {
     return (
         <>
             {content?.map((item, idx) => {
@@ -91,6 +99,16 @@ export const resolver = (content?: Partial<ContentResolverType>[]) => {
                                 color={item.color ?? ''}
                                 key={`${item.type}_${item.color}_${idx}`}
                                 items={isListItemArray(item.items) ? item.items : []}
+                                bannerSlot={
+                                    showBanner && (
+                                        <AdBanner title={BANNER_TITLE} content={BANNER_CONTENT}>
+                                            <MainButton size='md' radius='sm' component='a' href='/test'>
+                                                Пройти тест
+                                            </MainButton>
+                                            <NavigateToFullStructureTemplate />
+                                        </AdBanner>
+                                    )
+                                }
                             />
                         );
                     case 'subscription':

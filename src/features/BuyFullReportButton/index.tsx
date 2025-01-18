@@ -18,7 +18,6 @@ export const BuyFullReportButton = ({ buttonText = 'Купить полный о
 
     return (
         <MainButton
-            fullWidth
             component='a'
             size={isLarge ? 'lg' : 'md'}
             radius={isLarge ? 'md' : 'sm'}

@@ -1,5 +1,6 @@
 .paper {
   position: relative;
+  display: flex;
   border-radius: var(--mantine-spacing-lg);
   width: 100%;
   background: var(--mantine-color-violet-0);
@@ -7,9 +8,14 @@
   padding-inline: var(--mantine-spacing-md);
 
   @mixin larger-than 1200px {
+    min-height: 336px;
     padding-block: var(--mantine-spacing-3xl);
     padding-inline: 153px;
   }
+}
+
+.root {
+  flex: 1;
 }
 
 .group {
@@ -49,8 +55,10 @@
 
 .controls {
   flex-direction: column;
+  gap: var(--mantine-spacing-md);
 
   @mixin larger-than 768px {
     flex-direction: row;
+    margin-top: auto;
   }
 }

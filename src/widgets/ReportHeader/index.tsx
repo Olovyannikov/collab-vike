@@ -10,16 +10,19 @@ import s from './ReportHeader.module.css';
 interface ReportHeaderProps {
     name: string;
     type: PersonalityType;
+    showPreheader?: boolean;
 }
 
-export const ReportHeader = ({ name, type }: ReportHeaderProps) => {
+export const ReportHeader = ({ name, type, showPreheader = true }: ReportHeaderProps) => {
     const isLarge = useIsLarge();
 
     return (
         <Paper className={s.paper}>
             <Stack className={s.stack}>
-                <Text className={s.personalityType}>Ваш тип личности</Text>
-                <Title className={s.name}>{name}</Title>
+                <Text hidden={!showPreheader} className={s.personalityType}>
+                    Ваш тип личности
+                </Text>
+                <Title className={s.name}>{name.split('—')[1]?.replaceAll('»', '').replaceAll('«', '')}</Title>
                 <Text className={s.type}>{type}</Text>
             </Stack>
             <Image className={s.image} src={isLarge ? circleImage : circleSmallImage} />

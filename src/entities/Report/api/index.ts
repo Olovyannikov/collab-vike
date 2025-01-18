@@ -1,6 +1,11 @@
 import { createMutation, createQuery } from '@farfetched/core';
 
-import { ContentResult, type PersonalityType, type PersonalityTypesResponse } from '@/entities/Report';
+import {
+    ContentResult,
+    PersonalityResponseResponse,
+    type PersonalityType,
+    type PersonalityTypesResponse,
+} from '@/entities/Report';
 import { createCommonRequestFx, createInternalRequestFx } from '@/shared/api';
 import { API } from '@/shared/api/contants';
 import { HTTP_METHODS } from '@/shared/api/methods';
@@ -27,7 +32,7 @@ export const getPersonalityTypesQuery = createQuery({
 });
 
 export const getPersonalityTypeQuery = createQuery({
-    effect: createCommonRequestFx<PersonalityType, void>((type) => ({
+    effect: createCommonRequestFx<PersonalityType, PersonalityResponseResponse>((type) => ({
         url: API.PERSONALITY_TYPE(type),
     })),
 });

@@ -16,6 +16,8 @@
 }
 
 .stack {
+  position: relative;
+  z-index: 100;
   justify-content: center;
   text-align: center;
   gap: var(--mantine-spacing-lg);
@@ -53,7 +55,7 @@
 .image {
   position: absolute;
   right: 0;
-  top: 188px;
+  top: 100px;
   width: 364px;
   height: 364px;
   object-fit: contain;

@@ -1,6 +1,7 @@
-import { Paper, Stack, Title } from '@mantine/core';
+import type { ReactNode } from 'react';
+import { Box, Paper, Stack, Title } from '@mantine/core';
 
-import { useIsLarge } from '@/shared/hooks';
+import s from './OrderedCards.module.css';
 
 interface OrderedCardProps {
     color: string;
@@ -10,22 +11,22 @@ interface OrderedCardProps {
         title?: string;
         order?: number;
     }[];
+    bannerSlot?: ReactNode;
 }
-
-export const OrderedCards = ({ items, color }: OrderedCardProps) => {
-    const isLarge = useIsLarge();
-
+export const OrderedCards = ({ items, color, bannerSlot }: OrderedCardProps) => {
     return (
         <Stack>
             {items.map((item) => (
-                <Paper px='3xl' py='lg' bg={color === 'positive' ? 'green.0' : 'pink.0'} key={item.order}>
-                    <Stack gap='xs'>
-                        <Title fz={isLarge ? 24 : 16} c={color === 'positive' ? 'green.9' : 'pink.9'} order={5}>
+                <Paper className={s.paper} bg={color === 'positive' ? 'green.0' : 'pink.0'} key={item.order}>
+                    <Stack className={s.stack}>
+                        <Title className={s.title} c={color === 'positive' ? 'green.9' : 'pink.9'} order={5}>
                             {item.order}. {item.title}
                         </Title>
                     </Stack>
                 </Paper>
             ))}
+
+            {color === 'positive' && <Box className={s.box}>{bannerSlot}</Box>}
         </Stack>
     );
 };

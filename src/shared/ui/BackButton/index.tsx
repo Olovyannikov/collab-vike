@@ -1,5 +1,6 @@
 import { Button, type ButtonProps } from '@mantine/core';
 import { ArrowLeft } from '@phosphor-icons/react';
+import clsx from 'clsx';
 import { navigate } from 'vike/client/router';
 
 import { navigate as customNavigate } from '@/shared/utils/navigate';
@@ -11,14 +12,14 @@ interface BackButtonProps extends ButtonProps {
     text?: string;
 }
 
-export const BackButton = ({ to, text = 'Назад', ...rest }: BackButtonProps) => {
+export const BackButton = ({ to, className, text = 'Назад', ...rest }: BackButtonProps) => {
     return (
         <Button
             {...rest}
             c='dark.7'
             component='a'
             variant='subtle'
-            className={s.back}
+            className={clsx(s.back, className)}
             onClick={() => (to ? navigate(to) : customNavigate.back())}
             leftSection={<ArrowLeft />}
         >
