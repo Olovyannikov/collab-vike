@@ -1,0 +1,1 @@
+import{j as e,h as s,C as n,T as o}from"./chunk-aRuK0v6P.js";const i=({title:t,children:r})=>e.jsx(s,{component:"section",mt:80,pb:32,children:e.jsxs(n,{children:[e.jsx(o,{order:2,fz:56,mb:32,ta:"center",children:t}),r]})});export{i as P};

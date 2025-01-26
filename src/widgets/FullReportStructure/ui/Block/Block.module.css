@@ -1,0 +1,27 @@
+.box {
+  margin-bottom: 60px;
+
+  @mixin larger-than 768px {
+    margin-bottom: 100px;
+  }
+}
+
+.title {
+  margin-bottom: var(--mantine-spacing-md);
+  font-size: 26px;
+  text-align: center;
+
+  @mixin larger-than 768px {
+    margin-bottom: 40px;
+    font-size: 40px;
+    text-align: left;
+  }
+}
+
+.text {
+  margin-bottom: 32px;
+
+  @mixin larger-than 768px {
+    margin-bottom: 40px;
+  }
+}

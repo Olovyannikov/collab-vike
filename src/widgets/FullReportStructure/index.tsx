@@ -1,9 +1,10 @@
-import { Container, Space, Stack, Text } from '@mantine/core';
+import { Box, Container, Space, Text } from '@mantine/core';
 
 import { Banner, ConclusionPaywall } from '@/entities/Report';
 import { BuyFullReportButton } from '@/features/BuyFullReportButton';
 import { NavigateToFullStructureTemplate } from '@/features/NavigateToFullStructureTemplate';
 import { BackButton, InnerContainer } from '@/shared/ui';
+import { FULL_REPORT } from '@/widgets/FullReportStructure/constants';
 import { Block } from '@/widgets/FullReportStructure/ui';
 
 import s from './FullReportStructure.module.css';
@@ -29,20 +30,17 @@ export const FullReportStructure = () => {
             <Banner title='Структура полной версии отчета' />
 
             <InnerContainer>
-                <Stack>
+                <Box>
                     <Text className={s.text}>
                         Полный отчет теста по типу личности предоставляет глубокое понимание ваших личностных черт,
                         сильных сторон и зон роста, а также персонализированные рекомендации для улучшения
                         межличностного общения и карьерного развития. Это эффективный инструмент для самоанализа и
                         работы над собой, который экономит ваше время и помогает достичь большей гармонии в жизни.
                     </Text>
-                    <Block />
-                    <Block />
-                    <Block />
-                    <Block />
-                    <Block />
-                    <Block />
-                </Stack>
+                    {FULL_REPORT.map((report) => (
+                        <Block key={report.id} {...report} />
+                    ))}
+                </Box>
             </InnerContainer>
             <Space h={100} />
             <ConclusionPaywall {...OPTIONS.conclusion} />

@@ -1,0 +1,13 @@
+.paper {
+  color: var(--mantine-color-dark-9);
+
+  @mixin data-color 2;
+}
+
+.items {
+  flex-direction: column;
+
+  @mixin larger-than 600px {
+    flex-direction: row;
+  }
+}

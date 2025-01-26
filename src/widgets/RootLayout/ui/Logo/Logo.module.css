@@ -1,0 +1,13 @@
+.logo {
+  display: flex;
+  align-items: center;
+
+  @mixin larger-than 768px {
+    margin-right: 52px;
+
+    img {
+      width: 200px;
+      height: var(--mantine-spacing-3xl);
+    }
+  }
+}

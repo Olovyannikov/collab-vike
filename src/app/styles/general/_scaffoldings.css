@@ -4,6 +4,7 @@ html {
 
 body {
   font-family: "Raleway", "Roboto", "Arial", sans-serif;
+  background-color: var(--mantine-color-white);
 }
 
 #page-content {

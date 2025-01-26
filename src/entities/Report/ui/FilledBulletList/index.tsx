@@ -16,7 +16,11 @@ export const FilledBulletList = ({ items }: FilledBulletListProps) => {
         <List classNames={s} c='violet.9'>
             {items?.map((item) => (
                 <List.Item hidden={!item.text && !item.title} key={`${item.type}_${item.title}`} mb='md'>
-                    <Text span={item.text?.startsWith(' — ')} fz={isLarge ? 22 : 18} lh='21px'>
+                    <Text
+                        span={item.text?.startsWith(' — ') || item.title?.endsWith(': ')}
+                        fz={isLarge ? 22 : 18}
+                        lh='21px'
+                    >
                         {item.title}
                     </Text>
                     <Text span c='dark.7' fz={isLarge ? 22 : 18} lh='21px'>

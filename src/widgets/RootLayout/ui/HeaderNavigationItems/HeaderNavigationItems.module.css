@@ -1,0 +1,31 @@
+.link {
+  display: block;
+  border-radius: var(--mantine-radius-sm);
+  padding: rem(14px) rem(12px);
+  font-weight: 600;
+  font-size: var(--mantine-font-size-lg);
+  line-height: 1;
+  text-decoration: none;
+  color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0));
+
+  &:last-child {
+    @mixin larger-than 768px {
+      display: block;
+      margin-left: auto;
+    }
+  }
+
+  @mixin hover {
+    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
+  }
+}
+
+.drawer {
+  header {
+    display: grid;
+    grid-template-columns: 1fr var(--mantine-spacing-3xl);
+    margin-bottom: var(--mantine-spacing-sm);
+    border-bottom: 1px solid var(--mantine-color-dark-0);
+    gap: var(--mantine-spacing-3xl);
+  }
+}

@@ -4,6 +4,9 @@ import { Box, Button, Group, Text, Title } from '@mantine/core';
 import { Paywall } from '@/entities/Report';
 import { BuyFullReportButton } from '@/features/BuyFullReportButton';
 
+import { FULL_REPORT } from '../../constants';
+import s from './Block.module.css';
+
 interface BlockProps {
     title?: string;
     text?: ReactNode;
@@ -11,18 +14,16 @@ interface BlockProps {
 }
 
 export const Block = ({
-    text = 'Ваш тип личности определяет уникальный стиль мышления, поведения и взаимодействия\n' +
-        'с окружающим миром. В этом разделе вы получите общее представление о своём типе\n' +
-        'личности в системе MBTI.',
-    title = 'Описание типа личности по MBTI',
-    points,
+    text = FULL_REPORT[0].text,
+    title = FULL_REPORT[0].title,
+    points = FULL_REPORT[0].points,
 }: BlockProps) => {
     return (
-        <Box mb={100}>
-            <Title ta='center' fz={26} order={3} mb='md'>
+        <Box className={s.box}>
+            <Title className={s.title} order={3}>
                 {title}
             </Title>
-            <Text mb={60}>{text}</Text>
+            <Text className={s.text}>{text}</Text>
             <Paywall
                 title='Больше о Вас в полном отчете'
                 points={points}

@@ -28,4 +28,5 @@ export interface Personality {
 export interface PersonalityTypesResponse {
     category: string;
     types: Personality[];
+    description: string;
 }

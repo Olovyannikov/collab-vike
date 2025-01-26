@@ -1,3 +1,9 @@
+.container {
+  @mixin larger-than 768px {
+    margin-block: 80px;
+  }
+}
+
 .back {
   margin-block: var(--mantine-spacing-sm);
 
@@ -6,11 +12,12 @@
   }
 }
 
-.container {
-  margin-block: 80px;
-}
-
 .text {
+  margin-bottom: 60px;
   font-size: 18px;
   text-wrap: balance;
+
+  @mixin larger-than 768px {
+    font-size: 22px;
+  }
 }

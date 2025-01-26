@@ -15,40 +15,7 @@
   }
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-
-  @mixin larger-than 768px {
-    margin-right: 52px;
-
-    img {
-      width: 200px;
-      height: 32px;
-    }
-  }
-}
-
-.link {
-  display: block;
-  border-radius: var(--mantine-radius-sm);
-  padding: rem(8px) rem(12px);
-  font-weight: 600;
-  font-size: var(--mantine-font-size-lg);
-  line-height: 1;
-  text-decoration: none;
-  color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0));
-
-  &:last-child {
-    margin-left: auto;
-  }
-
-  [data-mantine-color-scheme] &[data-active] {
-    color: var(--mantine-color-white);
-    background-color: var(--mantine-color-dark-9);
-  }
-
-  @mixin hover {
-    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
-  }
+[data-mantine-color-scheme] &[data-active] {
+  color: var(--mantine-color-white);
+  background-color: var(--mantine-color-dark-9);
 }

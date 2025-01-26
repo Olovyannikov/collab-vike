@@ -1,4 +1,4 @@
-import { ContentResult } from '@/entities/Report';
+import type { ContentResult } from '@/entities/Report';
 
 export const PersonalityTypes = {
     ESTJ: 'ESTJ',
@@ -21,13 +21,4 @@ export const PersonalityTypes = {
 
 export type PersonalityType = keyof typeof PersonalityTypes;
 
-export interface PersonalityTypesResponse {
-    category: string;
-    types: {
-        code: PersonalityType;
-        name: string;
-        descriptions: string[];
-    }[];
-}
-
-export type PersonalityResponseResponse = ContentResult;
+export type PersonalityResponse = ContentResult;
