@@ -7,10 +7,36 @@
     font-size: 24px;
     line-height: 28px;
   }
+
+  &[data-color="violet"] {
+    li::marker {
+      color: var(--mantine-color-violet-9);
+    }
+  }
+
+  &[data-color="green"] {
+    li::marker {
+      color: var(--mantine-color-green-9);
+    }
+  }
+
+  &[data-color="indigo"] {
+    li::marker {
+      color: var(--mantine-color-indigo-9);
+    }
+  }
+
+  &[data-color="yellow"] {
+    li::marker {
+      color: var(--mantine-color-yellow-9);
+    }
+  }
 }
 
 .title {
   font-weight: 700;
   font-size: 24px;
   line-height: 28px;
+
+  @mixin text-data-color 9;
 }

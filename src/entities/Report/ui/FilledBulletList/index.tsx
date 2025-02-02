@@ -1,19 +1,19 @@
-import { List, Text } from '@mantine/core';
+import { List, ListProps, Text } from '@mantine/core';
 
 import { useIsLarge } from '@/shared/hooks';
 
 import type { ListItem } from '../../types';
 import s from './FilledBulletList.module.css';
 
-interface FilledBulletListProps {
+interface FilledBulletListProps extends ListProps {
     items?: ListItem[];
 }
 
-export const FilledBulletList = ({ items }: FilledBulletListProps) => {
+export const FilledBulletList = ({ items, ...props }: FilledBulletListProps) => {
     const isLarge = useIsLarge();
 
     return (
-        <List classNames={s} c='violet.9'>
+        <List data-type='Filled Bullet List' classNames={s} {...props}>
             {items?.map((item) => (
                 <List.Item hidden={!item.text && !item.title} key={`${item.type}_${item.title}`} mb='md'>
                     <Text

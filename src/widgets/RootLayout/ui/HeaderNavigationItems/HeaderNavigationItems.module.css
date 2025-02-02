@@ -1,5 +1,6 @@
 .link {
-  display: block;
+  display: flex;
+  align-items: center;
   border-radius: var(--mantine-radius-sm);
   padding: rem(14px) rem(12px);
   font-weight: 600;
@@ -7,6 +8,7 @@
   line-height: 1;
   text-decoration: none;
   color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0));
+  gap: var(--mantine-spacing-xs);
 
   &:last-child {
     @mixin larger-than 768px {

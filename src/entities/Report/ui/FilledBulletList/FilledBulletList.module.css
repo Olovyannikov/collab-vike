@@ -1,3 +1,7 @@
+.root {
+  @mixin text-data-color 9;
+}
+
 .itemWrapper {
   display: inline-flex;
 }

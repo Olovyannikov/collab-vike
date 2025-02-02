@@ -1,12 +1,12 @@
 import { Flex, Paper, Stack, Text } from '@mantine/core';
 
-import type { PersonalityTypesResponse } from '@/entities/Report/@x';
+import { Personality } from '@/entities/Personalities/types';
 
 import { titleColorMap } from '../../../constants';
 import s from './NavigationItems.module.css';
 
 interface NavigationItemsProps {
-    items: PersonalityTypesResponse['types'];
+    items: Personality[];
     category: string;
     onClick?: VoidFunction;
 }
@@ -16,11 +16,11 @@ export const NavigationItems = ({ items, onClick, category }: NavigationItemsPro
         <Flex className={s.items} gap='md'>
             {items.map((type) => (
                 <Paper
-                    key={type.code}
-                    radius='md'
-                    px={32}
                     py='md'
+                    px={32}
+                    radius='md'
                     component='a'
+                    key={type.code}
                     onClick={onClick}
                     className={s.paper}
                     href={`/types/${type.code}`}

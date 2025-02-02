@@ -3,11 +3,11 @@ import type { ContentResult } from '@/entities/Report';
 export const PersonalityTypes = {
     ESTJ: 'ESTJ',
     ENTJ: 'ENTJ',
-    ISPT: 'ISPT',
+    ISTP: 'ISTP',
     INTP: 'INTP',
     ESFJ: 'ESFJ',
     ENFJ: 'ENFJ',
-    INFT: 'INFT',
+    INFP: 'INFP',
     ISFP: 'ISFP',
     ESTP: 'ESTP',
     ESFP: 'ESFP',

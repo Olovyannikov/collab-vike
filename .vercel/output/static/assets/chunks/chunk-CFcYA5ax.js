@@ -1,1 +1,0 @@
-const T={POST:"POST",PUT:"PUT",PATCH:"PATCH",DELETE:"DELETE",GET:"GET"};export{T as H};

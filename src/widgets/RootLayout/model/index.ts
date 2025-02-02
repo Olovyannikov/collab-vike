@@ -62,5 +62,3 @@ export const RootLayoutModel = {
     $isMenuOpened,
     allMenuDrawerClosed,
 };
-
-$subMenuTitle.watch(console.log);

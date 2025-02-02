@@ -12,12 +12,12 @@ import {
     type ListItem,
     MainTitle,
     OrderedCards,
+    OrderedList,
     Paragraph,
     Paywall,
     Subscription,
     TextStrokeDash,
 } from '@/entities/Report';
-import { OrderedList } from '@/entities/Report/ui/OrderedList';
 import { AdBanner } from '@/entities/Test';
 import { BuyFullReportButton } from '@/features/BuyFullReportButton';
 import { NavigateToFullStructureTemplate } from '@/features/NavigateToFullStructureTemplate';
@@ -45,12 +45,11 @@ const BANNER_CONTENT =
     'Узнайте свои сильные стороны и потенциал с нашим готовым отчетом по типу личности – доступно сразу после заказа!';
 const BANNER_TITLE = 'Купить отчет без прохождения теста';
 
-export const resolver = (content?: Partial<ContentResolverType>[], showBanner?: boolean) => {
+export const resolver = (content?: Partial<ContentResolverType>[], color?: string, showBanner?: boolean) => {
     return (
         <>
             {content?.map((item, idx) => {
                 if (!item) return null;
-
                 switch (item.type) {
                     case 'paywall':
                         return (
@@ -74,6 +73,7 @@ export const resolver = (content?: Partial<ContentResolverType>[], showBanner?: 
                     case 'filled_bullet_list':
                         return (
                             <FilledBulletList
+                                data-color={color}
                                 items={isListItemArray(item.items) ? item.items : []}
                                 key={`${item.type}_${idx}`}
                             />
@@ -123,7 +123,7 @@ export const resolver = (content?: Partial<ContentResolverType>[], showBanner?: 
                         return <TextStrokeDash key={`${item.type}_${idx}`} text={item.text ?? ''} />;
                     case 'subtitle':
                         return (
-                            <Title fz={32} order={3} key={`${item.type}_${idx}`}>
+                            <Title data-type={item.type} fz={32} order={3} mb='md' key={`${item.type}_${idx}`}>
                                 {item.text}
                             </Title>
                         );
@@ -132,7 +132,12 @@ export const resolver = (content?: Partial<ContentResolverType>[], showBanner?: 
                     case 'ordered_list':
                         return (
                             isListItemArray(item.items) && (
-                                <OrderedList items={item.items} key={`${item.type}_${idx}`} />
+                                <OrderedList
+                                    data-type={item.type}
+                                    color={color}
+                                    items={item.items}
+                                    key={`${item.type}_${idx}`}
+                                />
                             )
                         );
                 }

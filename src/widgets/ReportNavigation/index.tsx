@@ -3,8 +3,10 @@ import { Link } from 'react-scroll';
 import { Button, Center, Group, Menu, Paper, Text } from '@mantine/core';
 import { CaretDown } from '@phosphor-icons/react';
 import { useStoreMap } from 'effector-react';
+import { useUnit } from 'effector-react';
 
 import { getFreeResultQuery, getIconsMap } from '@/entities/Report';
+import { TYPE_TO_COLOR_MAP } from '@/shared/constants';
 import { useIsLarge } from '@/shared/hooks';
 import { InnerContainer } from '@/shared/ui';
 
@@ -13,11 +15,15 @@ import s from './ReportNavigation.module.css';
 export const ReportNavigation = () => {
     const isLarge = useIsLarge();
 
+    const { data } = useUnit(getFreeResultQuery);
+
     const content = useStoreMap({
         store: getFreeResultQuery.$data,
         keys: ['title'],
         fn: (content) => content?.content.map(({ title }) => title),
     });
+
+    const currentColor = TYPE_TO_COLOR_MAP[data?.mbti_type ?? 'ENFJ'];
 
     const icons = getIconsMap(isLarge);
 
@@ -33,6 +39,7 @@ export const ReportNavigation = () => {
                 position='bottom'
                 key={activeMenu}
                 closeOnItemClick
+                data-color={currentColor}
                 middlewares={{
                     flip: false,
                 }}
@@ -48,8 +55,10 @@ export const ReportNavigation = () => {
                             justify={isLarge ? 'flex-start' : 'space-between'}
                         >
                             <Group gap='xs' wrap='nowrap' style={{ overflow: 'hidden' }}>
-                                <Paper p={10} radius='sm' bg='violet.1'>
-                                    <Center>{icons[activeMenu]}</Center>
+                                <Paper p={10} radius='sm' bg={`${currentColor}.1`}>
+                                    <Center data-color={currentColor} className={s.center}>
+                                        {icons[activeMenu]}
+                                    </Center>
                                 </Paper>
                                 <Text ta='start' truncate='end' fz={20} fw='bold'>
                                     {activeMenu}
@@ -64,7 +73,7 @@ export const ReportNavigation = () => {
                     {content?.map((title) => (
                         <Menu.Item
                             leftSection={
-                                <Paper p='xxs' radius='xs' bg='violet.1'>
+                                <Paper p='xxs' radius='xs' bg={`${currentColor}.1`}>
                                     <Center className={s.dropdownIcon}>{icons[title]}</Center>
                                 </Paper>
                             }

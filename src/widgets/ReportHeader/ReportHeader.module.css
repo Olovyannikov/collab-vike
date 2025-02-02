@@ -5,7 +5,8 @@
   border-radius: var(--mantine-radius-5xl);
   padding-top: var(--mantine-spacing-5xl);
   padding-bottom: 255px;
-  background-color: var(--mantine-color-violet-1);
+
+  @mixin data-color 2;
 
   @mixin larger-than 1200px {
     border-radius: 80px;
@@ -60,10 +61,24 @@
   height: 364px;
   object-fit: contain;
 
+  &.desktop {
+    display: none;
+  }
+
   @mixin larger-than 1200px {
     right: -40px;
     top: -144px;
     width: 680px;
     height: 680px;
+
+    &.desktop {
+      display: block;
+    }
+
+    &.mobile {
+      display: none;
+    }
   }
+
+  @mixin banner-circle-color 4;
 }

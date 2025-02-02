@@ -6,6 +6,7 @@ export * from './BarChart';
 export * from './IconList';
 export * from './MainTitle';
 export * from './Paragraph';
+export * from './OrderedList';
 export * from './OrderedCards';
 export * from './Subscription';
 export * from './BlockquoteLine';

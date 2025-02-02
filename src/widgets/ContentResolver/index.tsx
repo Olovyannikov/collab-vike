@@ -2,9 +2,11 @@ import { Element } from 'react-scroll';
 import { Button, Stack, Title } from '@mantine/core';
 import { useList, useUnit } from 'effector-react';
 import { isNumber } from 'lodash-es';
+import { usePageContext } from 'vike-react/usePageContext';
 
-import { $currentContent } from '@/entities/Report';
+import { $currentContent, $currentType, PersonalityType } from '@/entities/Report';
 import { AdBanner } from '@/entities/Test';
+import { TYPE_TO_COLOR_MAP } from '@/shared/constants';
 import { useIsLarge } from '@/shared/hooks';
 import { InnerContainer, MainButton } from '@/shared/ui';
 import { resolver } from '@/shared/utils/report/resolver';
@@ -19,14 +21,19 @@ interface ContentResolverProps {
 
 export const ContentResolver = ({ page, showTitle = true, showPurchaseBanner = false }: ContentResolverProps) => {
     const isLarge = useIsLarge();
+    const {
+        routeParams: { type },
+    } = usePageContext();
     const content = useUnit($currentContent);
-
+    const currentType = useUnit($currentType);
     const disabled = true;
+
+    const color = TYPE_TO_COLOR_MAP[(type as PersonalityType) ?? currentType];
 
     if (!content) return null;
 
     const render = useList($currentContent, {
-        keys: [page],
+        keys: [page, color],
         fn: (item, idx) => {
             if (page === undefined) {
                 return (
@@ -38,7 +45,7 @@ export const ContentResolver = ({ page, showTitle = true, showPurchaseBanner = f
                                 <Title hidden={!showTitle} className={s.title}>
                                     {item.title}
                                 </Title>
-                                <Stack gap='md'>{resolver(item.content, showPurchaseBanner)}</Stack>
+                                <Stack gap='md'>{resolver(item.content, color, showPurchaseBanner)}</Stack>
                             </Stack>
                         </Element>
                     </Stack>
@@ -55,7 +62,7 @@ export const ContentResolver = ({ page, showTitle = true, showPurchaseBanner = f
                                 <Title hidden={page !== undefined} className={s.title}>
                                     {item.title}
                                 </Title>
-                                <Stack gap='md'>{resolver(item.content)}</Stack>
+                                <Stack gap='md'>{resolver(item.content, color)}</Stack>
                             </Stack>
                         </Element>
                     </Stack>
