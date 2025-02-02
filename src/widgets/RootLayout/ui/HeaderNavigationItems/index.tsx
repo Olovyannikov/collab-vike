@@ -2,7 +2,7 @@ import { Drawer, Group, Menu, Stack } from '@mantine/core';
 import { X } from '@phosphor-icons/react/dist/ssr';
 import { useUnit } from 'effector-react';
 
-import { useIsMobile } from '@/shared/hooks';
+import { huge } from '@/shared/media';
 import { MainButton } from '@/shared/ui';
 
 import { RootLayoutModel } from '../../model';
@@ -10,12 +10,12 @@ import s from './HeaderNavigationItems.module.css';
 import { useHeaderNavigationItemsViewModel } from './viewmodel';
 
 export const HeaderNavigationItems = () => {
-    const isMobile = useIsMobile();
-    const { isMenuOpened, isSubmenuOpened, closeAllMenuDrawers } = useUnit({
+    const { isMenuOpened, isSubmenuOpened, closeAllMenuDrawers, isDesktop } = useUnit({
         isMenuOpened: RootLayoutModel.$isMenuOpened,
         isSubmenuOpened: RootLayoutModel.$isSubmenuOpened,
         closeAllMenuDrawers: RootLayoutModel.allMenuDrawerClosed,
         onMenuClosed: RootLayoutModel.menuToggle,
+        isDesktop: huge.$matches,
     });
     const { items, withChildrenItems } = useHeaderNavigationItemsViewModel();
 
@@ -25,8 +25,8 @@ export const HeaderNavigationItems = () => {
             closeOnItemClick={false}
             opened={isSubmenuOpened}
             position='bottom-start'
-            width={isMobile ? '100%' : 1084}
-            trigger={isMobile ? 'click' : 'hover'}
+            width={isDesktop ? 1084 : '100%'}
+            trigger={isDesktop ? 'hover' : 'click'}
         >
             <Group component='nav' w='100%' gap={5} visibleFrom='sm'>
                 {withChildrenItems}

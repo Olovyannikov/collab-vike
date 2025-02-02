@@ -1,0 +1,7 @@
+.container {
+  padding-top: var(--mantine-spacing-xs);
+
+  @mixin larger-than 1200px {
+    padding-top: 80px;
+  }
+}

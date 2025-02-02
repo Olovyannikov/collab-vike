@@ -9,6 +9,7 @@ import { ReportHeader } from '@/widgets/ReportHeader';
 import { ReportNavigation } from '@/widgets/ReportNavigation';
 
 import { $isLoadingPage } from './+pageStarted';
+import s from './FreeReportPage.module.css';
 
 export default function Page() {
     const { data } = useUnit(getFreeResultQuery);
@@ -19,8 +20,8 @@ export default function Page() {
     if (!data) return null;
 
     return (
-        <Box component='section' pb={800}>
-            <Container mt='xs'>
+        <Box component='section'>
+            <Container className={s.container}>
                 <ReportHeader name={name} type={data?.mbti_type} />
                 <SendReportEmail />
                 <ReportNavigation />

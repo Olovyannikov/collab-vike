@@ -24,7 +24,7 @@ export const ReportHeader = ({ name, type, showPreheader = true }: ReportHeaderP
                 <Text hidden={!showPreheader} className={s.personalityType}>
                     Ваш тип личности
                 </Text>
-                <Title className={s.name}>{currentName}</Title>
+                <Title className={s.name}>{currentName ?? name}</Title>
                 <Text className={s.type}>{type}</Text>
             </Stack>
             <CircleImage data-color={currentColor} className={clsx(s.image, s.desktop)} />

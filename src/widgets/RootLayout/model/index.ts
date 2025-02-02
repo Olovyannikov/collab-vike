@@ -2,6 +2,8 @@ import type { ReactNode } from 'react';
 import { createEvent, createStore, sample } from 'effector';
 import { isBoolean } from 'lodash-es';
 
+import { desktop } from '@/shared/media';
+
 const subMenuToggle = createEvent<boolean | void>();
 const setSubMenuChildren = createEvent<ReactNode>();
 const setSubMenuTitle = createEvent<string>();
@@ -46,7 +48,7 @@ sample({
 });
 
 sample({
-    clock: allMenuDrawerClosed,
+    clock: [allMenuDrawerClosed, desktop.$matches],
     fn: () => false,
     target: [$isMenuOpened, $isSubmenuOpened],
 });

@@ -3,7 +3,7 @@ import { createEffect, sample } from 'effector';
 import { or } from 'patronum';
 import { navigate } from 'vike/client/router';
 
-import { getFreeResultQuery, getPersonalityTypesQuery } from '@/entities/Report';
+import { $currentType, getFreeResultQuery, getPersonalityTypesQuery } from '@/entities/Report';
 import { $reportName } from '@/entities/Report/model';
 import { createPageStart } from '@/shared/utils/effector';
 
@@ -37,6 +37,14 @@ retry(getFreeResultQuery, {
     delay: 500,
     // @ts-expect-error make issue
     otherwise: redirectToIndexPageFx,
+});
+
+sample({
+    clock: getFreeResultQuery.finished.success,
+    fn: (res) => {
+        return res.result.mbti_type;
+    },
+    target: $currentType,
 });
 
 cache(getFreeResultQuery);

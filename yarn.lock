@@ -1592,6 +1592,11 @@
     "@types/babel__core" "^7.20.5"
     react-refresh "^0.14.2"
 
+"@withease/web-api@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@withease/web-api/-/web-api-1.3.0.tgz#a6a62ebf99be16885a8d2972a12b3f5fb7bae24b"
+  integrity sha512-ULQu1yOoKDom7kGNg2KHeb3OJm09CbNRBZfJ/H9Mpuwia7Cydw8o0vHQEtDFyPmwYm7OIhCNEw/ILZUHzNJCQQ==
+
 JSONStream@^1.3.5:
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/JSONStream/-/JSONStream-1.3.5.tgz#3208c1f08d3a4d99261ab64f92302bc15e111ca0"

@@ -18,7 +18,7 @@ export const OrderedList = ({ items, color }: OrderedListProps) => {
                     <Title data-color={color} mb='md' className={s.title}>
                         {item.title}
                     </Title>
-                    <Stack gap='md'>{resolver(item.content)}</Stack>
+                    <Stack gap='md'>{resolver(item.content, color)}</Stack>
                 </List.Item>
             ))}
         </List>

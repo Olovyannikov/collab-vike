@@ -29,7 +29,7 @@ export function Page() {
     if (isLoading || !name) return <PageLoader />;
 
     return (
-        <Box component='section' pb={800} mt={80}>
+        <Box component='section' mt={80}>
             <Container mt='xs'>
                 {currentContentPage === 0 && <ReportHeader name={name} type={type} />}
                 {currentContentPage > 0 && <Banner title={title} />}

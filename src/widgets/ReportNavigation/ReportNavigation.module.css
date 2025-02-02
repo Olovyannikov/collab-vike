@@ -1,3 +1,10 @@
+.root {
+  @mixin larger-than 768px {
+    height: 72px;
+    min-width: 72px;
+  }
+}
+
 .inner,
 .label {
   width: 100%;
@@ -10,6 +17,11 @@
 
 .center {
   @mixin text-data-color 9;
+
+  @mixin larger-than 768px {
+    width: 72px;
+    height: 72px;
+  }
 }
 
 .dropdownIcon {

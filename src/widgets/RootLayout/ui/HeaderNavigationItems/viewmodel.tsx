@@ -41,15 +41,14 @@ export const useHeaderNavigationItemsViewModel = () => {
                 return (
                     <a
                         key={label}
-                        href={link}
                         className={s.link}
-                        {...(isActive({ href: link }) ? { 'data-active': true } : {})}
+                        {...(isActive({ href: link }) ? { 'data-active': true } : { href: link })}
                     >
                         <Group>{label}</Group>
                     </a>
                 );
             }),
-        [isMobile]
+        [isMobile, isActive]
     );
 
     const withChildrenItems = APP_ROUTES.filter((el) => el.Component).map((el) => (
