@@ -10,7 +10,11 @@ import type { Content } from '../types';
 export const $reportName = createStore('');
 export const $currentName = createStore('');
 export const $currentType = createStore<PersonalityType>('ENFJ');
-export const $isUserReportPageLoading = or(getFullReportQuery.$pending, getPersonalityTypesQuery.$pending);
+export const $isUserReportPageLoading = or(
+    getFullReportQuery.$pending,
+    getPersonalityTypesQuery.$pending,
+    getFullReportQuery.$stale
+);
 
 export const $currentPage = createStore(1);
 export const $isLastPage = createStore(false);

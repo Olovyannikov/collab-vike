@@ -10,14 +10,26 @@ export const pageStarted = createPageStart();
 sample({
     clock: pageStarted,
     source: $userOrderReportId,
-    fn: (id) => ({ id: id ?? '' }),
+    fn: (id, pageCtx) => {
+        let currentId = id ?? '';
+
+        if (pageCtx?.routeParams.user_report_id) {
+            currentId = pageCtx?.routeParams?.user_report_id;
+        }
+
+        return { id: currentId };
+    },
     target: getFullReportQuery.start,
 });
 
 sample({
     clock: getFullReportQuery.finished.success,
     fn: ({ result }) => {
-        if (!result) return [];
+        if (!result.content.length) return [];
+        // TODO: доделать контент парсинг
+        console.log({
+            result: result.content.map((item) => ({ content: item.content, title: item.title })).flat(),
+        });
         return normalizeData(result);
     },
     target: $currentContent,

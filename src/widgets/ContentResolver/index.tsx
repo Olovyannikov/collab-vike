@@ -26,7 +26,6 @@ export const ContentResolver = ({ page, showTitle = true, showPurchaseBanner = f
     } = usePageContext();
     const content = useUnit($currentContent);
     const currentType = useUnit($currentType);
-    const disabled = true;
 
     const color = TYPE_TO_COLOR_MAP[(type as PersonalityType) ?? currentType];
 
@@ -79,7 +78,14 @@ export const ContentResolver = ({ page, showTitle = true, showPurchaseBanner = f
                     <MainButton size='md' radius='sm' component='a' href='/test'>
                         Пройти тест
                     </MainButton>
-                    <Button disabled={disabled} size='md' variant='outline' c='dark.7' color='dark.7'>
+                    <Button
+                        size='md'
+                        c='dark.7'
+                        component='a'
+                        color='dark.7'
+                        variant='outline'
+                        href={`/purchase-report?mbti_type=${type}`}
+                    >
                         Купить сейчас
                     </Button>
                 </AdBanner>

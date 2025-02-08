@@ -26,7 +26,7 @@ export function Page() {
 
     const title = content[currentContentPage]?.title;
 
-    if (isLoading || !name) return <PageLoader />;
+    if (isLoading) return <PageLoader />;
 
     return (
         <Box component='section' mt={80}>

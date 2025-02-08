@@ -4,17 +4,18 @@ import { usePageContext } from 'vike-react/usePageContext';
 
 import type { PurchasedReportRequest } from '@/entities/Payment';
 import { getFreeResultQuery } from '@/entities/Report';
-import { TestStores } from '@/entities/Test';
 
 import { reportPurchased } from './model';
 
 export const useReportBuyFormViewModel = () => {
     const { data } = useUnit(getFreeResultQuery);
-    const { urlParsed } = usePageContext();
-    const surveyId = useUnit(TestStores.$surveyId);
+    const {
+        urlParsed: { search },
+    } = usePageContext();
     const purchaseReportHandler = useUnit(reportPurchased);
 
-    const mbti = urlParsed.search.mbti;
+    const mbti = search.mbti || search.mbti_type;
+    const surveyId = search.survey_id;
 
     const form = useForm({
         mode: 'controlled',
@@ -47,14 +48,19 @@ export const useReportBuyFormViewModel = () => {
         ...form.getInputProps('promo_code'),
     };
 
+    console.log({
+        mbti,
+        surveyId,
+    });
+
     const onSubmit = form.onSubmit((data) => {
         const preparedData: PurchasedReportRequest = { ...data };
-        if (surveyId) {
-            delete preparedData.mbti_type;
-        }
-
         if (!data.mbti_type) {
             preparedData.mbti_type = mbti;
+        }
+
+        if (surveyId) {
+            delete preparedData.mbti_type;
         }
 
         if (!surveyId) {

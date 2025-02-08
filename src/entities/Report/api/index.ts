@@ -1,11 +1,7 @@
 import { createMutation, createQuery } from '@farfetched/core';
 
-import {
-    ContentResult,
-    PersonalityResponse,
-    type PersonalityType,
-    type PersonalityTypesResponse,
-} from '@/entities/Report';
+import { ContentResult, PersonalityResponse, type PersonalityType } from '@/entities/Report';
+import { PersonalityTypesResponse } from '@/entities/Report/@x';
 import { createCommonRequestFx, createInternalRequestFx } from '@/shared/api';
 import { API } from '@/shared/api/contants';
 import { HTTP_METHODS } from '@/shared/api/methods';
